@@ -7,16 +7,16 @@ const mongoose = require('mongoose');
 const oas3Tools = require('oas3-tools');
 const cors = require('cors'); // Import the cors middleware
 
-// const databaseUrl = 'mongodb://pos-db:27017/pos-db'; // Using the service name
+const databaseUrl = 'http://localhost:27017'; // Using the service name
 
 // Connect to MongoDB
-// mongoose
-//   .connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => console.log('Connected to MongoDB'))
-//   .catch((err) => {
-//     console.error('Could not connect to MongoDB:', err);
-//     process.exit(1);
-//   });
+mongoose
+  .connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => {
+    console.error('Could not connect to MongoDB:', err);
+    process.exit(1);
+  });
 
 // Initialize Express application
 const app = express();
