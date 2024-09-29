@@ -4,6 +4,8 @@
 
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
+image: gitpod/workspace-mongodb
+
 tasks:
   - name: run back-end
     command: |
@@ -14,4 +16,6 @@ ports:
   - name: back-end
     port: 8080
     onOpen: ignore
-
+  - name: database
+    port: 27017
+    onOpen: ignore
