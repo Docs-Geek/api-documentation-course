@@ -44,6 +44,12 @@ To open Swagger UI in GitPod:
 
    ![](images/gitpod/swagger-ui-gitpod.png)
 
+3. In Swagger UI, click the **Servers** drop down and select the "GitPod setup" option. Then in the "gitpod-server-url" text field enter the server URL that you copied earlier.
+
+   ![](./images/gitpod/gitpod-server-url.png)
+
+4. Try to **Execute** a "Get a list of orders" request.
+
 ## Running Curl Commands
 
 To run Curl commands a GitPod terminal:
@@ -63,6 +69,17 @@ To run Curl commands a GitPod terminal:
    ```shell
    {"categories":[],"created_at":"2020-01-05 13:42:26.194739","icon_url":"https://api.chucknorris.io/img/avatar/chuck-norris.png","id":"ZYuYuFQVSfamBUYfzFADMQ","updated_at":"2020-01-05 13:42:26.194739","url":"https://api.chucknorris.io/jokes/ZYuYuFQVSfamBUYfzFADMQ","value":"Chuck Norris has more subscribers than Pewdiepie."}%
    ```
+
+## IMPORTANT: Pinning the Workspace
+
+GitPod workspaces are deleted in 15 days from the time of creation. To prevent this, and avoid doing the setup again, you have to **Pin** the workspace in GitPod.
+
+To stop the workspace:
+
+1. Go to [https://gitpod.io/workspaces](https://gitpod.io/workspaces).
+2. Click the three dots (**⋮**) next to your active workspace and select **Pin**.
+
+   ![](images/gitpod/pin-workspace.png)
 
 ## IMPORTANT: Stopping the Workspace
 
