@@ -1,0 +1,37 @@
+classDiagram
+    %% Authentication-related domains
+    direction LR
+
+    class USER {
+        User ID
+        Name
+        Username
+        Password
+        Email
+        Role
+        Created At
+        Updated At
+        -----------------------
+        Create
+        List All
+        View
+        Modify
+        Delete
+    }
+
+    class AUTH {
+        Authentication ID
+        Access Token
+        Expires At
+        Refresh Token
+        Token Type
+        Username
+        Created At
+        Updated At
+        -----------------------
+        Authenticate
+        Refresh Token
+        Revoke
+    }
+
+    AUTH -- USER : Authenticates

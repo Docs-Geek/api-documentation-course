@@ -1,0 +1,46 @@
+Session #3: In-class quizzes  
+
+1. What field is NOT required for an OpenAPI spec to be valid?  
+Options:  
+A)  
+info  
+B)  
+paths  
+C)  
+openapi  
+D)  
+servers  
+
+2. What response status code indicates that a resource was successfully created?  
+Options:  
+A)  
+404  
+B)  
+200  
+C)  
+500  
+D)  
+201  
+
+3. What is the purpose of JSON schema in OpenAPI?  
+
+Options:  
+A)  
+To define API endpoints  
+B)  
+To validate JSON data structures  
+C)  
+To describe server configurations  
+D)  
+To generate documentation  
+
+4. What does the components/schemas section allow you to do?  
+Options:  
+A)  
+Define reusable data structures  
+B)  
+Set server configurations  
+C)  
+Manage authentication methods  
+D)  
+List available endpoints  

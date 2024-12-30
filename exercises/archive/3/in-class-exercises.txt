@@ -1,0 +1,88 @@
+Here’s an improved version with clearer structure and instructions:
+
+---
+
+
+
+<h3>Prerequisites</h3>
+1. Open Postman on your computer.
+2. In the top-right corner, click on "Environment Variables" and ensure they are selected.
+3. Expand the "Point of Service (POS) API - Original" collection.
+
+
+<h3>Exercise #1: Retrieve a List of Resources
+
+1. Expand the "Orders" section.
+2. Open the request titled "Get a list of orders" and click "Send".
+3. In the response window, provide the following details:
+   - The request method
+   - The response status code
+   - The total number of results (found in the `total_results` field).
+
+
+### Exercise #2: Sorting and Ordering with Query Parameters
+
+1. With the "Get a list of orders" request still open, go to the "Params" tab.
+2. Select the checkboxes for "Sort" and "Order" to add them as query parameters. Click "Send".
+3. Note the `priority` value of the first record in the response.
+
+4. Change the "order" parameter to "desc" and click "Send" again.
+
+In the response window, answer the following:
+   - What was the priority of the first record in the initial request?
+   - After changing "order" to "desc", what is the new priority of the first record?
+   - What character appears before the query parameters in the URL?
+   - What character is used to separate query parameters in the URL?
+
+---
+
+### Exercise #3: Using Projection Filters
+
+1. With the "Get a list of orders" request still open, return to the "Params" tab.
+2. Deselect the checkboxes for "sort" and "order" to remove them from the URL.
+3. Select the "fields" checkbox to add it as a query parameter.
+4. In the "Value" column for "fields", add `name` to the end of the project filter: `|name`.
+
+5. Click "Send".
+
+In the response window, answer the following:
+   - What character separates fields in a project filter?
+   - What fields are returned per record in the response?
+
+---
+
+### Exercise #4: Applying Selection Filters
+
+1. Expand the "Dishes" section.
+2. Open the request titled "Get a list of dishes".
+3. In the "Params" tab, select the "filter" checkbox to add it as a query parameter. Click "Send".
+
+In the response window, answer the following:
+   - What is the meaning of the first filter before the `|` symbol?
+   - What is the meaning of the second filter after the `|` symbol?
+
+---
+
+### Exercise #5: Applying Pagination Filters
+
+1. With the "Get a list of dishes" request still open, go to the "Params" tab.
+2. Select the "Limit" checkbox and set the value to `10`. Click "Send".
+3. Take note of the name of the first record in the response.
+
+In the response window, answer the following:
+   - What was the name of the first record after the initial request?
+   - After applying the "offset" filter, what is the new first record?
+
+---
+
+### Exercise #6: Retrieve by ID
+
+1. Expand the "Ingredients" section.
+2. Open the request titled "Get a list of ingredients" and click "Send".
+3. In the response, copy the `id` of the first ingredient in the list.
+4. Open the request titled "Get an ingredient's details".
+5. In the "Params" tab, under "Path Variables", replace the value of `{{ingredientId}}` with the `id` you copied earlier.
+6. Use your knowledge of filters to return only the "name" and "price" fields in the response.
+
+In the response window, paste the full URL you used (located to the left of the "Send" button) to verify your query parameters were applied correctly.
+

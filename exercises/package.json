@@ -1,0 +1,38 @@
+{
+  "name": "highlight",
+  "version": "1.0.0",
+  "source": "index.html",
+  "type": "module",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "targets": {
+    "default": {
+      "distDir": "./dist"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "pandoc",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^3.1.0",
+    "highlight.js": "^11.11.1",
+    "marked": "^14.1.2",
+    "prismjs": "^1.29.0",
+    "rehype-highlight": "^7.0.1",
+    "rehype-raw": "^7.0.0",
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.0",
+    "remark-mdx": "^3.1.0",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0"
+  },
+  "main": "extractTextFromMdx.js",
+  "keywords": []
+}

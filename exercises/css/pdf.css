@@ -1,0 +1,657 @@
+/* Fonts */
+/* @import url(./fonts/source-sans-pro/source-sans-pro.css); */
+/* @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic); */
+
+/* General Styles */
+body {
+  background-color: #fff;
+  color: #003c5b;
+  /* font-family: 'Source Sans Pro', Helvetica, sans-serif; */
+  font-size: 12pt;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul li,
+ol li,
+table {
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #003c5b;
+  text-shadow: none;
+  letter-spacing: normal;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 28pt; /* Slightly larger for prominence */
+  color: #2a76dd;
+}
+
+h2 {
+  font-size: 24pt; /* Adjusted for hierarchy */
+}
+
+h3 {
+  font-style: italic;
+}
+
+h3 {
+  font-size: 18pt; /* Slightly larger for better readability */
+}
+
+h4 {
+  font-size: 16pt; /* Increased for better consistency */
+}
+
+h5 {
+  font-size: 12pt; /* Increased to match body text size */
+}
+
+/* Caption */
+.caption {
+  font-size: 12pt;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Links */
+a {
+  color: #2a76dd;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  position: relative;
+  padding-right: 20px; /* Space for the icon */
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  right: 2pt;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 12px;
+  background-image: url('../images/link-solid.svg'); /* Your arrow icon SVG */
+  background-size: cover;
+}
+
+a:hover {
+  color: #5a8ce6;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 5px; /* Adjust this value as needed */
+}
+
+::selection {
+  background-color: #8abfff;
+}
+
+/* Overlay */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgb(240, 240, 240);
+  padding: 20pt;
+  border-radius: 5pt;
+}
+
+/* Fragments */
+.fragment.blur {
+  filter: blur(5pt);
+}
+
+.fragment.blur.visible {
+  filter: none;
+}
+
+/* Small Header */
+.smallh2 {
+  font-size: 180pt;
+}
+
+/* Preline Code */
+.preline-code {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+/* Slide Header */
+.slide-header {
+  border-bottom: 2pt solid rgba(0, 60, 91, 0.3);
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 7pt;
+  margin-bottom: 75pt;
+}
+
+/* Course Title */
+.course-title {
+  text-transform: uppercase;
+}
+
+/* Font Families */
+.space-mono-regular {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Operations */
+.operation-container {
+  display: flex;
+  justify-content: center;
+}
+
+.operation {
+  display: flex;
+  border-width: 2pt;
+  border-style: solid;
+  border-radius: 10pt;
+  padding: 5pt;
+  width: 80%;
+}
+
+/* Operation Styles */
+.operation-post {
+  border-color: #49cc90;
+  background-color: #eef9f3;
+}
+.operation-get {
+  border-color: #61affe;
+  background-color: #f0f7ff;
+}
+.operation-put {
+  border-color: #fca131;
+  background-color: #fef6ec;
+}
+.operation-del {
+  border-color: #f83e3f;
+  background-color: #ffeceb;
+}
+
+/* Method Styles */
+.method {
+  border-style: solid;
+  border-radius: 9pt;
+  font-weight: 800;
+  color: white;
+  padding: 6pt 0;
+  padding: 0 25pt;
+  display: flex;
+  align-items: center;
+  font-size: 12pt;
+}
+
+.method-post {
+  background-color: #49cc90;
+}
+.method-get {
+  background-color: #61affe;
+}
+.method-put {
+  background-color: #fca131;
+}
+.method-del {
+  background-color: #f83e3f;
+}
+
+/* Path */
+.path {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 12pt;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  margin: 0 1%;
+}
+
+/* Summary */
+.summary {
+  font-size: 12pt;
+  padding-top: 0.5%;
+  display: flex;
+  align-items: center;
+}
+
+/* Right Icons */
+.right-icons {
+  display: flex;
+  margin-left: auto;
+  padding: 0 2%;
+}
+
+/* Lists */
+ul,
+ol,
+li {
+  list-style-type: disc;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+li {
+  margin-left: 15pt;
+  margin: 5pt 0 5pt 15pt;
+  line-height: 15pt;
+}
+
+ul p {
+  margin-left: 15pt;
+}
+
+li p {
+  margin: 5pt;
+}
+
+/* Paragraphs */
+p {
+  margin: 20pt 0;
+  line-height: 1.3;
+}
+
+/* Blockquotes */
+blockquote {
+  display: block;
+  position: relative;
+  width: 70%;
+  margin: 20pt auto;
+  padding: 5pt;
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 2pt rgba(0, 0, 0, 0.2);
+}
+
+blockquote p:first-child,
+blockquote p:last-child {
+  display: inline-block;
+}
+
+/* Preformatted Text */
+pre {
+  display: block;
+  position: relative;
+  margin: 15pt;
+  text-align: left;
+  /* font-size: 0.55pt; */
+  font-family: monospace;
+  line-height: 15pt;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  box-shadow: 0 5pt 15pt rgba(0, 0, 0, 0.15);
+}
+
+/* Code */
+code {
+  font-family: 'Fira Code', monospace; /* Replace with your preferred font */
+  text-transform: none;
+  tab-size: 2;
+  font-size: 12pt important;
+}
+
+code:not(pre code) {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  white-space: break-spaces;
+  background-color: #e0f0ff; /* Light blue background */
+  color: #003c5b; /* Deep blue font */
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+pre code {
+  display: block;
+  padding: 5pt;
+  overflow: auto;
+  word-wrap: normal;
+  font-size: 10pt important;
+}
+
+pre code {
+  font-size: 85% !important;
+  font-family: 'Fira Code', monospace !important;
+}
+
+pre,
+pre code {
+  background: #192652 !important;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 20px 0;
+  background-color: #fff;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e2e2e2;
+  text-align: left;
+}
+
+table th {
+  background-color: #003c5b;
+  color: #fff;
+  font-weight: 700;
+}
+
+table td {
+  background-color: #f9f9f9;
+  color: #003c5b;
+}
+
+table tbody tr:nth-child(even) td {
+  background-color: #f2f8ff; /* Light blue for even rows */
+}
+
+table tbody tr:hover {
+  background-color: #e0f0ff; /* Hover effect for rows */
+}
+
+table th[align='center'],
+table td[align='center'] {
+  text-align: center;
+}
+
+table th[align='right'],
+table td[align='right'] {
+  text-align: right;
+}
+
+table tbody tr:last-child th,
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+table td,
+table th {
+  font-size: 12pt;
+}
+
+table caption {
+  font-size: 14pt;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Images */
+img {
+  margin: 20pt 0;
+  max-width: 95%;
+  max-height: 95%;
+}
+
+/*********************************************
+ * CODE HIGHLGIHTING
+ *********************************************/
+/* 
+.hljs {
+  min-height: 100%;
+}
+.hljs-punctuation {
+  color: white !important;
+}
+
+.hljs table {
+  margin: initial;
+}
+
+.hljs-ln-code,
+.hljs-ln-numbers {
+  padding: 0;
+  border: 0;
+}
+
+.hljs-ln-numbers {
+  opacity: 0.6;
+  padding-right: 0.75em;
+  text-align: right;
+  vertical-align: top;
+}
+
+.hljs.has-highlights tr:not(.highlight-line) {
+  opacity: 0.4;
+}
+
+.hljs.has-highlights.fragment {
+  transition: all 0.2s ease;
+}
+
+.hljs:not(:first-child).fragment {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+pre[data-auto-animate-target] {
+  overflow: hidden;
+}
+pre[data-auto-animate-target] code {
+  height: 100%;
+}
+.hljs {
+  background: #002451 !important;
+  color: white !important;
+} */
+/* Tomorrow Night Blue Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+
+/* Tomorrow Comment */
+
+/* .hljs-comment,
+.hljs-quote {
+  color: #7285b7 !important;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: #ff9da4 !important;
+}
+
+.hljs-number,
+.hljs-built_in,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: #ffc58f !important;
+}
+
+/* Tomorrow Yellow */
+/* .hljs-attribute {
+  color: #ffeead !important;
+}
+
+
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #d1f1a9 !important;
+}
+.hljs-title,
+.hljs-section {
+  color: #bbdaff !important;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #ebbbff !important;
+}
+
+.hljs-emphasis {
+  font-style: italic !important;
+}
+
+.hljs-strong {
+  font-weight: bold !important;
+} */
+
+.slide-header {
+  display: none;
+  margin-bottom: 0;
+}
+
+.page-break-before {
+  page-break-before: always;
+}
+
+.answer-table tbody tr td:nth-child(2),
+.answer-table thead tr th:nth-child(2) {
+  padding-left: 20pt;
+}
+
+img {
+  width: 40%;
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  align-items: flex-start;
+  margin-top: 0;
+}
+*/
+
+/* Print */
+
+ul + p img {
+  page-break-before: avoid;
+}
+
+ul {
+  page-break-after: avoid;
+}
+
+p {
+  page-break-before: avoid;
+}
+h2 {
+  page-break-before: always;
+}
+
+/* PrismJS 1.29.0
+https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+bash+git+json+json5+jsonp+js-templates+makefile+markdown+mongodb+plant-uml+jsx+tsx+regex+sass+scss+sparql+sql+turtle+typescript+typoscript+yaml */
+code[class*='language-'],
+pre[class*='language-'] {
+  color: #f8f8f2;
+  background: 0 0;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+pre[class*='language-'] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: #272822;
+}
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+.token.cdata,
+.token.comment,
+.token.doctype,
+.token.prolog {
+  color: #8292a2;
+}
+.token.punctuation {
+  color: #f8f8f2;
+}
+.token.namespace {
+  opacity: 0.7;
+}
+.token.constant,
+.token.deleted,
+.token.property,
+.token.symbol,
+.token.tag {
+  color: #f92672;
+}
+.token.boolean,
+.token.number {
+  color: #ae81ff;
+}
+.token.attr-name,
+.token.builtin,
+.token.char,
+.token.inserted,
+.token.selector,
+.token.string {
+  color: #a6e22e;
+}
+.language-css .token.string,
+.style .token.string,
+.token.entity,
+.token.operator,
+.token.url,
+.token.variable {
+  color: #f8f8f2;
+}
+.token.atrule,
+.token.attr-value,
+.token.class-name,
+.token.function {
+  color: #e6db74;
+}
+.token.keyword {
+  color: #66d9ef;
+}
+.token.important,
+.token.regex {
+  color: #fd971f;
+}
+.token.bold,
+.token.important {
+  font-weight: 700;
+}
+.token.italic {
+  font-style: italic;
+}
+.token.entity {
+  cursor: help;
+}

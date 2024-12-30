@@ -1,0 +1,26 @@
+erDiagram
+    %% Authentication-related entities
+
+    USER {
+        user_id INT PK
+        name VARCHAR
+        user_name VARCHAR UK
+        password VARCHAR
+        email VARCHAR
+        role VARCHAR
+        created_at DATETIME
+        updated_at DATETIME
+    }
+
+    AUTH {
+        auth_id INT PK
+        access_token VARCHAR
+        expires_at DATETIME
+        refresh_token VARCHAR
+        token_type VARCHAR
+        user_name VARCHAR
+        created_at DATETIME
+        updated_at DATETIME
+    }
+
+    AUTH ||--|| USER : Authenticates

@@ -1,0 +1,21 @@
+sequenceDiagram
+    %% Browsing and Selecting Orders
+    participant Patron as Patron
+    participant Client as Client
+    participant API as API
+
+    Patron->>Client: Start browsing menu
+    Client->>API: GET /dishes?filter=category.eq~Appetizers
+    API->>Client: 200 OK, total_results: 11
+    Client->>Client: Save results to local storage
+
+    loop Check ingredient quantities for each dish
+        Client->>API: GET /ingredients/{ingredient_id}
+        API->>Client: 200 OK, {"name": "lettuce", "in_stock_qty": 3}
+    end
+    Client->>Client: Disable dishes with zero essential ingredients
+
+    Client->>Patron: Display list of dishes by category
+    Patron->>Client: Select a dish to view details
+    Client->>API: GET /dishes/{id}?
+    API->>Client: 200 OK, total_results: 15

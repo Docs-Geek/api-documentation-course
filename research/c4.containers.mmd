@@ -1,0 +1,13 @@
+graph TD
+    subgraph "POS Platform"
+        FoodOrderingApp["Food Ordering Application"]
+        KDS["Kitchen Display System (KDS)"]
+        AdminApp["Admin Application"]
+        POSAPI["POS REST API"]
+        Database["MongoDB Database"]
+    end
+
+    FoodOrderingApp -->| Sends order requests and retrieves order status | POSAPI
+    KDS -->| Requests order information | POSAPI
+    AdminApp -->| Sends administrative commands | POSAPI
+    POSAPI -->| Reads from and writes to | Database

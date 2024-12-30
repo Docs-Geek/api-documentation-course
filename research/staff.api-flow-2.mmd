@@ -1,0 +1,26 @@
+sequenceDiagram
+    %% Initiating Preparation, Viewing Dishes for Station, and Managing Ingredients
+    participant Staff as Staff
+    participant Client as API Client
+    participant API as API
+
+    Staff->>Client: Initiate order preparation
+    Client->>API: PUT /orders/{order_id} Data: { "status": "In Progress" }
+    API->>Client: 200 OK, Order in progress
+
+    Staff->>Client: View dishes for station
+    Client->>API: GET /orders/{order_id}/dishes?filter=station.eq~hot
+    API->>Client: 200 OK, total_results: 5
+    Client->>Staff: Display dishes for station "hot"
+
+    Staff->>Client: Get dish ingredients
+    Client->>API: GET /dishes/{dish_id}/ingredients?fields=name
+    API->>Client: 200 OK, total_results: 4
+    Client->>Staff: Display ingredient list
+
+    Staff->>Client: Mark dish as "Ready for Assembly"
+    Client->>Staff: Update expeditor's KDS (Managed by client)
+
+    Staff->>Client: Update order status
+    Client->>API: PUT /orders/{order_id} Data: { "status": "On the Way" }
+    API->>Client: 200 OK, Order status updated

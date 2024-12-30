@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant Admin as Admin
+    participant Client as API Client
+    participant API as API
+
+    Admin->>Client: Admin logins into UI
+    Client->>API: POST /auth/token
+    API->>Client: 201 Created (access_token, expires_at, refresh_token)
+
+    Admin->>Client: Create ingredient in UI
+    Client->>API: POST /ingredients
+    API->>Client: 201 Created (ingredient details)
+    Client->>Admin: Confirms dish creation
+
+    Admin->>Client: Create dish in UI
+    Client->>API: POST /dishes
+    API->>Client: 201 Created (dish details)
+    Client->>Admin: Confirms dish creation
+ 

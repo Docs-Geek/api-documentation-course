@@ -44,3 +44,6 @@ install_dependencies() {
 install_dependencies "server"
 install_dependencies "admin"
 install_dependencies "openapi"
+install_dependencies "slides"
+install_dependencies "exercises"
+install_dependencies "research"

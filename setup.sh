@@ -2,14 +2,14 @@
 
 # Pull latest changes from the remote repository.
 
-./scripts/pull-changes.sh
+# ./scripts/pull-changes.sh
 
-if [ $? -eq 0 ]; then
-  echo "The latest changes were pulled from the remote."
-else
-  echo "Failed to pull the latest changes from the remote."
-  exit 1
-fi
+# if [ $? -eq 0 ]; then
+#   echo "The latest changes were pulled from the remote."
+# else
+#   echo "Failed to pull the latest changes from the remote."
+#   exit 1
+# fi
 
 # Install packages inside code base folders.
 ./scripts/install-dependencies.sh
