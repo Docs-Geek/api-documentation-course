@@ -4,7 +4,7 @@ Using Gitpod provides a convenient alternative to setting up a local development
 
 ## Prerequisites
 
-- If you have not already, download the following applications:
+- If you have not already, download the following applications (search for them using Google):
 
   - **Discord**
   - **Postman**
