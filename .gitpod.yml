@@ -11,6 +11,7 @@ tasks:
     command: |
       region=$(echo ${GITPOD_WORKSPACE_URL} | cut -d'.' -f2)
       echo "VITE_REACT_APP_SERVER_URL=https://8080-${GITPOD_WORKSPACE_ID}.${region}.gitpod.io" > ../admin-gitpod/.env
+      echo "__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=5173-${GITPOD_WORKSPACE_ID}.${region}.gitpod.io" >> ../admin-gitpod/.env
       cd server
       node seed-db-gitpod.js
       node index-gitpod.js
@@ -32,7 +33,6 @@ tasks:
         echo "openapi.yml does not exist. Creating a copy from openapi.original.yml..."
         cp openapi.original.yml openapi.yml || { echo "Failed to copy openapi.original.yml"; exit 1; }
         node wipeOpenApiDescription.js
-        echo "__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=5173-${GITPOD_WORKSPACE_ID}.${region}.gitpod.io" >> ../admin-gitpod/.env
       else
         echo "openapi.yml already exists. Exiting script."
         exit 0
