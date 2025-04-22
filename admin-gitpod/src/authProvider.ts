@@ -16,6 +16,7 @@ const clientSecret = "a5d7f23e-8b64-4b4c-9b11-21c5cfdf25f1";
 
 let isRefreshingToken = false;
 let refreshTokenPromise: Promise<void> = Promise.resolve();
+let lastAuthCheck = 0;
 
 export const authProvider = {
   login: async ({ username, password }: LoginParams): Promise<void> => {
@@ -67,6 +68,13 @@ export const authProvider = {
   },
 
   checkAuth: async (): Promise<void> => {
+    const now = Date.now();
+    if (now - lastAuthCheck < 1000) {
+      console.warn("Throttling checkAuth call.");
+      return Promise.resolve(); // Don't reject, just skip this check
+    }
+    lastAuthCheck = now;
+
     console.log("API Base URL in authProvider is:", API_BASE_URL);
     console.log("beginning to verify auth...");
 
