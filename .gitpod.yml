@@ -11,6 +11,7 @@ tasks:
     command: |
       region=$(echo ${GITPOD_WORKSPACE_URL} | cut -d'.' -f2)
       echo "VITE_REACT_APP_SERVER_URL=https://8080-${GITPOD_WORKSPACE_ID}.${region}.gitpod.io" > ../admin-gitpod/.env
+      echo "VITE_REACT_APP_HOST_URL=5173-${GITPOD_WORKSPACE_ID}.${region}.gitpod.io" >> ../admin-gitpod/.env
       cd server
       node seed-db-gitpod.js
       node index-gitpod.js

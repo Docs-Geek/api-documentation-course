@@ -8,9 +8,7 @@
     "skipLibCheck": true, // Skip type checking of declaration files
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "src/**/*" // Include all files in the 'src' directory
-  ],
+  "include": ["src/**/*", "env.d.ts"],
   "exclude": [
     "node_modules" // Exclude 'node_modules' directory
   ],
