@@ -10,6 +10,8 @@ interface LoginParams {
 const API_BASE_URL =
   import.meta.env.VITE_REACT_APP_SERVER_URL || "http://localhost:8080";
 
+const VITE_REACT_APP_HOST_URL = import.meta.env.VITE_REACT_APP_HOST_URL;
+
 console.log("API Base URL in authProvider is:", API_BASE_URL);
 const clientId = "admin_web_app";
 const clientSecret = "a5d7f23e-8b64-4b4c-9b11-21c5cfdf25f1";
@@ -83,6 +85,7 @@ export const authProvider = {
 
     if (!accessToken) {
       console.warn("No access token found, login required.");
+      window.location.href = `${VITE_REACT_APP_HOST_URL}`; // Redirect to custom login URL
       return Promise.reject();
     }
 
