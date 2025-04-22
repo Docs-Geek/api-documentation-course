@@ -6,11 +6,16 @@ interface LoginParams {
 }
 
 // Use environment variables to dynamically set the base URL
+
 const API_BASE_URL =
   import.meta.env.VITE_REACT_APP_SERVER_URL || "http://localhost:8080";
+
 console.log("API Base URL in authProvider is:", API_BASE_URL);
 const clientId = "admin_web_app";
 const clientSecret = "a5d7f23e-8b64-4b4c-9b11-21c5cfdf25f1";
+
+let isRefreshingToken = false;
+let refreshTokenPromise: Promise<void> = Promise.resolve();
 
 export const authProvider = {
   login: async ({ username, password }: LoginParams): Promise<void> => {
@@ -62,23 +67,24 @@ export const authProvider = {
   },
 
   checkAuth: async (): Promise<void> => {
+    console.log("API Base URL in authProvider is:", API_BASE_URL);
     console.log("beginning to verify auth...");
+
     const accessToken = localStorage.getItem("access_token");
     const expiresAt = localStorage.getItem("expires_at");
-    const refreshToken = localStorage.getItem("refresh_token");
 
     if (!accessToken) {
-      return Promise.reject(); // No access token means the user needs to log in
+      console.warn("No access token found, login required.");
+      return Promise.reject();
     }
 
     const expiryDate = expiresAt ? new Date(expiresAt) : new Date(0);
-    let isRefreshingToken = false;
-    let refreshTokenPromise: Promise<void> = Promise.resolve();
 
     if (expiryDate < new Date()) {
       if (!isRefreshingToken) {
         isRefreshingToken = true;
-        refreshTokenPromise = (async () => {
+
+        refreshTokenPromise = (async (): Promise<void> => {
           try {
             const refreshToken = localStorage.getItem("refresh_token");
             if (!refreshToken) {
@@ -103,7 +109,7 @@ export const authProvider = {
             localStorage.setItem("refresh_token", refresh_token);
           } catch (error) {
             console.error("Token refresh failed", error);
-            return Promise.reject();
+            throw error;
           } finally {
             isRefreshingToken = false;
           }
