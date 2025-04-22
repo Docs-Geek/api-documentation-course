@@ -29,6 +29,7 @@ As we progress through the course, you'll interact with various parts of this re
   - [Postman Setup](#postman-setup)
   - [Checklist](#checklist)
   - [Getting Help](#getting-help)
+  - [Converting JSON to YAML (and vice versa).](#converting-json-to-yaml-and-vice-versa)
 
 ## System Privileges and Course Setup
 
@@ -272,4 +273,11 @@ Is this a personal or work computer?
 
 **Description:**
 Give a detailed description of the issue. Include steps to replicate the problem, any error messages (you can copy from the terminal), and relevant screenshots if possible.
+```
+
+## Converting JSON to YAML (and vice versa).
+
+```shell
+./scripts/convert-json-to-yaml.sh
+./scripts//convert-yaml-to-json.sh
 ```

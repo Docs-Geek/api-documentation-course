@@ -1,3 +1,6 @@
+NEED TO REORGANIZE THESE BASED ON SPREADSHEET
+
+
 Session #3: In-class quizzes  
 
 1. What field is NOT required for an OpenAPI spec to be valid?  
@@ -44,3 +47,93 @@ C)
 Manage authentication methods  
 D)  
 List available endpoints  
+
+
+
+1. What is the primary purpose of query parameters in an API request?  
+Options:  
+A)  
+To define the API endpoint  
+B)  
+To customize API requests by adding data  
+C)  
+To authenticate users  
+D)  
+To specify the HTTP method  
+
+2. How are query parameters added to a URL?  
+Options:  
+A)  
+Before the base URL  
+B)  
+After a ?, separated by &  
+C)  
+Within parentheses  
+D)  
+Using a semicolon  
+
+3. Which of the following is a common use case for a POST request?  
+Options:  
+A)  
+Retrieving a list of resources  
+B)  
+Creating a new user account  
+C)  
+Fetching the details of a resource by its ID  
+D)  
+Deleting a file from the server  
+
+4. What is the primary purpose of the PUT method in HTTP requests?  
+Options:  
+A)  
+To create a new resource on the server  
+B)  
+To read or retrieve a resource from the server  
+C)  
+To update or replace an existing resource on the server  
+D)  
+To delete an existing resource on the server  
+
+5. Which HTTP status code indicates a successful DELETE request?  
+Options:  
+A)  
+200 OK  
+B)  
+404 Not Found  
+C)  
+401 Unauthorized  
+D)  
+204 No Content  
+
+6. What is a subresource in the context of RESTful APIs?  
+Options:  
+A)  
+A resource that has no relationship with primary resources  
+B)  
+A secondary resource logically nested under a primary resource  
+C)  
+A resource that only contains metadata  
+D)  
+A resource that cannot be accessed by clients  
+
+7. What is the difference between authentication and authorization?  
+Options:  
+A)  
+Authentication specifies permissions; authorization verifies identity  
+B)  
+Authentication verifies identity; authorization specifies permissions  
+C)  
+Both terms refer to the same process  
+D)  
+Authentication is only for APIs; authorization is for web applications  
+
+8. What HTTP status code indicates that the user is not authenticated?  
+Options:  
+A)  
+403 Forbidden  
+B)  
+200 OK  
+C)  
+401 Unauthorized  
+D)  
+500 Internal Server Error

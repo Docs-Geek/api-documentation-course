@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ./research|| { echo "Directory ./research not found!"; exit 1; }
+cd ./assets|| { echo "Directory ./assets not found!"; exit 1; }
 
 # Directory containing the .mmd files
 INPUT_DIR="./"

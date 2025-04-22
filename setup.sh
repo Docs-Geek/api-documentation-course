@@ -53,6 +53,24 @@ else
   exit 1
 fi
 
+./scripts/generate-diagrams.sh
+
+if [ $? -eq 0 ]; then
+  echo "Diagrams successfully generated."
+else
+  echo "Failed to generate diagrams."
+  exit 1
+fi
+
+./scripts/generate-pdfs.sh
+
+if [ $? -eq 0 ]; then
+  echo "PDFs successfully generated."
+else
+  echo "Failed to generate PDFs."
+  exit 1
+fi
+
 # Seed the database
 ./scripts/seed-db.sh
 

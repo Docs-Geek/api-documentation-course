@@ -19,4 +19,5 @@ input.yaml
 openapi*.yml
 research/*.png
 .env
-
+input.yaml
+output.yaml

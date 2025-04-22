@@ -77,7 +77,7 @@ To run Curl commands a GitPod terminal:
 2. Run the following command to make a request:
 
    ```bash
-   curl -X GET "https://api.chucknorris.io/jokes/random"
+   curl -i -X GET "https://api.chucknorris.io/jokes/random"
    ```
 
    The output will look something like this (the joke will vary):
