@@ -4,8 +4,7 @@ FROM node:21
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy setup script and make it executable
-COPY ./setup.sh ./setup.sh
+# Make setup.sh executable
 RUN chmod +x ./setup.sh
 
 # Copy package.json and package-lock.json to the working directory
