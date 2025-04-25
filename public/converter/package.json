@@ -1,6 +1,0 @@
-{
-  "type": "module",
-  "dependencies": {
-    "js-yaml": "^4.1.0"
-  }
-}
