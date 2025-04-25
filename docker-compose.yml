@@ -8,7 +8,7 @@ services:
     ports:
       - '80:8080'
     volumes:
-      - .:/server # Mount current dir (server) to /server in container
+      - .:/app
     depends_on:
       - pos-db
 
@@ -17,7 +17,7 @@ services:
     ports:
       - '8080:8080'
     environment:
-      - SWAGGER_FILE=/openapi/openapi.yml
+      SWAGGER_FILE: /openapi/openapi.yml
     volumes:
       - ./openapi:/openapi
 
@@ -26,7 +26,7 @@ services:
     ports:
       - '5500:8080'
     environment:
-      - SWAGGER_JSON=/openapi/openapi.original.yml
+      SWAGGER_JSON: /openapi/openapi.original.yml
     volumes:
       - ./openapi:/openapi
 
