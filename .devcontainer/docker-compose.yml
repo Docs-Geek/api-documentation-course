@@ -1,0 +1,35 @@
+services:
+  api-server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - '80:8080'
+    volumes:
+      - ./server:/app
+    depends_on:
+      - pos-db
+
+  # Swagger Editor HAS to be exposed at port 8080!
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+      - '8080:8080'
+    environment:
+      - SWAGGER_FILE=/openapi/openapi.yml
+      # - SWAGGER_FILE=/openapi/openapi.original.yml
+    volumes:
+      - ./openapi:/openapi
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - '5500:8080'
+    environment:
+      - SWAGGER_JSON=/openapi/openapi.original.yml
+    volumes:
+      - ./openapi:/openapi
+
+  pos-db:
+    image: mongo
+    ports:
+      - '27017:27017'
