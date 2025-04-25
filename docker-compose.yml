@@ -9,6 +9,7 @@ services:
       - ./server:/app
     depends_on:
       - pos-db
+    user: 'node'
 
   # Swagger Editor HAS to be exposed at port 8080!
   swagger-editor:

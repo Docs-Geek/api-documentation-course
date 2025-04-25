@@ -1,6 +1,10 @@
 # Use an official Node.js runtime as the base image
 FROM node:21
 
+# Copy setup script and make it executable
+COPY ../setup.sh /app/setup.sh
+RUN chmod +x /app/setup.sh
+
 # Set the working directory in the container
 WORKDIR /app
 
@@ -17,4 +21,4 @@ COPY . .
 EXPOSE 8080
 
 # Command to run the application
-CMD ["npm", "start"]
+CMD ["/bin/bash", "-c", "/app/setup.sh && npm start"]
