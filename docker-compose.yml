@@ -10,17 +10,18 @@ services:
     depends_on:
       - pos-db
     user: 'node'
+    mem_limit: 2g # Set memory limit to 2GB for api-server
 
-  # Swagger Editor HAS to be exposed at port 8080!
   swagger-editor:
     image: swaggerapi/swagger-editor
     ports:
       - '8080:8080'
     environment:
       - SWAGGER_FILE=/openapi/openapi.yml
-      # - SWAGGER_FILE=/openapi/openapi.original.yml
     volumes:
       - ./openapi:/openapi
+    mem_limit: 2g
+
   swagger-ui:
     image: swaggerapi/swagger-ui
     ports:
@@ -29,8 +30,10 @@ services:
       - SWAGGER_JSON=/openapi/openapi.original.yml
     volumes:
       - ./openapi:/openapi
+    mem_limit: 2g
 
   pos-db:
     image: mongo
     ports:
       - '27017:27017'
+    mem_limit: 2g
