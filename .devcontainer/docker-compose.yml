@@ -3,34 +3,30 @@ version: '3.8'
 services:
   api-server:
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/api-documentation-course
     ports:
       - '80:8080'
-    volumes:
-      - .:/app
     depends_on:
       - pos-db
-
-  swagger-editor:
-    image: swaggerapi/swagger-editor
-    ports:
-      - '8080:8080'
-    environment:
-      SWAGGER_FILE: /openapi/openapi.yml
-    volumes:
-      - ./openapi:/openapi
-
-  swagger-ui:
-    image: swaggerapi/swagger-ui
-    ports:
-      - '5500:8080'
-    environment:
-      SWAGGER_JSON: /openapi/openapi.original.yml
-    volumes:
-      - ./openapi:/openapi
 
   pos-db:
     image: mongo
     ports:
       - '27017:27017'
+
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+      - '8080:8080'
+    volumes:
+      - ../openapi:/openapi
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - '5500:8080'
+    volumes:
+      - ../openapi:/openapi

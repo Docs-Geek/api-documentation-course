@@ -4,17 +4,17 @@ FROM node:21
 # Set the working directory in the container
 WORKDIR /app
 
-# Make setup.sh executable
-RUN chmod +x ./setup.sh
-
-# Copy package.json and package-lock.json to the working directory
+# Copy package.json and package-lock.json first to leverage Docker cache
 COPY package*.json ./
 
-# Install app dependencies
-RUN npm install
+# Install app dependencies cleanly
+RUN npm ci
 
 # Copy the rest of the application code into the container
 COPY . .
+
+# Make setup.sh executable (after copying it in)
+RUN chmod +x ./setup.sh
 
 # Expose port 8080 to the outside world
 EXPOSE 8080

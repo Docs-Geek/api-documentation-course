@@ -1,6 +1,6 @@
 {
-  "name": "POS API Workspace",
-  "dockerComposeFile": ["../docker-compose.yml"],
+  "name": "POS API Dev",
+  "dockerComposeFile": "docker-compose.yml",
   "service": "api-server",
   "workspaceFolder": "/workspaces/api-documentation-course",
   "forwardPorts": [80, 8080, 5500, 27017],
