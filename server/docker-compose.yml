@@ -1,16 +1,16 @@
+version: '3.8'
+
 services:
   api-server:
     build:
-      context: ./server
+      context: .
       dockerfile: Dockerfile
     ports:
       - '80:8080'
     volumes:
-      - ./server:/server
+      - .:/server # Mount current dir (server) to /server in container
     depends_on:
       - pos-db
-    user: 'node'
-    mem_limit: 2g # Set memory limit to 2GB for api-server
 
   swagger-editor:
     image: swaggerapi/swagger-editor
@@ -20,7 +20,6 @@ services:
       - SWAGGER_FILE=/openapi/openapi.yml
     volumes:
       - ./openapi:/openapi
-    mem_limit: 2g
 
   swagger-ui:
     image: swaggerapi/swagger-ui
@@ -30,10 +29,8 @@ services:
       - SWAGGER_JSON=/openapi/openapi.original.yml
     volumes:
       - ./openapi:/openapi
-    mem_limit: 2g
 
   pos-db:
     image: mongo
     ports:
       - '27017:27017'
-    mem_limit: 2g
