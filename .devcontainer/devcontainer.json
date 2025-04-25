@@ -1,20 +1,17 @@
 {
-    "name": "POS API Workspace",
-    "dockerComposeFile": [
-      "docker-compose.yml"
-    ],
-    "service": "api-server",
-    "workspaceFolder": "/app",
-    "forwardPorts": [80, 8080, 5500, 27017],
-    "postCreateCommand": "npm install",
-    "customizations": {
-      "vscode": {
-        "extensions": [
-          "dbaeumer.vscode-eslint",
-          "esbenp.prettier-vscode",
-          "ms-azuretools.vscode-docker"
-        ]
-      }
+  "name": "POS API Workspace",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "api-server",
+  "workspaceFolder": "/",
+  "forwardPorts": [80, 8080, 5500, 27017],
+  "postCreateCommand": "npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
+      ]
     }
   }
-  
+}
