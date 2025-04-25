@@ -1,0 +1,102 @@
+<section>
+  <div class="slide-header">
+    <div class="header-text course-title">
+      The API documentation mastery course
+    </div>
+    <div class="header-text">
+      OpenAPI deep dive > <b>Defining security schemes</b>
+    </div>
+  </div>
+  <p></p>
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      <h5>What Are Security Schemes in OpenAPI?</h5>
+      <p>
+        Security schemes in OpenAPI define how security is applied to the API.
+      </p>
+      <p>
+        They specify the authentication methods and protocols used to secure API
+        endpoints.
+      </p>
+    </div>
+    <div class="fragment fade-in-then- out">
+      <h5>Defining security schemes</h5>
+      <p>
+        A security scheme is defined in the <code>components</code> section of
+        the OpenAPI specification.
+      </p>
+      <pre><code class="language-yaml">components:
+    securitySchemes:
+        apiKeyAuth:
+        type: apiKey
+        in: header
+        name: Authorization
+              </code></pre>
+    </div>
+    <div class="fragment fade-in-then-out">
+      <p>
+        <b>Type:</b> Specifies the type of security scheme, such as
+        <code>apiKey</code>, <code>http</code>, <code>oauth2</code>, etc.
+      </p>
+      <p>
+        <b>In:</b> Specifies the location of the security token, such as
+        <code>header</code>, <code>query</code>, <code>cookie</code>, etc.
+      </p>
+      <p>
+        <b>Name:</b> Specifies the name of the header, query parameter, or
+        cookie containing the security token.
+      </p>
+    </div>
+    <div class="fragment fade-in-then-out">
+      <h5>Applying Security Globally</h5>
+      <p>
+        Applying security globally means applying the security scheme to all API
+        endpoints.
+      </p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p>Use cases:</p>
+      <ul>
+        <li>When all API endpoints require the same authentication method.</li>
+        <li>To enforce consistent security across the API.</li>
+      </ul>
+    </div>
+    <div class="fragment fade-in-then-out">
+      <p>
+        To apply security globally, add the security scheme to the
+        <code>security</code> property at the root level of the OpenAPI
+        document.
+      </p>
+      <pre><code>security:
+    - apiKeyAuth: []
+        </code></pre>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <h5>Applying Security at the Operation Level</h5>
+      <p>
+        Applying security at the operation level means applying different
+        security schemes to specific API endpoints.
+      </p>
+    </div>
+    <div class="fragment fade-in-then-out">
+      <p>Use cases:</p>
+      <ul>
+        <li>
+          When different endpoints require different authentication methods.
+        </li>
+        <li>
+          To provide flexibility in authentication based on the sensitivity of
+          endpoints.
+        </li>
+      </ul>
+    </div>
+    <div class="fragment fade-in-then-out">
+      <p>
+        Security at the operation level can be used in conjunction with global
+        security settings to provide granular control over authentication.
+      </p>
+    </div>
+  </div>
+</section>

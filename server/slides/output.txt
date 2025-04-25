@@ -1,0 +1,54 @@
+Showing how to get started
+Account registeration
+"About requests" topic
+Base URL
+Path
+HTTP Method
+"Media types" section
+"Headers" section
+"Authentication" section
+Parameters
+Path Parameters
+Query Parameters
+Body Parameters
+"Making a request" topic
+1. Setup
+2. Choose an Endpoint for Your Request
+3. Create Authentication Credentials
+4. Make a Request
+"Using the response" topic
+About the Response Body
+Explaining concepts
+The API introduction
+Marketing introductionvs.API introduction
+Purpose
+Features
+Key concepts and terminology
+Terminology
+Businesss domain topics
+Use cases
+Key Characteristics of Use Cases
+Resource descriptions
+Conceptual Alignment
+Resource Significance
+Resource Analysis
+Relationships and Associations
+Link to technical details
+High-level software architecture
+Layers of the C4 Model
+Authentication and authorization
+Overview
+Authentication methods
+Endpoints
+Authentication/authorization guide
+Error handling
+Security best practices
+Demonstrating functionalities
+Functionality landing page
+Functionality topic information types
+Functionality concepts
+Functionality tasks
+Request / response descriptions
+Functionality best practices
+Handling errors
+Custom Error Types

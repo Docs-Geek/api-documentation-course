@@ -1,0 +1,356 @@
+# User journeys
+
+## The Patron user journey
+
+            <div class="fragment fade-in-then-out">
+              <h2>The patron user journey</h2>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                Each action taken by the user in the app triggers CRUD
+                operations handled by the API server logic.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>Let's chart the patron's user journey.</p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Arrival on the dashboard</h5>
+              <p>The patron opens the food ordering app.</p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Browsing the menu</h5>
+              <p>
+                They explore different categories such as Appetizers, Main
+                Courses, and Desserts.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>
+                They browse through the list of dishes, viewing details such as
+                name, description, and price.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Selecting Dishes</h5>
+              <p>
+                Patron selects a few dishes they want to order by clicking on
+                them or adding them to their cart.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>
+                They adjust quantities and customize options as needed (e.g.,
+                specifying cooking preferences or dietary restrictions).
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Placing the Order</h5>
+              <p>Patron proceeds to the checkout page.</p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>
+                They review their order summary, ensuring all selected items are
+                correct.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>
+                They select their preferred payment method and enter any
+                additional details required (e.g., delivery address).
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>
+                Patron confirms the order and clicks the "Place Order" button.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <h5>Receiving Confirmation</h5>
+              <p>
+                The app displays an on-screen confirmation message, indicating
+                that the order has been successfully placed.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <h5>Order delivery: Tableside ordering</h5>
+              <p>
+                For table-side ordering, the patron takes a placard with their
+                order number to their table.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>
+                When their order is ready, the restaurant staff brings their
+                order to their table.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Order delivery: Takeaway ordering</h5>
+              <p>
+                For takeaway, the patron receives a receipt with an order
+                number.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                At the takeaway station, the progress of patron orders displays
+                on a monitor.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>
+                The patron waits for their order to be marked 'Ready for
+                pickup'.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>The patron picks up their order.</p>
+            </div>
+
+## The Staff user journey
+
+   <div class="fragment fade-in-then-out">
+              <h2>The staff user journey</h2>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                Staff, including expeditors and chefs, are restaurant employees
+                who track and prepare orders.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                They use Kitchen Display Systems (KDSs) to monitor and update
+                the progress of each order.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>
+                Like food ordering apps, each action taken by a KDS user
+                triggers CRUD operations handled by the API server logic.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>Let's chart the patron's user journey.</p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Order Placement</h5>
+              <p>The patron places an order through the POS system.</p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>
+                The order is transmitted to the Kitchen Display System (KDS) in
+                the kitchen.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Order Display</h5>
+              <p>
+                After the patron places the order, the expeditor sees the order
+                on their KDS monitor.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Prioritization</h5>
+              <p>
+                The expeditor can adjust the priority of the order. By default,
+                orders are set to medium. The expeditor may increase the
+                priority for orders that require a longer preparation time.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <h5>Initiating Preparation</h5>
+              <p>
+                The expeditor initiates the preparation by setting the status of
+                the order to "In Progress".
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Station Assignment</h5>
+              <p>
+                Each dish in the order is assigned to a specific station (e.g.,
+                cold, hot, beverages).
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Station View</h5>
+              <p>
+                Stations responsible for each dish see their respective parts of
+                the order on their KDS.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Preparation</h5>
+              <p>Stations prepare their assigned dishes.</p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Station Completion</h5>
+              <p>
+                When a station completes preparation of their part of the order,
+                they mark it as "Ready for Assembly" on their KDS.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Assembly Notification</h5>
+              <p>
+                The expeditor is notified when all stations have marked their
+                parts as ready.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Expeditor's Action</h5>
+              <p>
+                The expeditor assembles the parts of the order from different
+                stations.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <h5>Order delivery: Tableside ordering</h5>
+              <p>
+                Once assembled, the expeditor updates the order status to "On
+                the way".
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                A food runner is notified (perhaps through a mobile app) and
+                proceeds the the expeditor station to collect the order.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                The food runner reads the order number on the ticket and
+                delivers the order to the customer by matching it with the order
+                number displayed on the placard at their table.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <h5>Order delivery: Takeaway ordering</h5>
+
+              <p>
+                Once assembled, the expeditor brings the order to the pickup
+                station.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                The expeditor updates the order status to "Ready for pickup",
+                which displays on the pickup station screen.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                The patron sees their order is "Ready for pickup" on the pickup
+                station screen and picks up their order.
+              </p>
+            </div>
+
+## The Admin User Journey
+
+      <div class="fragment fade-in-then-out">
+              <h2>The admin user journey</h2>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                Admins are any users that perform administrative functions such
+                as creating ingredients and dishes.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>
+                For example, real-world restaurant managers or developers
+                testing the API.
+              </p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <p>
+                Admins use a separate application that requires them to login
+                using an email and password.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>Let's chart the admin's user journey.</p>
+            </div>
+            <div class="fragment fade-in-then-out">
+              <h5>Admin login to admin app</h5>
+              <p>
+                The journey begins with the admin logging into the admin
+                application using their credentials to gain access to
+                administrative functions.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <h5>Create ingredients</h5>
+              <p>
+                Ingredients are fundamental components used to create dishes.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                Admins create ingredients and specify their quantity to track
+                inventory levels accurately.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                This ensures there are sufficient ingredients available to
+                fulfill customer orders.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <h5>Create dishes</h5>
+              <p>
+                Admins proceed to create dishes by incorporating essential and
+                non-essential ingredients.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                For example, chicken is essential to prepare a chicken sandwich,
+                but lettuce is not.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <p>
+                This feature ensures dishes are correctly displayed in the user
+                interface and indicates availability to customers.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <h5>Monitor inventory levels</h5>
+              <p>
+                Admins monitor ingredient inventory to prevent shortages that
+                could make dishes unavailable.
+              </p>
+            </div>
+
+            <div class="fragment fade-in-then-out">
+              <h2>
+                Demo & in-class exercise: Creating flow diagrams for user
+                journeys
+              </h2>
+            </div>

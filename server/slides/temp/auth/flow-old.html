@@ -1,0 +1,41 @@
+<h1>Access Token and Refresh Token Workflow</h1>
+
+<h2>1. Initial Authentication</h2>
+<pre><code>POST /auth/login
+Content-Type: application/json
+{
+"username": "user@example.com",
+"password": "password"
+"role": "manager"
+}
+</code></pre>
+
+<h3>Response:</h3>
+<pre><code>{
+"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2NDYxNzg2MjIsInJvbGVzIjpbInVzZXIiLCJhZG1pbiJdfQ.KwSUg-DiKoBiGQpCAwY2fVqGBwrEwvKcXQtHOdcBFWo",
+"expires_in": 3600,
+"refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2NDYxNzg2MjIsInJvbGVzIjpbInVzZXIiLCJhZG1pbiJdfQ.KwSUg-DiKoBiGQpCAwY2fVqGBwrEwvKcXQtHOdcBFWo"
+}
+</code></pre>
+
+<h2>2. Accessing a Protected Resource</h2>
+<pre><code>GET /api/resource
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+</code></pre>
+
+<h2>3. Refreshing the Access Token</h2>
+<pre><code>POST /auth/token
+Content-Type: application/json
+{
+"grant_type": "refresh_token",
+"refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2NDYxNzg2MjIsInJvbGVzIjpbInVzZXIiLCJhZG1pbiJdfQ.KwSUg-DiKoBiGQpCAwY2fVqGBwrEwvKcXQtHOdcBFWo"
+}
+</code></pre>
+
+<h3>Response:</h3>
+<pre><code>{{
+"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2NDYxNzg2MjIsInJvbGVzIjpbInVzZXIiLCJhZG1pbiJdfQ.KwSUg-DiKoBiGQpCAwY2fVqGBwrEwvKcXQtHOdcBFWo",
+"expires_in": 3600,
+"refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2NDYxNzg2MjIsInJvbGVzIjpbInVzZXIiLCJhZG1pbiJdfQ.KwSUg-DiKoBiGQpCAwY2fVqGBwrEwvKcXQtHOdcBFWo"
+}
+</code></pre>
