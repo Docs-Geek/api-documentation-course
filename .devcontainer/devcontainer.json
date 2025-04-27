@@ -15,5 +15,7 @@
         "redhat.vscode-yaml"
       ]
     }
-  }
+  },
+  "overrideCommand": true,
+  "shutdownAction": "none"
 }

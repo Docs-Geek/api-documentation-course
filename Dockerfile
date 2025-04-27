@@ -19,5 +19,6 @@ RUN chmod +x ./setup.sh
 # Expose port 8080 to the outside world
 EXPOSE 8080
 
-# Command to run the application
-CMD ["/bin/bash", "-c", "./setup.sh && npm start"]
+# Run setup script at startup, then start the application
+# Use tail -f to keep container running if the Node process exits
+CMD ["/bin/bash", "-c", "./setup.sh && (npm start & tail -f /dev/null)"]
