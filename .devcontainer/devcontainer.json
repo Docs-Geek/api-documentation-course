@@ -1,0 +1,19 @@
+{
+  "name": "API Documentation Course",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "api-server",
+  "workspaceFolder": "/workspaces/api-documentation-course",
+  "features": {},
+  "forwardPorts": [80, 27017, 8080, 5500],
+  "postCreateCommand": "npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml"
+      ]
+    }
+  }
+}
