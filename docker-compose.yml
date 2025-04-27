@@ -17,16 +17,16 @@ services:
     ports:
       - '27017:27017'
 
-  # swagger-editor:
-  #   image: swaggerapi/swagger-editor
-  #   ports:
-  #     - '8080:8080'
-  #   volumes:
-  #     - ./openapi:/openapi
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./openapi:/openapi
 
-  # swagger-ui:
-  #   image: swaggerapi/swagger-ui
-  #   ports:
-  #     - '5500:8080'
-  #   volumes:
-  #     - ./openapi:/openapi
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - '5500:8080'
+    volumes:
+      - ./openapi:/openapi
