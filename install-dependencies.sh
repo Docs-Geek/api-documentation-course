@@ -65,13 +65,7 @@ install_dependencies() {
 }
 
 # Install dependencies for code base directories
-install_dependencies "server"
 install_dependencies "admin"
-install_dependencies "admin-gitpod"
 install_dependencies "openapi"
-install_dependencies "slides"
-install_dependencies "exercises"
-install_dependencies "assets"
-install_dependencies "converter"
 
 echo "Dependency installation process finished."

@@ -17,7 +17,7 @@ if [ "$IS_DOCKER_CONTAINER" = "true" ]; then
 fi
 
 # Install packages inside code base folders.
-./scripts/install-dependencies.sh
+./install-dependencies.sh
 
 # Check if the install-dependencies.sh script executed successfully
 if [ $? -eq 0 ]; then
@@ -27,7 +27,7 @@ else
   exit 1
 fi
 
-./scripts/wipe-openapi-descriptions.sh
+./wipe-openapi-descriptions.sh
 
 if [ $? -eq 0 ]; then
   echo "openapi.yml file successfully generated."
@@ -40,7 +40,7 @@ fi
 if [ "$SKIP_DOCKER" = "true" ]; then
   echo "Skipping Docker container startup as we're already in a container environment."
 else
-  ./scripts/start-docker.sh
+  ./start-docker.sh
   
   # Check if the start-docker.sh script executed successfully
   if [ $? -eq 0 ]; then
@@ -52,7 +52,7 @@ else
 fi
 
 # Wipe the Mongo Database
-./scripts/wipe-mongo-db.sh
+./wipe-mongo-db.sh
 
 # Check if the reset-mongo-db.sh script executed successfully
 if [ $? -eq 0 ]; then
@@ -62,26 +62,8 @@ else
   exit 1
 fi
 
-./scripts/generate-diagrams.sh
-
-if [ $? -eq 0 ]; then
-  echo "Diagrams successfully generated."
-else
-  echo "Failed to generate diagrams."
-  exit 1
-fi
-
-./scripts/generate-pdfs.sh
-
-if [ $? -eq 0 ]; then
-  echo "PDFs successfully generated."
-else
-  echo "Failed to generate PDFs."
-  exit 1
-fi
-
 # Seed the database
-./scripts/seed-db.sh
+./seed-db.sh
 
 if [ $? -eq 0 ]; then
   echo "Database seeded successfully."

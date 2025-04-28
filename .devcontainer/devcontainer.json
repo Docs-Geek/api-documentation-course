@@ -30,7 +30,8 @@
         "streetsidesoftware.code-spell-checker",
         "dbaeumer.vscode-eslint",
         "ms-azuretools.vscode-docker",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "mhutchie.git-graph"
       ]
     }
   },
