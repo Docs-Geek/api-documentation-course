@@ -16,6 +16,15 @@ if [ "$IS_DOCKER_CONTAINER" = "true" ]; then
   SKIP_DOCKER=true
 fi
 
+./scripts/make-sh-executable.sh
+
+if [ $? -eq 0 ]; then
+  echo "Successfully made scripts executable."
+else
+  echo "Failed to make scripts executable."
+  exit 1
+fi
+
 ./scripts/generate-openapi.sh
 
 if [ $? -eq 0 ]; then
