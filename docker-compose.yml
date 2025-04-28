@@ -11,11 +11,32 @@ services:
       - '80:8080'
     depends_on:
       - pos-db
+    networks:
+      - pos-network
 
   pos-db:
     image: mongo
     ports:
       - '27017:27017'
+    networks:
+      - pos-network
+
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    volumes:
+      - ./admin:/app
+      - /app/node_modules
+    ports:
+      - '3000:5173'
+    environment:
+      - VITE_API_URL=http://api-server:8080
+      - NODE_ENV=development
+    depends_on:
+      - api-server
+    networks:
+      - pos-network
 
   swagger-editor:
     image: swaggerapi/swagger-editor
@@ -23,6 +44,8 @@ services:
       - '8080:8080'
     volumes:
       - ./openapi:/openapi
+    networks:
+      - pos-network
 
   swagger-ui:
     image: swaggerapi/swagger-ui
@@ -30,3 +53,9 @@ services:
       - '5500:8080'
     volumes:
       - ./openapi:/openapi
+    networks:
+      - pos-network
+
+networks:
+  pos-network:
+    driver: bridge
