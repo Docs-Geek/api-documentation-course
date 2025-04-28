@@ -21,23 +21,6 @@ services:
     networks:
       - pos-network
 
-  admin:
-    build:
-      context: ./admin
-      dockerfile: Dockerfile
-    volumes:
-      - ./admin:/app
-      - /app/node_modules
-    ports:
-      - '3000:5173'
-    environment:
-      - VITE_API_URL=http://api-server:80
-      - NODE_ENV=development
-    depends_on:
-      - api-server
-    networks:
-      - pos-network
-
   swagger-editor:
     image: swaggerapi/swagger-editor
     ports:

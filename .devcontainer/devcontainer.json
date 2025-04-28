@@ -4,7 +4,7 @@
   "service": "api-server",
   "workspaceFolder": "/workspaces/api-documentation-course",
   "features": {},
-  "forwardPorts": [80, 3000, 27017, 8080, 5500],
+  "forwardPorts": [80, 27017, 8080, 5500],
   "postCreateCommand": "npm install",
   "customizations": {
     "vscode": {
