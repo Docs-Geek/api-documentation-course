@@ -5,7 +5,7 @@ export default defineConfig({
     plugins: [react()],
     server: {
       cors: {
-        origin: 'https://upgraded-waffle-6vj9x6rr4jp25pr6-5173.app.github.dev',
+        origin: 'https://potential-orbit-4qxjp4ggvw5c7wr7-5173.app.github.dev',
         credentials: true,
       },
       host: true,  // if you also need it accessible via network/codespace public URL
