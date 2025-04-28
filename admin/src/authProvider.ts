@@ -5,12 +5,20 @@ interface LoginParams {
   password: string;
 }
 
+// Disable authentication in dev/test environments
+const DISABLE_AUTH = false;
+
 const clientId = "admin_web_app";
 const clientSecret = "a5d7f23e-8b64-4b4c-9b11-21c5cfdf25f1";
 const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:80";
 
 export const authProvider = {
   login: async ({ username, password }: LoginParams): Promise<void> => {
+    if (DISABLE_AUTH) {
+      console.log("Auth disabled: automatically logging in.");
+      return Promise.resolve();
+    }
+
     try {
       const basicAuth = btoa(`${clientId}:${clientSecret}`);
       const response = await axios.post(
@@ -42,7 +50,7 @@ export const authProvider = {
   },
 
   logout: (): Promise<void> => {
-    console.log("logging out and invalidating all tokens");
+    console.log("Logging out...");
     localStorage.removeItem("access_token");
     localStorage.removeItem("expires_at");
     localStorage.removeItem("refresh_token");
@@ -50,17 +58,16 @@ export const authProvider = {
   },
 
   checkAuth: async (): Promise<void> => {
-    console.log("beginning to verify auth...");
+    if (DISABLE_AUTH) {
+      console.log("Auth disabled: checkAuth always passing.");
+      return Promise.resolve();
+    }
+
     const accessToken = localStorage.getItem("access_token");
     const expiresAt = localStorage.getItem("expires_at");
-    const refreshToken = localStorage.getItem("refresh_token");
-
-    console.log("the current access token is:", accessToken);
-    console.log("the current expires data is:", expiresAt);
-    console.log("the current refresh token is:", refreshToken);
 
     if (!accessToken) {
-      return Promise.reject(); // No access token means the user needs to log in
+      return Promise.reject();
     }
 
     const expiryDate = expiresAt ? new Date(expiresAt) : new Date(0);
@@ -79,9 +86,7 @@ export const authProvider = {
 
             const response = await axios.post(
               `${apiUrl}/auth/refresh-token`,
-              {
-                refresh_token: refreshToken,
-              },
+              { refresh_token: refreshToken },
               {
                 headers: {
                   "Content-Type": "application/json",
@@ -90,15 +95,11 @@ export const authProvider = {
               },
             );
 
-            const { access_token, expires_at, refresh_token } = response.data;
-
-            console.log("the refreshed access token is:", access_token);
-            console.log("the refreshed expires data is:", expires_at);
-            console.log("the new refresh token is:", refresh_token);
+            const { access_token, expires_at, refresh_token: newRefreshToken } = response.data;
 
             localStorage.setItem("access_token", access_token);
             localStorage.setItem("expires_at", expires_at);
-            localStorage.setItem("refresh_token", refresh_token);
+            localStorage.setItem("refresh_token", newRefreshToken);
           } catch (error) {
             console.error("Token refresh failed", error);
             return Promise.reject();
@@ -109,7 +110,6 @@ export const authProvider = {
         })();
       }
 
-      // Wait for the refresh token promise to resolve before proceeding
       if (refreshTokenPromise) {
         await refreshTokenPromise;
       }
@@ -121,6 +121,10 @@ export const authProvider = {
   },
 
   checkError: (error: any): Promise<void> => {
+    if (DISABLE_AUTH) {
+      return Promise.resolve();
+    }
+
     const status = error.status;
     if (status === 401 || status === 403) {
       localStorage.removeItem("access_token");
@@ -134,12 +138,12 @@ export const authProvider = {
   getIdentity: (): Promise<{ id: string; fullName: string }> => {
     return Promise.resolve({
       id: "user",
-      fullName: "API User",
+      fullName: DISABLE_AUTH ? "Dev User" : "API User",
     });
   },
 
   getPermissions: (): Promise<string> => {
-    return Promise.resolve("");
+    return Promise.resolve(DISABLE_AUTH ? "admin" : "");
   },
 };
 

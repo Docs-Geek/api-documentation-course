@@ -42,9 +42,6 @@ app.use(
   })
 );
 
-// Enable CORS for all routes
-app.use(cors()); // Apply the cors middleware
-
 // Middleware for parsing URL-encoded and JSON bodies
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -58,7 +55,7 @@ app.use((req, res, next) => {
 });
 
 // Swagger configuration
-const serverPort = 8082;
+const serverPort = 80;
 const options = {
   routing: {
     controllers: path.join(__dirname, './controllers'),

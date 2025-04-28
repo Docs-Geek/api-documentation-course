@@ -1,20 +1,20 @@
 #!/bin/bash
 
 # Parse command-line arguments
-SKIP_DOCKER=false
-for arg in "$@"; do
-  case $arg in
-    --skip-docker)
-      SKIP_DOCKER=true
-      shift
-      ;;
-  esac
-done
+# SKIP_DOCKER=false
+# for arg in "$@"; do
+#   case $arg in
+#     --skip-docker)
+#       SKIP_DOCKER=true
+#       shift
+#       ;;
+#   esac
+# done
 
 # Check if running in Docker container
-if [ "$IS_DOCKER_CONTAINER" = "true" ]; then
-  SKIP_DOCKER=true
-fi
+# if [ "$IS_DOCKER_CONTAINER" = "true" ]; then
+#   SKIP_DOCKER=true
+# fi
 
 # Install packages inside code base folders.
 ./install-dependencies.sh
@@ -37,19 +37,18 @@ else
 fi
 
 # Skip Docker if running in a container
-if [ "$SKIP_DOCKER" = "true" ]; then
-  echo "Skipping Docker container startup as we're already in a container environment."
-else
-  ./start-docker.sh
+# if [ "$SKIP_DOCKER" = "true" ]; then
+#   echo "Skipping Docker container startup as we're already in a container environment."
+# else
+#   ./start-docker.sh
   
-  # Check if the start-docker.sh script executed successfully
-  if [ $? -eq 0 ]; then
-    echo "Docker successfully started."
-  else
-    echo "Failed to start docker."
-    exit 1
-  fi
-fi
+#   if [ $? -eq 0 ]; then
+#     echo "Docker successfully started."
+#   else
+#     echo "Failed to start docker."
+#     exit 1
+#   fi
+# fi
 
 # Wipe the Mongo Database
 ./wipe-mongo-db.sh
