@@ -2,6 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "setup" : "../scripts/seed-db.sh && npm i",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
