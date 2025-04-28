@@ -4,13 +4,9 @@
   "service": "api-server",
   "workspaceFolder": "/workspaces/api-documentation-course",
   "features": {},
-  "forwardPorts": [80, 27017, 8080, 5500, 5173],
+  "forwardPorts": [27017, 8080, 5500, 5173, 8082],
   "postCreateCommand": "npm install",
   "portsAttributes": {
-    "80": {
-      "label": "API Server",
-      "visibility": "public"
-    },
     "27017": {
       "label": "MongoDB",
       "visibility": "public"
@@ -25,6 +21,10 @@
     },
     "5173": {
       "label": "React Admin Panel",
+      "visibility": "public"
+    },
+    "8082": {
+      "label": "API Server",
       "visibility": "public"
     }
   },
