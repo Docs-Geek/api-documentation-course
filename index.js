@@ -7,11 +7,16 @@ const mongoose = require('mongoose');
 const oas3Tools = require('oas3-tools');
 const cors = require('cors'); // Import the cors middleware
 
-const databaseUrl = 'mongodb://pos-db:27017/pos-db'; // Using the service name
+// Flexible MongoDB connection that works in different environments
+const mongoHost = process.env.MONGO_HOST || 'pos-db'; // Update to match service name in docker-compose.yml
+const mongoPort = process.env.MONGO_PORT || '27017';
+const databaseUrl = `mongodb://${mongoHost}:${mongoPort}/pos-db`;
 
-// Connect to MongoDB
+console.log(`Attempting to connect to MongoDB at: ${databaseUrl}`);
+
+// Connect to MongoDB without deprecated options
 mongoose
-  .connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(databaseUrl)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => {
     console.error('Could not connect to MongoDB:', err);

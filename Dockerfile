@@ -16,9 +16,11 @@ COPY . .
 # Make setup.sh executable (after copying it in)
 RUN chmod +x ./setup.sh
 
+# Environment variable to indicate we're running in a container
+ENV IS_DOCKER_CONTAINER=true
+
 # Expose port 8080 to the outside world
 EXPOSE 8080
 
-# Run setup script at startup, then start the application
-# Use tail -f to keep container running if the Node process exits
-CMD ["/bin/bash", "-c", "./setup.sh && (npm start & tail -f /dev/null)"]
+# Run modified setup command that skips Docker-related checks
+CMD ["/bin/bash", "-c", "./setup.sh --skip-docker && (npm start & tail -f /dev/null)"]

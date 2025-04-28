@@ -1,6 +1,12 @@
 #!/bin/bash
 
-cd ./assets|| { echo "Directory ./assets not found!"; exit 1; }
+# Check if running in Docker container or if assets directory doesn't exist
+if [ "$IS_DOCKER_CONTAINER" = "true" ] || [ ! -d "./assets" ]; then
+    echo "Skipping diagram generation - either running in container environment or assets directory doesn't exist."
+    exit 0
+fi
+
+cd ./assets || { echo "Directory ./assets not found!"; exit 1; }
 
 # Directory containing the .mmd files
 INPUT_DIR="./"

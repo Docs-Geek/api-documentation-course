@@ -1,5 +1,26 @@
 #!/bin/bash
 
+# Check if running in Docker container
+if [ "$IS_DOCKER_CONTAINER" = "true" ]; then
+  echo "Running in container environment, using direct MongoDB connection..."
+  
+  # Check which MongoDB client is available
+  if command -v mongosh &> /dev/null; then
+    # Use mongosh if available
+    mongosh --quiet --host mongodb --eval 'db = db.getSiblingDB("pos-db"); db.dropDatabase(); db = db.getSiblingDB("pos-db");' && \
+    echo 'Database dropped and switched to pos-db'
+  elif command -v mongo &> /dev/null; then
+    # Fall back to older mongo client if available
+    mongo --quiet --host mongodb --eval 'db = db.getSiblingDB("pos-db"); db.dropDatabase(); db = db.getSiblingDB("pos-db");' && \
+    echo 'Database dropped and switched to pos-db'
+  else
+    # Skip if no MongoDB client is available
+    echo "No MongoDB client (mongosh or mongo) found. Skipping database reset."
+    exit 0
+  fi
+  exit $?
+fi
+
 # Navigate to the 'scripts' directory
 cd ./scripts || { echo "Error: 'scripts' directory not found."; exit 1; }
 
