@@ -31,7 +31,7 @@ services:
     ports:
       - '3000:5173'
     environment:
-      - VITE_API_URL=http://api-server:8080
+      - VITE_API_URL=http://api-server:80
       - NODE_ENV=development
     depends_on:
       - api-server
