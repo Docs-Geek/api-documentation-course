@@ -23,7 +23,4 @@ ENV IS_DOCKER_CONTAINER=true
 EXPOSE 8080
 
 # Run modified setup command that skips Docker-related checks
-# CMD ["/bin/bash", "-c", "./setup.sh --skip-docker && (npm start & tail -f /dev/null)"]
-
-CMD ["/bin/bash", "-c", "./setup.sh && (npm start & tail -f /dev/null)"]
-
+CMD ["/bin/bash", "-c", "./setup.sh --skip-docker && (npm start & tail -f /dev/null)"]

@@ -21,3 +21,4 @@ research/*.png
 .env
 input.yaml
 output.yaml
+./admin/.env
