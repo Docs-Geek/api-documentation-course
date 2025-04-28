@@ -6,6 +6,24 @@
   "features": {},
   "forwardPorts": [80, 27017, 8080, 5500],
   "postCreateCommand": "npm install",
+  "portsAttributes": {
+    "80": {
+      "label": "API Server",
+      "visibility": "public"
+    },
+    "27017": {
+      "label": "MongoDB",
+      "visibility": "public"
+    },
+    "8080": {
+      "label": "Swagger Editor",
+      "visibility": "public"
+    },
+    "5050": {
+      "label": "Swagger UI",
+      "visibility": "public"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [

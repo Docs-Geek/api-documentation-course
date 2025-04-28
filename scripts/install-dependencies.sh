@@ -14,7 +14,9 @@ check_node_npm() {
 check_node_npm
 
 # Store the absolute path of the project root directory (assuming the script is run from the root)
-PROJECT_ROOT=$(pwd)
+
+PROJECT_ROOT="."
+
 echo "Project root detected as: $PROJECT_ROOT"
 
 # Function to install dependencies
