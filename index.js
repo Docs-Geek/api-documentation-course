@@ -55,7 +55,7 @@ app.use((req, res, next) => {
 });
 
 // Swagger configuration
-const serverPort = 8080;
+const serverPort = 80;
 const options = {
   routing: {
     controllers: path.join(__dirname, './controllers'),

@@ -34,7 +34,7 @@ else
   exit 1
 fi
 
-Skip Docker if running in a container
+# Skip Docker if running in a container
 if [ "$SKIP_DOCKER" = "true" ]; then
   echo "Skipping Docker container startup as we're already in a container environment."
 else
