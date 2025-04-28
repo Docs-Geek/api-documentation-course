@@ -7,13 +7,14 @@ interface LoginParams {
 
 const clientId = "admin_web_app";
 const clientSecret = "a5d7f23e-8b64-4b4c-9b11-21c5cfdf25f1";
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:80";
 
 export const authProvider = {
   login: async ({ username, password }: LoginParams): Promise<void> => {
     try {
       const basicAuth = btoa(`${clientId}:${clientSecret}`);
       const response = await axios.post(
-        "http://localhost:80/auth/token",
+        `${apiUrl}/auth/token`,
         {
           grant_type: "password",
           user_name: username,
@@ -77,7 +78,7 @@ export const authProvider = {
             }
 
             const response = await axios.post(
-              "http://localhost:80/auth/refresh-token",
+              `${apiUrl}/auth/refresh-token`,
               {
                 refresh_token: refreshToken,
               },
