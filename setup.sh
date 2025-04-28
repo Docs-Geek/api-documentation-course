@@ -1,33 +1,22 @@
 #!/bin/bash
 
-# Parse command-line arguments
-# SKIP_DOCKER=false
-# for arg in "$@"; do
-#   case $arg in
-#     --skip-docker)
-#       SKIP_DOCKER=true
-#       shift
-#       ;;
-#   esac
-# done
+Parse command-line arguments
+SKIP_DOCKER=false
+for arg in "$@"; do
+  case $arg in
+    --skip-docker)
+      SKIP_DOCKER=true
+      shift
+      ;;
+  esac
+done
 
 # Check if running in Docker container
-# if [ "$IS_DOCKER_CONTAINER" = "true" ]; then
-#   SKIP_DOCKER=true
-# fi
-
-# Install packages inside code base folders.
-./install-dependencies.sh
-
-# Check if the install-dependencies.sh script executed successfully
-if [ $? -eq 0 ]; then
-  echo "Dependencies installed successfully."
-else
-  echo "Failed to install dependencies."
-  exit 1
+if [ "$IS_DOCKER_CONTAINER" = "true" ]; then
+  SKIP_DOCKER=true
 fi
 
-./wipe-openapi-descriptions.sh
+./scripts/generate-openapi.sh
 
 if [ $? -eq 0 ]; then
   echo "openapi.yml file successfully generated."
@@ -36,22 +25,22 @@ else
   exit 1
 fi
 
-# Skip Docker if running in a container
-# if [ "$SKIP_DOCKER" = "true" ]; then
-#   echo "Skipping Docker container startup as we're already in a container environment."
-# else
-#   ./start-docker.sh
+Skip Docker if running in a container
+if [ "$SKIP_DOCKER" = "true" ]; then
+  echo "Skipping Docker container startup as we're already in a container environment."
+else
+  ./scripts/start-docker.sh
   
-#   if [ $? -eq 0 ]; then
-#     echo "Docker successfully started."
-#   else
-#     echo "Failed to start docker."
-#     exit 1
-#   fi
-# fi
+  if [ $? -eq 0 ]; then
+    echo "Docker successfully started."
+  else
+    echo "Failed to start docker."
+    exit 1
+  fi
+fi
 
 # Wipe the Mongo Database
-./wipe-mongo-db.sh
+./scripts/wipe-mongo-db.sh
 
 # Check if the reset-mongo-db.sh script executed successfully
 if [ $? -eq 0 ]; then
@@ -62,7 +51,7 @@ else
 fi
 
 # Seed the database
-./seed-db.sh
+./scripts/seed-db.sh
 
 if [ $? -eq 0 ]; then
   echo "Database seeded successfully."

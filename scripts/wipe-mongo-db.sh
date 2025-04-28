@@ -21,10 +21,7 @@ if [ "$IS_DOCKER_CONTAINER" = "true" ]; then
   exit $?
 fi
 
-# Navigate to the 'scripts' directory
-cd ./scripts || { echo "Error: 'scripts' directory not found."; exit 1; }
-
-# Locate the CONTAINER ID of the running 'mongo' image
+# If not in the Docker container, locate the CONTAINER ID of the running 'mongo' image
 CONTAINER_ID=$(docker ps -q --filter "ancestor=mongo")
 
 # Check if a container ID was found
@@ -39,3 +36,6 @@ export PATH=\"\$PATH:/usr/bin/mongosh\" && \
 mongosh --quiet --eval 'db = db.getSiblingDB(\"pos-db\"); db.dropDatabase(); db = db.getSiblingDB(\"pos-db\");' && \
 echo 'Database dropped and switched to pos-db'
 "
+
+# Optionally, add a message that this process has finished
+echo "MongoDB database reset complete and switched to pos-db."

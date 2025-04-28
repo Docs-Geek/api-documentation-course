@@ -4,7 +4,7 @@
   "service": "api-server",
   "workspaceFolder": "/workspaces/api-documentation-course",
   "features": {},
-  "forwardPorts": [80, 27017, 8080, 5500],
+  "forwardPorts": [80, 27017, 8080, 5500, 5173],
   "postCreateCommand": "npm install",
   "portsAttributes": {
     "80": {
@@ -19,8 +19,12 @@
       "label": "Swagger Editor",
       "visibility": "public"
     },
-    "5050": {
+    "5500": {
       "label": "Swagger UI",
+      "visibility": "public"
+    },
+    "5173": {
+      "label": "React Admin Panel",
       "visibility": "public"
     }
   },

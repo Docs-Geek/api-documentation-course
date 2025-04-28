@@ -12,6 +12,14 @@ fi
 # Make a copy of openapi.original.yml and name it openapi.yml
 cp openapi.original.yml openapi.yml || { echo "Failed to copy openapi.original.yml"; exit 1; }
 
+# Check if node_modules or package-lock.json exists
+if [ ! -d "node_modules" ] && [ ! -f "package-lock.json" ]; then
+  echo "No node_modules or package-lock.json found. Installing dependencies..."
+  npm install || { echo "npm install failed!"; exit 1; }
+else
+  echo "node_modules or package-lock.json already present. Skipping installation."
+fi
+
 # Run the Node.js script
 node wipeOpenApiDescription.js
 

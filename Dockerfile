@@ -15,6 +15,7 @@ COPY . .
 
 # Make setup.sh executable (after copying it in)
 RUN chmod +x ./setup.sh
+RUN chmod +x ./scripts/make-sh-executable.sh
 
 # Environment variable to indicate we're running in a container
 ENV IS_DOCKER_CONTAINER=true
