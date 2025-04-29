@@ -13,7 +13,7 @@ echo "CODESPACE_NAME: $CODESPACE_NAME"
 cd ./admin || exit
 
 # Create the .env file with the VITE_API_URL set to the CODESPACE_NAME value
-echo "VITE_API_URL=https://$CODESPACE_NAME-8082.app.github.dev" > .env
+echo "VITE_API_URL=https://$CODESPACE_NAME-80.app.github.dev" > .env
 
 # Confirm the .env file has been created
 echo ".env file created in ./admin with VITE_API_URL=$CODESPACE_NAME"
