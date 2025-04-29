@@ -9,6 +9,27 @@ if [ -f openapi.yml ]; then
   exit 0
 fi
 
+# Check if openapi.original.yml exists, if not create a basic template
+if [ ! -f openapi.original.yml ]; then
+  echo "openapi.original.yml not found. Creating a basic template..."
+  cat > openapi.original.yml << 'EOF'
+openapi: 3.0.0
+info:
+  title: Restaurant API
+  description: API for restaurant management
+  version: 1.0.0
+paths:
+  /placeholder:
+    get:
+      summary: Placeholder endpoint
+      description: This is a placeholder endpoint. Replace with actual API paths.
+      responses:
+        '200':
+          description: Successful operation
+EOF
+  echo "Created basic openapi.original.yml template."
+fi
+
 # Make a copy of openapi.original.yml and name it openapi.yml
 cp openapi.original.yml openapi.yml || { echo "Failed to copy openapi.original.yml"; exit 1; }
 
