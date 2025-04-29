@@ -1,0 +1,1790 @@
+openapi: 3.0.3
+info:
+  title: Point of Service (POS) API
+  version: '1.0'
+  description: ...
+  contact:
+    name: Course Discord server
+    url: https://discord.gg/dPsnz5u9
+    email: mark.wentowski@docsgeek.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: '{gh-codespaces-server-url}/'
+    description: ...
+    variables:
+      gitpod-server-url:
+        default: https://<workspace-id>.app.github.dev
+        description: ...
+  - url: http://localhost:80/
+    description: ...
+tags:
+  - name: Orders
+    description: ...
+  - name: Dishes
+    description: ...
+  - name: Ingredients
+    description: ...
+  - name: Users
+    description: ...
+  - name: Auth
+    description: ...
+paths:
+  /orders:
+    post:
+      summary: ...
+      operationId: postOrder
+      description: ...
+      tags:
+        - Orders
+      security:
+        - AccessToken: []
+      responses:
+        '201':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '409':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+      requestBody:
+        $ref: '#/components/requestBodies/CreateOrderRequest'
+    get:
+      summary: ...
+      description: ...
+      operationId: getOrderList
+      tags:
+        - Orders
+      parameters:
+        - name: sort
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: priority
+        - name: order
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: asc
+        - name: fields
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: table_number|status|priority
+        - name: filter
+          in: query
+          description: ...
+          schema:
+            type: string
+            example: table_number.lt~5|status.eq~On the Way
+        - name: limit
+          in: query
+          description: ...
+          schema:
+            type: integer
+            maximum: 30
+          example: 10
+        - name: offset
+          in: query
+          description: ...
+          schema:
+            type: integer
+            example: 0
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+                  total_results:
+                    type: integer
+                    example: 20
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /orders/{id}:
+    get:
+      summary: ...
+      description: ...
+      operationId: getOrder
+      tags:
+        - Orders
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 66294b2a4475a41f3e709bcc
+          description: ...
+        - name: fields
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: table_number|status|priority
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+    put:
+      summary: ...
+      description: ...
+      operationId: putOrder
+      tags:
+        - Orders
+      security:
+        - AccessToken: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 66294b2a4475a41f3e709bcd
+          description: ...
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateOrderRequest'
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+                  total_results:
+                    type: integer
+                    example: 1
+        '204':
+          description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '409':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+    delete:
+      summary: ...
+      description: ...
+      operationId: deleteOrder
+      tags:
+        - Orders
+      security:
+        - AccessToken: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 66294b2a4475a41f3e709bca
+          description: ...
+      responses:
+        '204':
+          description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /orders/{id}/dishes:
+    get:
+      summary: ...
+      description: ...
+      operationId: getOrderDishes
+      tags:
+        - Orders
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 66294b2a4475a41f3e709bcb
+          description: ...
+        - name: sort
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: station
+        - name: order
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: asc
+        - name: fields
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: name|station|ingredients
+        - name: filter
+          in: query
+          description: ...
+          schema:
+            type: string
+            example: created_at.gt~2024-05-07|station.eq~hot
+        - name: limit
+          in: query
+          description: ...
+          schema:
+            type: integer
+            maximum: 30
+          example: 10
+        - name: offset
+          in: query
+          description: ...
+          schema:
+            type: integer
+            example: 0
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Dish'
+                  total_results:
+                    type: integer
+                    example: 1
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /dishes:
+    post:
+      summary: ...
+      tags:
+        - Dishes
+      operationId: postDishes
+      security:
+        - AccessToken: []
+      description: ...
+      requestBody:
+        $ref: '#/components/requestBodies/CreateDishRequest'
+      responses:
+        '201':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dish'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '409':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+    get:
+      summary: ...
+      description: ...
+      operationId: getDishList
+      tags:
+        - Dishes
+      parameters:
+        - name: sort
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: name
+        - name: order
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: asc
+        - name: fields
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: name|ingredients|station
+        - name: filter
+          in: query
+          description: ...
+          schema:
+            type: string
+            example: created_at.gt~2024-05-07|price.lte~19.99
+        - name: limit
+          in: query
+          description: ...
+          schema:
+            type: integer
+            maximum: 30
+          example: 10
+        - name: offset
+          in: query
+          description: ...
+          schema:
+            type: integer
+            example: 0
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Dish'
+                  total_results:
+                    type: integer
+                    example: 20
+                    description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /dishes/{id}:
+    get:
+      summary: ...
+      description: ...
+      operationId: getDish
+      tags:
+        - Dishes
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 66294b2a4475a41f3e709bd1
+          description: ...
+        - name: fields
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: name|price|station|ingredients
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dish'
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+    put:
+      summary: ...
+      operationId: putDish
+      tags:
+        - Dishes
+      security:
+        - AccessToken: []
+      description: ...
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 66294b2a4475a41f3e709bce
+          description: ...
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateDishRequest'
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dish'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: ...
+        '204':
+          description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '409':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+    delete:
+      summary: ...
+      description: ...
+      operationId: deleteDish
+      tags:
+        - Dishes
+      security:
+        - AccessToken: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 66294b2a4475a41f3e709bd0
+          description: ...
+      responses:
+        '204':
+          description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /dishes/{id}/ingredients:
+    get:
+      summary: ...
+      description: ...
+      operationId: getDishIngredients
+      tags:
+        - Dishes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 66294b2a4475a41f3e709bd2
+          description: ...
+        - name: sort
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: name
+        - name: order
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: asc
+        - name: fields
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: name|in_stock_qty
+        - name: filter
+          in: query
+          description: ...
+          schema:
+            type: string
+            example: created_at.gt~2024-05-07|in_stock_qty.gt~3
+        - name: limit
+          in: query
+          description: ...
+          schema:
+            type: integer
+            maximum: 30
+          example: 10
+        - name: offset
+          in: query
+          description: ...
+          schema:
+            type: integer
+            example: 0
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Ingredient'
+                  total_results:
+                    type: integer
+                    example: 1
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /ingredients:
+    post:
+      summary: ...
+      description: ...
+      operationId: postIngredient
+      tags:
+        - Ingredients
+      security:
+        - AccessToken: []
+      requestBody:
+        $ref: '#/components/requestBodies/CreateIngredientRequest'
+      responses:
+        '201':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '409':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+    get:
+      summary: ...
+      description: ...
+      operationId: getIngredientList
+      tags:
+        - Ingredients
+      parameters:
+        - name: sort
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: name
+        - name: order
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: asc
+        - name: fields
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: name|in_stock_qty
+        - name: filter
+          in: query
+          description: ...
+          schema:
+            type: string
+            example: created_at.gt~2024-05-07|in_stock_qty.lt~5
+        - name: limit
+          in: query
+          description: ...
+          schema:
+            type: integer
+            maximum: 30
+          example: 10
+        - name: offset
+          in: query
+          description: ...
+          schema:
+            type: integer
+            example: 0
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Ingredient'
+                  total_results:
+                    type: integer
+                    example: 1
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /ingredients/{id}:
+    get:
+      summary: ...
+      description: ...
+      operationId: getIngredient
+      tags:
+        - Ingredients
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 614d706b67c122001f35cc47
+          description: ...
+        - name: fields
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: in_stock_qty|name
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+    put:
+      summary: ...
+      description: ...
+      operationId: putIngredient
+      tags:
+        - Ingredients
+      security:
+        - AccessToken: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 617d2e09ec42e0001f41bf84
+          description: ...
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateIngredientRequest'
+      responses:
+        '200':
+          description: ...
+        '204':
+          description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '409':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+    delete:
+      summary: ...
+      description: ...
+      operationId: deleteIngredient
+      tags:
+        - Ingredients
+      security:
+        - AccessToken: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 61c8c34bb02368001f8f0812
+          description: ...
+      responses:
+        '204':
+          description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /users:
+    post:
+      summary: ...
+      description: ...
+      operationId: postUser
+      tags:
+        - Users
+      requestBody:
+        $ref: '#/components/requestBodies/CreateUserRequest'
+      responses:
+        '201':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: ...
+        '400':
+          description: ...
+        '409':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+      security: []
+    get:
+      summary: ...
+      description: ...
+      operationId: getAllUsers
+      tags:
+        - Users
+      parameters:
+        - name: sort
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: user_name
+        - name: order
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: asc
+        - name: fields
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: user_name|email|role
+        - name: filter
+          in: query
+          description: ...
+          schema:
+            type: string
+            example: created_at.gt~2024-05-07|user_name.eq~apiuser01
+        - name: limit
+          in: query
+          description: ...
+          schema:
+            type: integer
+            maximum: 30
+          example: 10
+        - name: offset
+          in: query
+          description: ...
+          schema:
+            type: integer
+            example: 0
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  total_results:
+                    type: integer
+                    example: 20
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /users/{id}:
+    get:
+      summary: ...
+      description: ...
+      operationId: getUser
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 66294b2a4475a41f3e709bc9
+          description: ...
+        - name: fields
+          in: query
+          description: ...
+          schema:
+            type: string
+          example: user_name|role
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+    put:
+      summary: ...
+      description: ...
+      operationId: putUser
+      tags:
+        - Users
+      security:
+        - AccessToken: []
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateUserRequest'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 66294b2a4475a41f3e709bc9
+          description: ...
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: ...
+        '204':
+          description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '409':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+    delete:
+      summary: ...
+      description: ...
+      operationId: deleteUser
+      tags:
+        - Users
+      security:
+        - AccessToken: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 66294b2a4475a41f3e709bca
+          description: ...
+      responses:
+        '204':
+          description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /auth/token:
+    post:
+      summary: ...
+      description: ...
+      operationId: postAuthLogin
+      tags:
+        - Auth
+      security:
+        - BasicAuth: []
+      requestBody:
+        $ref: '#/components/requestBodies/CreateTokenRequest'
+      responses:
+        '201':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Auth'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: ...
+        '400':
+          description: ...
+        '409':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /auth/refresh-token:
+    post:
+      summary: ...
+      description: ...
+      operationId: postAuthRefreshToken
+      tags:
+        - Auth
+      requestBody:
+        description: ...
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                refresh_token:
+                  $ref: '#/components/schemas/RefreshToken'
+      responses:
+        '200':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Auth'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: ...
+        '400':
+          description: ...
+        '401':
+          description: ...
+        '403':
+          description: ...
+        '404':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: ...
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+components:
+  requestBodies:
+    CreateDishRequest:
+      description: ...
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: Risotto alla Milanese
+                description: ...
+              description:
+                $ref: '#/components/schemas/Description'
+              category:
+                $ref: '#/components/schemas/Category'
+              image_name:
+                $ref: '#/components/schemas/ImageName'
+              ingredients:
+                $ref: '#/components/schemas/Ingredients'
+              preparation_time:
+                $ref: '#/components/schemas/PreparationTime'
+              price:
+                $ref: '#/components/schemas/Price'
+              station:
+                $ref: '#/components/schemas/Station'
+            required:
+              - category
+              - description
+              - image_name
+              - ingredients
+              - preparation_time
+              - name
+              - price
+              - station
+    UpdateDishRequest:
+      description: ...
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: Risotto alla Milanese
+                description: ...
+              description:
+                $ref: '#/components/schemas/Description'
+              category:
+                $ref: '#/components/schemas/Category'
+              image_name:
+                $ref: '#/components/schemas/ImageName'
+              ingredients:
+                $ref: '#/components/schemas/Ingredients'
+              preparation_time:
+                $ref: '#/components/schemas/PreparationTime'
+              price:
+                $ref: '#/components/schemas/Price'
+              station:
+                $ref: '#/components/schemas/Station'
+    CreateIngredientRequest:
+      description: ...
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: Carrot
+                description: ...
+              in_stock_qty:
+                $ref: '#/components/schemas/InStockQty'
+              price:
+                $ref: '#/components/schemas/Price'
+            required:
+              - name
+              - in_stock_qty
+              - price
+    UpdateIngredientRequest:
+      description: ...
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: Carrot
+                description: ...
+              in_stock_qty:
+                $ref: '#/components/schemas/InStockQty'
+              price:
+                $ref: '#/components/schemas/Price'
+    CreateOrderRequest:
+      description: ...
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                pattern: ^[^\s]*$
+                example: John
+                description: ...
+              table_number:
+                $ref: '#/components/schemas/TableNumber'
+              dish_ids:
+                $ref: '#/components/schemas/DishIds'
+              special_requests:
+                $ref: '#/components/schemas/SpecialRequests'
+              scheduled_at:
+                $ref: '#/components/schemas/ScheduledAt'
+            required:
+              - dish_ids
+              - name
+          examples:
+            Order - Unscheduled:
+              value:
+                name: Ben
+                table_number: 18
+                dish_ids:
+                  - 692a4a34a46ecf001f35ac6f
+                  - 6a4a857c022eb7001f9b8972
+                  - 6b7c2441a0db43001f9bf377
+                special_requests: No peanuts.
+                scheduled at: null
+            Order - Scheduled:
+              value:
+                name: Ben
+                table_number: 18
+                dish_ids:
+                  - 692a4a34a46ecf001f35ac6f
+                  - 6a4a857c022eb7001f9b8972
+                  - 6b7c2441a0db43001f9bf377
+                scheduled_at: '2024-08-26T09:03:18.865Z'
+    UpdateOrderRequest:
+      description: ...
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              dish_ids:
+                $ref: '#/components/schemas/DishIds'
+              priority:
+                $ref: '#/components/schemas/Priority'
+              status:
+                $ref: '#/components/schemas/Status'
+    CreateTokenRequest:
+      description: ...
+      required: true
+      content:
+        application/json:
+          schema:
+            properties:
+              grant_type:
+                type: string
+                description: ...
+                example: password
+              user_name:
+                $ref: '#/components/schemas/UserName'
+              password:
+                $ref: '#/components/schemas/Password'
+            required:
+              - grant_type
+              - user_name
+              - password
+    CreateUserRequest:
+      description: ...
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                $ref: '#/components/schemas/Email'
+              password:
+                $ref: '#/components/schemas/Password'
+              role:
+                $ref: '#/components/schemas/Role'
+              user_name:
+                $ref: '#/components/schemas/UserName'
+            required:
+              - email
+              - password
+              - role
+              - user_name
+    UpdateUserRequest:
+      description: ...
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                $ref: '#/components/schemas/Email'
+              password:
+                $ref: '#/components/schemas/Password'
+              role:
+                $ref: '#/components/schemas/Role'
+              user_name:
+                $ref: '#/components/schemas/UserName'
+  schemas:
+    AccessToken:
+      type: string
+      description: ...
+      example: fa0b97b2-445f-41d2-b50f-fb3b014a301e
+    SpecialRequests:
+      type: string
+      nullable: true
+      description: ...
+    Auth:
+      type: object
+      description: ...
+      properties:
+        auth_id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+        access_token:
+          $ref: '#/components/schemas/AccessToken'
+        expires_at:
+          $ref: '#/components/schemas/ExpiresAt'
+        refresh_token:
+          $ref: '#/components/schemas/RefreshToken'
+        token_type:
+          $ref: '#/components/schemas/TokenType'
+        user_name:
+          $ref: '#/components/schemas/UserName'
+    Category:
+      type: string
+      enum:
+        - Appetizer
+        - Main Course
+        - Dessert
+        - Drinks
+      example: Main Course
+      description: ...
+    CreatedAt:
+      type: string
+      format: date-time
+      example: '2024-04-22T10:00:00Z'
+      readOnly: true
+      description: ...
+    Description:
+      type: string
+      example: A description of the resource.
+    Dish:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        name:
+          type: string
+          example: Risotto alla Milanese
+          description: ...
+        description:
+          $ref: '#/components/schemas/Description'
+        category:
+          $ref: '#/components/schemas/Category'
+        image_name:
+          $ref: '#/components/schemas/ImageName'
+        ingredients:
+          $ref: '#/components/schemas/Ingredients'
+        preparation_time:
+          $ref: '#/components/schemas/Price'
+        price:
+          $ref: '#/components/schemas/Price'
+        station:
+          $ref: '#/components/schemas/Station'
+    DishIds:
+      type: array
+      items:
+        type: string
+      example:
+        - 692a4a34a46ecf001f35ac6f
+        - 6a4a857c022eb7001f9b8972
+        - 6b7c2441a0db43001f9bf377
+      description: ...
+    Email:
+      type: string
+      format: email
+      description: ...
+      example: johndoe@gmail.com
+    ExpiresAt:
+      type: string
+      format: date-time
+      example: '2024-04-22T10:00:00Z'
+      readOnly: true
+      description: ...
+    RefreshToken:
+      type: string
+      description: ...
+      example: d1a3e281-96b6-4f77-a587-7b6c8c2a96d9
+    Id:
+      type: string
+      example: 674d0bf5c28b69001f8e03a1
+      readOnly: true
+      description: ...
+    ImageName:
+      type: string
+      description: ...
+      example: burger
+    Ingredients:
+      type: array
+      description: ...
+      items:
+        type: object
+        properties:
+          ingredient_id:
+            type: string
+            example: 66294b2a4475a41f3e709bc4
+            description: ...
+          is_essential:
+            type: boolean
+            description: ...
+            example: true
+        example:
+          - ingredient_id: 66294b2a4475a41f3e709bc5
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc6
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc7
+            is_essential: false
+    Ingredient:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+        name:
+          type: string
+          example: Carrot
+          description: ...
+        in_stock_qty:
+          $ref: '#/components/schemas/InStockQty'
+        price:
+          $ref: '#/components/schemas/Price'
+    InStockQty:
+      type: integer
+      description: ...
+      example: 3
+    Order:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+        name:
+          type: string
+          pattern: ^[^\s]*$
+          example: John
+          description: ...
+        table_number:
+          $ref: '#/components/schemas/TableNumber'
+        dish_ids:
+          $ref: '#/components/schemas/DishIds'
+        special_requests:
+          $ref: '#/components/schemas/SpecialRequests'
+        priority:
+          $ref: '#/components/schemas/Priority'
+        scheduled_at:
+          $ref: '#/components/schemas/ScheduledAt'
+        status:
+          $ref: '#/components/schemas/Status'
+    Password:
+      type: string
+      description: ...
+      example: P@ssw0rd!
+    PreparationTime:
+      type: integer
+      description: ...
+      example: 45
+    Price:
+      type: number
+      format: float
+      example: 999
+      description: ...
+    Priority:
+      type: integer
+      minimum: 0
+      maximum: 5
+      default: 3
+      description: ...
+    Problem:
+      type: object
+      properties:
+        title:
+          type: string
+          description: ...
+          example: Human-readable error title.
+        detail:
+          type: string
+          description: ...
+          example: Human-readable error details.
+      required:
+        - title
+        - detail
+    Role:
+      type: string
+      enum:
+        - patron
+        - expeditor
+        - chef
+        - manager
+      example: manager
+      description: ...
+    ScheduledAt:
+      type: string
+      format: date-time
+      description: ...
+      nullable: true
+      example: null
+    Station:
+      type: string
+      description: ...
+      enum:
+        - cold
+        - hot
+        - beverages
+      example: hot
+    Status:
+      type: string
+      nullable: true
+      enum:
+        - Draft
+        - Received
+        - In Progress
+        - Ready for Assembly
+        - On the Way
+        - Ready for Pickup
+      example: Received
+      description: ...
+    TableNumber:
+      type: integer
+      example: 8
+      nullable: true
+      description: ...
+    TokenType:
+      type: string
+      description: ...
+      example: Bearer
+    UpdatedAt:
+      type: string
+      format: date-time
+      example: '2024-04-22T10:00:00Z'
+      readOnly: true
+      description: ...
+    User:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+        user_name:
+          $ref: '#/components/schemas/UserName'
+        email:
+          $ref: '#/components/schemas/Email'
+        password:
+          $ref: '#/components/schemas/Password'
+        role:
+          $ref: '#/components/schemas/Role'
+    UserName:
+      type: string
+      description: ...
+      example: john_doe
+  securitySchemes:
+    AccessToken:
+      type: http
+      scheme: bearer
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: ...
