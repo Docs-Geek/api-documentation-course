@@ -15,9 +15,13 @@ COPY . .
 
 # Make setup.sh executable (after copying it in)
 RUN chmod +x ./setup.sh
+RUN chmod +x ./scripts/make-sh-executable.sh
+
+# Environment variable to indicate we're running in a container
+ENV IS_DOCKER_CONTAINER=true
 
 # Expose port 8080 to the outside world
 EXPOSE 8080
 
-# Command to run the application
-CMD ["/bin/bash", "-c", "./setup.sh && npm start"]
+# Run modified setup command that skips Docker-related checks
+CMD ["/bin/bash", "-c", "./setup.sh --skip-docker && (npm start & tail -f /dev/null)"]

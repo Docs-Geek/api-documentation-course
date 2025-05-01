@@ -16,10 +16,17 @@ const { v4: uuidv4 } = require('uuid');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/pos-db');
-    console.log('MongoDB connected');
+    // Check if we're running in a Docker environment
+    const mongoHost = process.env.MONGO_HOST || 'pos-db';
+    const mongoPort = process.env.MONGO_PORT || '27017';
+    const mongoUrl = `mongodb://${mongoHost}:${mongoPort}/pos-db`;
+
+    console.log(`Attempting to connect to MongoDB at ${mongoUrl}`);
+    await mongoose.connect(mongoUrl);
+    console.log('MongoDB connected for seeding');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
+    throw error; // Re-throw to stop execution if database connection fails
   }
 };
 
@@ -491,17 +498,23 @@ const generateUsers = async () => {
 const main = async () => {
   try {
     await connectDB();
+    console.log('Successfully connected to MongoDB, starting data seeding...');
     await mongoose.connection.db.dropDatabase();
+    console.log('Dropped existing database');
     await generateIngredients();
+    await getIngredientIds(); // Make sure to get IDs after generating ingredients
     await generateDishes();
+    await getDishIds(); // Make sure to get IDs after generating dishes
     await generateOrders();
     await generateUsers();
     await generateAuth();
+    console.log('All data seeded successfully!');
   } catch (error) {
-    console.error('Error during operations:', error);
+    console.error('Error during seeding operations:', error);
   } finally {
     // Close the connection
     await mongoose.connection.close();
+    console.log('Database connection closed');
   }
 };
 

@@ -1,28 +1,31 @@
 #!/bin/bash
 
-# Pull latest changes from the remote repository.
+Parse command-line arguments
+SKIP_DOCKER=false
+for arg in "$@"; do
+  case $arg in
+    --skip-docker)
+      SKIP_DOCKER=true
+      shift
+      ;;
+  esac
+done
 
-# ./scripts/pull-changes.sh
+# Check if running in Docker container
+if [ "$IS_DOCKER_CONTAINER" = "true" ]; then
+  SKIP_DOCKER=true
+fi
 
-# if [ $? -eq 0 ]; then
-#   echo "The latest changes were pulled from the remote."
-# else
-#   echo "Failed to pull the latest changes from the remote."
-#   exit 1
-# fi
+./scripts/make-sh-executable.sh
 
-# Install packages inside code base folders.
-./scripts/install-dependencies.sh
-
-# Check if the install-dependencies.sh script executed successfully
 if [ $? -eq 0 ]; then
-  echo "Dependencies installed successfully."
+  echo "Successfully made scripts executable."
 else
-  echo "Failed to install dependencies."
+  echo "Failed to make scripts executable."
   exit 1
 fi
 
-./scripts/wipe-openapi-descriptions.sh
+./scripts/generate-openapi.sh
 
 if [ $? -eq 0 ]; then
   echo "openapi.yml file successfully generated."
@@ -31,15 +34,18 @@ else
   exit 1
 fi
 
-
-./scripts/start-docker.sh
-
-# Check if the reset-mongo-db.sh script executed successfully
-if [ $? -eq 0 ]; then
-  echo "Docker successfully started."
+# Skip Docker if running in a container
+if [ "$SKIP_DOCKER" = "true" ]; then
+  echo "Skipping Docker container startup as we're already in a container environment."
 else
-  echo "Failed to start docker."
-  exit 1
+  ./scripts/start-docker.sh
+  
+  if [ $? -eq 0 ]; then
+    echo "Docker successfully started."
+  else
+    echo "Failed to start docker."
+    exit 1
+  fi
 fi
 
 # Wipe the Mongo Database
@@ -50,24 +56,6 @@ if [ $? -eq 0 ]; then
   echo "Database wiped successfully."
 else
   echo "Failed to wipe the database."
-  exit 1
-fi
-
-./scripts/generate-diagrams.sh
-
-if [ $? -eq 0 ]; then
-  echo "Diagrams successfully generated."
-else
-  echo "Failed to generate diagrams."
-  exit 1
-fi
-
-./scripts/generate-pdfs.sh
-
-if [ $? -eq 0 ]; then
-  echo "PDFs successfully generated."
-else
-  echo "Failed to generate PDFs."
   exit 1
 fi
 

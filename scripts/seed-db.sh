@@ -1,6 +1,4 @@
 #!/bin/bash
 
-cd ./server || { echo "Error: 'server' directory not found."; exit 1; }
-
 # Run the seed-db.js script using Node.js
-node seed-db.js
+node seed-db.js || { echo "Error: Node.js script failed to run."; exit 1; }

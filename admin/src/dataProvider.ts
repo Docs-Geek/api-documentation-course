@@ -1,7 +1,8 @@
 import { DataProvider, fetchUtils } from "react-admin";
 import { stringify } from "query-string";
 
-const apiUrl = "http://localhost:80";
+// Use the environment variable provided in docker-compose, with fallback to localhost for local development
+export const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:80";
 
 const httpClient = (url: string, options: any = {}) => {
   const token = localStorage.getItem("access_token");

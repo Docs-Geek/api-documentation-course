@@ -8,25 +8,41 @@ services:
     volumes:
       - .:/workspaces/api-documentation-course
     ports:
-      - '80:8080'
+      - '80:80'
     depends_on:
       - pos-db
+    networks:
+      - pos-network
 
   pos-db:
     image: mongo
     ports:
       - '27017:27017'
+    networks:
+      - pos-network
 
-  # swagger-editor:
-  #   image: swaggerapi/swagger-editor
-  #   ports:
-  #     - '8080:8080'
-  #   volumes:
-  #     - ./openapi:/openapi
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+      - '8080:8080'
+    environment:
+      SWAGGER_FILE: /openapi/openapi.yml
+    volumes:
+      - ./openapi:/openapi
+    networks:
+      - pos-network
 
-  # swagger-ui:
-  #   image: swaggerapi/swagger-ui
-  #   ports:
-  #     - '5500:8080'
-  #   volumes:
-  #     - ./openapi:/openapi
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - '5500:8080'
+    environment:
+      SWAGGER_JSON: /openapi/openapi.yml
+    volumes:
+      - ./openapi:/openapi
+    networks:
+      - pos-network
+
+networks:
+  pos-network:
+    driver: bridge

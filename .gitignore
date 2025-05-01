@@ -16,8 +16,8 @@ personal
 input.json
 input.yaml
 .vite
-openapi*.yml
 research/*.png
 .env
 input.yaml
 output.yaml
+./admin/.env

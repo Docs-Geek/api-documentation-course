@@ -1,16 +1,28 @@
 {
-  "name": "POS API Dev",
+  "name": "API Documentation Course",
   "dockerComposeFile": "../docker-compose.yml",
   "service": "api-server",
   "workspaceFolder": "/workspaces/api-documentation-course",
-  "forwardPorts": [80, 8080, 5500, 27017],
+  "features": {},
+  "forwardPorts": [27017, 8080, 5500, 80],
+  "postCreateCommand": "npm install",
+  "portsAttributes": {
+    "80": {
+      "label": "API Server",
+      "visibility": "public"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
+        "streetsidesoftware.code-spell-checker",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "mhutchie.git-graph"
       ]
     }
-  }
+  },
+  "overrideCommand": true,
+  "shutdownAction": "none"
 }

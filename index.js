@@ -7,11 +7,16 @@ const mongoose = require('mongoose');
 const oas3Tools = require('oas3-tools');
 const cors = require('cors'); // Import the cors middleware
 
-const databaseUrl = 'mongodb://pos-db:27017/pos-db'; // Using the service name
+// Flexible MongoDB connection that works in different environments
+const mongoHost = process.env.MONGO_HOST || 'pos-db'; // Update to match service name in docker-compose.yml
+const mongoPort = process.env.MONGO_PORT || '27017';
+const databaseUrl = `mongodb://${mongoHost}:${mongoPort}/pos-db`;
 
-// Connect to MongoDB
+console.log(`Attempting to connect to MongoDB at: ${databaseUrl}`);
+
+// Connect to MongoDB without deprecated options
 mongoose
-  .connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(databaseUrl)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => {
     console.error('Could not connect to MongoDB:', err);
@@ -21,8 +26,21 @@ mongoose
 // Initialize Express application
 const app = express();
 
-// Enable CORS for all routes
-app.use(cors()); // Apply the cors middleware
+// Replace this with the origin(s) you want to allow
+const allowedOriginPattern = /^https:\/\/[\w-]+\.app\.github\.dev$/;
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOriginPattern.test(origin)) {
+        callback(null, true); // Allow requests with matching origin or no origin (e.g. server-to-server requests)
+      } else {
+        callback(new Error('Not allowed by CORS')); // Reject the request if the origin does not match
+      }
+    },
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  })
+);
 
 // Middleware for parsing URL-encoded and JSON bodies
 app.use(express.urlencoded({ extended: true }));
@@ -37,7 +55,7 @@ app.use((req, res, next) => {
 });
 
 // Swagger configuration
-const serverPort = 8080;
+const serverPort = 80;
 const options = {
   routing: {
     controllers: path.join(__dirname, './controllers'),
@@ -45,7 +63,7 @@ const options = {
 };
 
 const expressAppConfig = oas3Tools.expressAppConfig(
-  path.join(__dirname, 'api/openapi.yaml'),
+  path.join(__dirname, 'openapi/openapi.yml'),
   options
 );
 
