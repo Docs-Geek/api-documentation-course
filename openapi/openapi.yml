@@ -14,7 +14,7 @@ servers:
   - url: '{gh-codespaces-server-url}/'
     description: ...
     variables:
-      gitpod-server-url:
+      gh-codespaces-server-url:
         default: https://<workspace-id>.app.github.dev
         description: ...
   - url: http://localhost:80/

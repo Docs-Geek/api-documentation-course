@@ -42,11 +42,11 @@ servers:
   - url: '{gh-codespaces-server-url}/'
     description: GitHub Codespaces setup
     variables:
-      gitpod-server-url:
+      gh-codespaces-server-url:
         default: 'https://<workspace-id>.app.github.dev'
         description: 'Dynamic GitHub Codespaces URL. Replace <workspace-id> with your GitHub Codespaces workspace ID if needed.'
   - url: http://localhost:80/
-    description: Local setup              
+    description: Local setup
 tags:
   - name: Orders
     description: Operations related to managing orders, including creation, modification, and status updates
