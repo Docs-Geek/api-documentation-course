@@ -63,7 +63,7 @@ const options = {
 };
 
 const expressAppConfig = oas3Tools.expressAppConfig(
-  path.join(__dirname, 'openapi/openapi.yml'),
+  path.join(__dirname, 'api/openapi.yaml'),
   options
 );
 
