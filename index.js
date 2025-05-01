@@ -5,42 +5,43 @@ const http = require('http');
 const express = require('express');
 const mongoose = require('mongoose');
 const oas3Tools = require('oas3-tools');
-const cors = require('cors'); // Import the cors middleware
+const cors = require('cors');
 
-// Flexible MongoDB connection that works in different environments
-const mongoHost = process.env.MONGO_HOST || 'pos-db'; // Update to match service name in docker-compose.yml
+// Flexible MongoDB connection
+const mongoHost = process.env.MONGO_HOST || 'pos-db';
 const mongoPort = process.env.MONGO_PORT || '27017';
 const databaseUrl = `mongodb://${mongoHost}:${mongoPort}/pos-db`;
 
 console.log(`Attempting to connect to MongoDB at: ${databaseUrl}`);
 
-// Connect to MongoDB without deprecated options
 mongoose
   .connect(databaseUrl)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => {
     console.error('Could not connect to MongoDB:', err);
-    process.exit(1); // Exit process if unable to connect to MongoDB
+    process.exit(1);
   });
 
-// Initialize Express application
 const app = express();
 
-// Replace this with the origin(s) you want to allow
+// Allow all Codespaces *.app.github.dev origins
 const allowedOriginPattern = /^https:\/\/[\w-]+\.app\.github\.dev$/;
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOriginPattern.test(origin)) {
-        callback(null, true); // Allow requests with matching origin or no origin (e.g. server-to-server requests)
-      } else {
-        callback(new Error('Not allowed by CORS')); // Reject the request if the origin does not match
-      }
-    },
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-  })
-);
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow requests from matching origins or no origin (e.g. server-to-server)
+    if (!origin || allowedOriginPattern.test(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Allow credentials such as cookies, authorization headers, etc.
+};
+
+// Apply CORS middleware to the main app
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight (OPTIONS) requests globally
 
 // Middleware for parsing URL-encoded and JSON bodies
 app.use(express.urlencoded({ extended: true }));
@@ -67,24 +68,25 @@ const expressAppConfig = oas3Tools.expressAppConfig(
   options
 );
 
-// Get the Express app from the Swagger configuration
 const swaggerApp = expressAppConfig.getApp();
+
+// Apply CORS middleware to Swagger app too
+swaggerApp.use(cors(corsOptions));
+swaggerApp.options('*', cors(corsOptions)); // Handle preflight for Swagger app
+
+swaggerApp.use((req, res, next) => {
+  console.log(`SwaggerApp request: ${req.method} ${req.url}`);
+  next();
+});
 
 // Use Swagger app as middleware
 app.use(swaggerApp);
 
-// Log middleware usage
-app.use((req, res, next) => {
-  console.log('Swagger middleware applied');
-  next();
-});
-
 // Initialize HTTP server
 const server = http.createServer(app);
+server.setTimeout(30000); // Set server timeout (30 seconds)
 
-// Set a timeout of 30 seconds (adjust this according to your needs)
-server.setTimeout(30000); // 30 seconds
-
+// Start the server
 server.listen(serverPort, () => {
   console.log(
     'Your server is listening on port %d (http://localhost:%d)',
