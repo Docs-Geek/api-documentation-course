@@ -1,0 +1,27 @@
+apis:
+  main:
+    root: ./openapi.yaml
+extends:
+  - minimal
+rules:
+  operation-tag-defined: error
+  no-invalid-schema-examples: error
+  no-invalid-media-type-examples: error
+  scalar-property-missing-example: error
+  rule/operation-summary-sentence-case:
+    subject:
+      type: Operation
+      property: summary
+    message: Operation summary must be sentence cased.
+    assertions:
+      pattern: /^([A-Z]{2,}|[A-Z][^A-Z]*)\b(\s+(?:[A-Z]{2,}|[^A-Z]*)\b)*$/ # Sentence case but allow acronyms
+  rule/example-summary-sentence-case:
+    subject:
+      type: Example
+      property: summary
+    message: Example summary must be sentence cased.
+    assertions:
+      pattern: /^([A-Z]{2,}|[A-Z][^A-Z]*)\b(\s+(?:[A-Z]{2,}|[^A-Z]*)\b)*$/ # Sentence case but allow acronyms
+
+ignore:
+  - .github
