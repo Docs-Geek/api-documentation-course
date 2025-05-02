@@ -14,6 +14,8 @@
 
 <br/>
 
+<br/>
+
 #### To open a GitHub Codespace
 
 1. Navigate to:
@@ -27,7 +29,9 @@ Wait for the Codespace to load. This may take 1 to 3 minutes—grab a coffee! Yo
 
 <br/>
 
-{% img src="assets/images/ports-4.png" alt="Ports 4" width="300" height="200" /%}
+{% img src="assets/images/ports-4.png" alt="Ports 4" width="100%" /%}
+
+<br/>
 
 <br/>
 
@@ -35,11 +39,11 @@ You can dismiss all popups, including:
 
 <br/>
 
-{% img src="assets/images/dismiss-popup-1.png" alt="Ports 4" width="300" height="75" /%}
+{% img src="assets/images/dismiss-popup-1.png" alt="Ports 4" width="300" /%}
 
 <br/>
 
-{% img src="assets/images/dismiss-popup-2.png" alt="Ports 4" width="300" height="200" /%}
+{% img src="assets/images/dismiss-popup-2.png" alt="Ports 4" width="300" /%}
 
 <br/>
 
