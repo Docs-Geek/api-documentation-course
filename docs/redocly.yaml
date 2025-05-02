@@ -1,6 +1,6 @@
-apis:
-  main:
-    root: ./openapi.yaml
+# apis:
+#   main:
+#     root: ./openapi.yaml
 extends:
   - minimal
 rules:

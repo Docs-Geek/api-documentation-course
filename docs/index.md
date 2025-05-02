@@ -8,9 +8,9 @@
 
 ### Open the GitHub Codespace
 
-<video controls width="250">
-  <source src="/assets/videos/flower.mp4" type="video/mp4" />
-</video>
+# Embedded video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XFEsFyK8lns?si=PTMpV2a5RIizg-O_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 1. Navigate to:
 	- [https://github.com//Docs-Geek/api-documentation-course](https://github.com//Docs-Geek/api-documentation-course).
