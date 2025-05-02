@@ -2,6 +2,10 @@
 
 This guide will show you how to configure a development environment using GitHub Codespaces to create a sandbox for completing the course exercises and experimenting with the API.
 
+{% admonition type="info" name="Viewing videos in full-screen mode" %}
+Full Screen mode for videos is not supported within this article. To view a video in Full Screen mode, click the YouTube button located at the bottom right corner of the video.
+{% /admonition %}
+
 ## Create a GitHub Account
 
 1. Go to [https://github.com/](https://github.com/) and create an account using a personal email address.
@@ -59,6 +63,8 @@ You can dismiss all popups, including:
 **_To make the API server port public_**:
 
 1. In the bottom panel, click the **Ports** tab.
+2. On the **Port** `80` row, right-click the word **Private** in the **Visibility** column.
+3. In the popup, hover over **Port Visibility** and select **Public**.
 
 <br/>
 
@@ -66,7 +72,7 @@ You can dismiss all popups, including:
 
 <br/>
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/iq_RN0O-mQE?si=yoOQhcTQlL3BrIZl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/79HZErzZQVM?si=6Dl68Ct1-MQgrnx6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <br/>
 
@@ -74,7 +80,7 @@ You can dismiss all popups, including:
 
 **_To run the setup script:_**:
 
-1. Click the **Terminal** tab.
+1. Click the **Terminal** tab in the bottom panel.
 2. Place your cursor in the terminal and type:
    ```bash
    ./setup.sh
@@ -113,7 +119,7 @@ You can dismiss all popups, including:
 
 <br/>
 
-### _To verify the API server is running_:
+**_To verify the API server is running:_**
 
 <br/>
 
@@ -121,7 +127,7 @@ You can dismiss all popups, including:
 
 <br/>
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/WxtQI4pecWA?si=7ADjlx174ZGLvbsv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/iq_RN0O-mQE?si=yoOQhcTQlL3BrIZl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <br/>
 
