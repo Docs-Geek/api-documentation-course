@@ -1,5 +1,7 @@
 # Development Environment Setup Guide
 
+This guide will show you how to configure a development environment using GitHub Codespaces to create a sandbox for completing the course exercises and experimenting with the API.
+
 ## Create a GitHub Account
 
 1. Go to [https://github.com/](https://github.com/) and create an account using a personal email address.
@@ -16,12 +18,13 @@
 
 <br/>
 
-#### To open a GitHub Codespace
+**_To open a GitHub Codespace:_**
 
 1. Navigate to:
    - [https://github.com//Docs-Geek/api-documentation-course](https://github.com//Docs-Geek/api-documentation-course).
 2. Click the green **Code** button.
-3. Click the **Codespaces** tab and the plus icon to create a new codespace.
+3. Click the **Codespaces** tab
+4. Click the plus (**+**) icon to create a new codespace.
 
 <br/>
 
@@ -39,10 +42,6 @@ You can dismiss all popups, including:
 
 <br/>
 
-{% img src="assets/images/dismiss-popup-1.png" alt="Ports 4" width="300" /%}
-
-<br/>
-
 {% img src="assets/images/dismiss-popup-2.png" alt="Ports 4" width="300" /%}
 
 <br/>
@@ -52,6 +51,8 @@ You can dismiss all popups, including:
 <br/>
 
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/4kHj2zpNQGk?si=e4fus7Q4IVBPbVxX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br/>
 
 <br/>
 
@@ -69,6 +70,8 @@ You can dismiss all popups, including:
 
 <br/>
 
+<br/>
+
 **_To run the setup script:_**:
 
 1. Click the **Terminal** tab.
@@ -78,11 +81,15 @@ You can dismiss all popups, including:
    ```
 3. Hit **Enter** to run the script. A "Database seeded successfully" message indicates the setup is complete.
 
+<br/>
+
 ## Start the API Server
 
 <br/>
 
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/XFEsFyK8lns?si=PTMpV2a5RIizg-O_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br/>
 
 <br/>
 
@@ -94,11 +101,15 @@ You can dismiss all popups, including:
    ```
 2. Hit **Enter** to run the script. "Connected to MongoDB" indicates that the server has started successfully.
 
+<br/>
+
 ## Verify the API server is running
 
 <br/>
 
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/QgeuRNAx3wA?si=npjGISiZhdWde_oD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br/>
 
 <br/>
 
@@ -111,6 +122,8 @@ You can dismiss all popups, including:
 <br/>
 
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/WxtQI4pecWA?si=7ADjlx174ZGLvbsv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br/>
 
 <br/>
 
@@ -135,6 +148,8 @@ You can dismiss all popups, including:
 
 <br/>
 
+<br/>
+
 **_To log in tp the React Admin Panel_**:
 
 1. Log in with the following credentials:
@@ -150,6 +165,8 @@ You can dismiss all popups, including:
 <br/>
 
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/mVnaJ4sSpPQ?si=6w-QmbBsMCcyH5zF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br/>
 
 <br/>
 
@@ -174,7 +191,9 @@ You can dismiss all popups, including:
 
 <br/>
 
-**\_To test Curl Commands**:
+<br/>
+
+**_To test Curl Commands_**:
 
 1. Open a new terminal in your workspace and name it "Curl."
 2. Run the following command to make a request:
@@ -185,22 +204,36 @@ You can dismiss all popups, including:
 
    The output will look something like this (the joke will vary):
 
-   ```shell
+   ```json
    {"categories":[],"created_at":"2020-01-05 13:42:26.194739","icon_url":"https://api.chucknorris.io/img/avatar/chuck-norris.png","id":"ZYuYuFQVSfamBUYfzFADMQ","updated_at":"2020-01-05 13:42:26.194739","url":"https://api.chucknorris.io/jokes/ZYuYuFQVSfamBUYfzFADMQ","value":"Chuck Norris has more subscribers than Pewdiepie."}%
    ```
 
+<br/>
+
 ## Stop the Codespace
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fo4JN1T9oJU?si=zRr2c0ix8xiBFBMG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<br/>
 
 You are allotted a certain number of hours as part of the free account when using GitHub Codespaces, which is why it is important to stop your codespace when you finish your exercises.
 
-To stop the codespace, follow these steps:
+<br/>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fo4JN1T9oJU?si=zRr2c0ix8xiBFBMG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br/>
+
+<br/>
+
+**_To stop the codespace_**:
 
 1. Go to https://github.com//codespaces.
 2. Left-click the three dots next to the codespace name.
 3. Select **Stop Codespace**. A banner will display at the top of the screen indicating that the codespace has been stopped.
 
+<br/>
+
 ## Wrapping Up
+
+<br/>
 
 Congratulations! You have now set up your development environment to complete your exercises, test, and document the course API.
