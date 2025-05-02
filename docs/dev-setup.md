@@ -3,12 +3,12 @@
 This guide will show you how to configure a development environment using GitHub Codespaces to create a sandbox for completing the course exercises and experimenting with the API.
 
 {% admonition type="info" name="Viewing videos in full-screen mode" %}
-Full Screen mode for videos is not supported within this article. To view a video in Full Screen mode, click the YouTube button located at the bottom right corner of the video.
+Full screen mode for videos is not supported within this article. To view a video in full screen mode, click "Watch on YouTube".
 {% /admonition %}
 
 ## Create a GitHub Account
 
-1. Go to [https://github.com/](https://github.com/) and create an account using a personal email address.
+1. Go to [https://github.com/](https://github.com/) and create an account using a personal email address. You may skip this step if you already have a personal GitHub account.
 2. You will receive an email from GitHub to verify your email address. Open that email and click the link to verify.
 3. After verifying your email, sign in to your GitHub account using the details you provided during account creation.
 
@@ -27,7 +27,7 @@ Full Screen mode for videos is not supported within this article. To view a vide
 1. Navigate to:
    - [https://github.com//Docs-Geek/api-documentation-course](https://github.com//Docs-Geek/api-documentation-course).
 2. Click the green **Code** button.
-3. Click the **Codespaces** tab
+3. Click the **Codespaces** tab.
 4. Click the plus (**+**) icon to create a new codespace.
 
 <br/>
@@ -85,7 +85,8 @@ You can dismiss all popups, including:
    ```bash
    ./setup.sh
    ```
-3. Hit ENTER on your keyboard to run the script. A "Database seeded successfully" message indicates the setup is complete.
+3. Hit ENTER on your keyboard to run the script.
+   - A "Database seeded successfully" message indicates the setup is complete.
 
 <br/>
 
@@ -154,7 +155,8 @@ If the text above is displayed, then the API server is currently running.
    ```bash
    ./scripts/run-admin.sh
    ```
-3. Hit ENTER on your keyboard to execute the script. When you see links, that means the admin panel was built successfully.
+3. Hit ENTER on your keyboard to execute the script.
+   - When you see links, that means the admin panel was built successfully.
 
 ## Open the React Admin Panel
 
@@ -203,10 +205,11 @@ If the text above is displayed, then the API server is currently running.
 3. Hover over the API Server (**Port** `80`), right-click, and select **Copy Local Address**.
 4. For **Port** `5500`, click the **Forward Address** link to open Swagger UI in a new browser tab.
 5. Place your cursor in the `gh-codespaces-server-url` form field and paste the local address you copied previously. Remove the slash at the end.
-6. Verify the **Computer URL** only has one slash at the end.
+6. Verify the **Computed URL** only has one slash at the end.
 7. Under **Orders**, expand **GET /orders**.
 8. Click the **Try it out** button.
-9. Scroll down and click the blue **Execute** button. If a "Code 200" is returned in the **Server response** section, then the request was successful, and Swagger UI is functioning properly.
+9. Scroll down and click the blue **Execute** button.
+   - If a "Code 200" is returned in the **Server response** section, then the request was successful, and Swagger UI is functioning properly.
 
 <br/>
 
@@ -214,7 +217,7 @@ If the text above is displayed, then the API server is currently running.
 
 <br/>
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/eK9zh4HhTtY?si=orujfvu2T0xHAhuk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/iydyQEzvx20?si=y2nm3ur6_yLPA-YY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <br/>
 
@@ -222,7 +225,7 @@ If the text above is displayed, then the API server is currently running.
 
 **_To test Curl Commands_**:
 
-1. To open a new terminal, click the downward caret next to the plus (**+**) icon and select **Bash** from the drop-down.
+1. Open a new terminal by clicking the downward caret next to the plus (**+**) icon and select **Bash** from the drop-down.
 2. Right-click the word **bash**, select **Rename**, and type "Curl".
 3. Run the following command to make an API request using Curl:
 
@@ -242,9 +245,7 @@ If the data returned to the terminal has the same fields as mentioned above (the
 
 ## Stop the Codespace
 
-<br/>
-
-When using GitHub Codespaces with a free account, you are allocated a specific number of hours. It's important to stop your Codespace when you finish your exercises, as leaving it running will consume the hours remaining on your free account. The number of hours provided with the free account should be more than enough to complete all the course exercises and allow for additional experimentation.
+When using GitHub Codespaces with a free account, you are allocated a specific number of hours. It's important to [stop your Codespace](https://github.com//codespaces) when you finish your exercises, as leaving it running will consume the hours remaining on your free account. The number of hours provided with the free account should be more than enough to complete all the course exercises and allow for additional experimentation.
 
 <br/>
 
