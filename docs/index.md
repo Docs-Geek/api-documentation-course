@@ -13,13 +13,13 @@
 </video>
 
 1. Navigate to:
-	- https://github.com//Docs-Geek/api-documentation-course.
+	- [https://github.com//Docs-Geek/api-documentation-course](https://github.com//Docs-Geek/api-documentation-course).
 2. Click the green **Code** button.
 3. Click the **Codespaces** tab and the plus icon to create a new codespace.
 
 Wait for the Codespace to load. This may take 1 to 3 minutes—grab a coffee! You will know the Codespace is set up when you see the following icon:
 
-{% img src="assets/images/ports-4.png" alt="Ports 4" width="300" height="200" %}
+{% img src="assets/images/ports-4.png" alt="Ports 4" width="300" height="200" /%}
 
 ### Make the API Server Port Public
 
