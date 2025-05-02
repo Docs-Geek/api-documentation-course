@@ -14,7 +14,7 @@
 
 <br/>
 
-#### _To open a GitHub Codespace_:
+##### _To open a GitHub Codespace_
 
 1. Navigate to:
    - [https://github.com//Docs-Geek/api-documentation-course](https://github.com//Docs-Geek/api-documentation-course).
