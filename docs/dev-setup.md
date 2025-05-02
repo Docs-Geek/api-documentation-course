@@ -81,11 +81,11 @@ You can dismiss all popups, including:
 **_To run the setup script:_**:
 
 1. Click the **Terminal** tab in the bottom panel.
-2. Place your cursor in the terminal and type:
+2. Click inside the terminal and type:
    ```bash
    ./setup.sh
    ```
-3. Hit **Enter** to run the script. A "Database seeded successfully" message indicates the setup is complete.
+3. Hit ENTER on your keyboard to run the script. A "Database seeded successfully" message indicates the setup is complete.
 
 <br/>
 
@@ -101,11 +101,12 @@ You can dismiss all popups, including:
 
 **_To start the API server_**:
 
-1. In the terminal tab, type:
+1. From the **Terminal** tab, type:
    ```bash
    npm run start
    ```
-2. Hit **Enter** to run the script. "Connected to MongoDB" indicates that the server has started successfully.
+2. Hit ENTER on your keyboard to run the script and wait for a moment.
+   - The final line displayed should say, "Connected to MongoDB," indicating that the server has started successfully.
 
 <br/>
 
@@ -121,6 +122,19 @@ You can dismiss all popups, including:
 
 **_To verify the API server is running:_**
 
+1. Open the API server in a new tab:
+   - **For Windows**, hold down the **CTRL** key and left-click the link displayed in the terminal: `(http://localhost:80)`. Skip to Step 2.
+   - **For Mac**, hold down the **CMD** key and left-click the link displayed in the terminal: `(http://localhost:80)`.
+2. A new browser tab opens. On this page, check if the following text displays:
+
+   ```json
+   {"message":"not found","errors":[{"path":"/","message":"not found"}]}}
+   ```
+
+<br/>
+
+If the text above is displayed, then the API server is currently running.
+
 <br/>
 
 ## Install the React Admin Panel
@@ -135,14 +149,20 @@ You can dismiss all popups, including:
 
 **_To install the React Admin Panel_**:
 
-1. Open a new terminal.
-2. Type the following command to run the admin panel:
+1. To open a new terminal, click the downward caret next to the plus (**+**) icon and select **Bash** from the drop-down.
+2. Click inside the terminal, and type the following command to run the admin panel:
    ```bash
    ./scripts/run-admin.sh
    ```
-3. Hit **Enter** to execute the script. When you see links, that means the admin panel was built successfully.
-4. Click the link: [http://localhost:5173/](http://localhost:5173/) to open the React admin panel.
-5. In the browser, **hit refresh twice**. The React admin panel login screen will display. Continue to the next step.
+3. Hit ENTER on your keyboard to execute the script. When you see links, that means the admin panel was built successfully.
+
+## Open the React Admin Panel
+
+<br/>
+
+1. In the terminal where the admin panel was run, click the `http://localhost:5173/` link to open the React admin panel in a new browser tab.
+2. In the browser, **hit the refresh button twice**.
+   - The React admin panel login screen will display.
 
 <br/>
 
@@ -161,7 +181,7 @@ You can dismiss all popups, including:
 1. Log in with the following credentials:
    - Username: `apiuser01`
    - Password: `Passw0rd123!`
-2. Click the **Orders** tab.
+2. Click the **Orders** tab and wait a moment.
    - Data should populate in the table. If it does, the admin panel is successfully connected to the database.
 
 <br/>
@@ -180,12 +200,13 @@ You can dismiss all popups, including:
 
 1. Return to the GitHub Codespace.
 2. Go to the **Ports** tab (if not already there).
-3. Hover over the API Server (port 80), right-click, and select **Copy Local Address**.
-4. For port 5500, click the **Forward Address** link to open Swagger UI in a new browser tab.
-5. Place your cursor in the `gh-codespaces-server-url` field and paste the local address you copied previously. If there’s a slash at the end of the URL, remove it.
-6. Under **Orders**, expand **GET /orders**.
-7. Click the **Try it out** button.
-8. Scroll down and click the blue **Execute** button. If a "Code 200" is returned in the server response section, then the request was successful, and Swagger UI is functioning properly.
+3. Hover over the API Server (**Port** `80`), right-click, and select **Copy Local Address**.
+4. For **Port** `5500`, click the **Forward Address** link to open Swagger UI in a new browser tab.
+5. Place your cursor in the `gh-codespaces-server-url` form field and paste the local address you copied previously. Remove the slash at the end.
+6. Verify the **Computer URL** only has one slash at the end.
+7. Under **Orders**, expand **GET /orders**.
+8. Click the **Try it out** button.
+9. Scroll down and click the blue **Execute** button. If a "Code 200" is returned in the **Server response** section, then the request was successful, and Swagger UI is functioning properly.
 
 <br/>
 
@@ -201,8 +222,9 @@ You can dismiss all popups, including:
 
 **_To test Curl Commands_**:
 
-1. Open a new terminal in your workspace and name it "Curl."
-2. Run the following command to make a request:
+1. To open a new terminal, click the downward caret next to the plus (**+**) icon and select **Bash** from the drop-down.
+2. Right-click the word **bash**, select **Rename**, and type "Curl".
+3. Run the following command to make an API request using Curl:
 
    ```bash
    curl -i -X GET "https://api.chucknorris.io/jokes/random"
@@ -214,17 +236,19 @@ You can dismiss all popups, including:
    {"categories":[],"created_at":"2020-01-05 13:42:26.194739","icon_url":"https://api.chucknorris.io/img/avatar/chuck-norris.png","id":"ZYuYuFQVSfamBUYfzFADMQ","updated_at":"2020-01-05 13:42:26.194739","url":"https://api.chucknorris.io/jokes/ZYuYuFQVSfamBUYfzFADMQ","value":"Chuck Norris has more subscribers than Pewdiepie."}%
    ```
 
+If the data returned to the terminal has the same fields as mentioned above (the actual data may differ), it confirms that you can send API requests using curl in the terminal.
+
 <br/>
 
 ## Stop the Codespace
 
 <br/>
 
-You are allotted a certain number of hours as part of the free account when using GitHub Codespaces, which is why it is important to stop your codespace when you finish your exercises.
+When using GitHub Codespaces with a free account, you are allocated a specific number of hours. It's important to stop your Codespace when you finish your exercises, as leaving it running will consume the hours remaining on your free account. The number of hours provided with the free account should be more than enough to complete all the course exercises and allow for additional experimentation.
 
 <br/>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fo4JN1T9oJU?si=zRr2c0ix8xiBFBMG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/fo4JN1T9oJU?si=zRr2c0ix8xiBFBMG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <br/>
 
@@ -232,9 +256,10 @@ You are allotted a certain number of hours as part of the free account when usin
 
 **_To stop the codespace_**:
 
-1. Go to https://github.com//codespaces.
-2. Left-click the three dots next to the codespace name.
-3. Select **Stop Codespace**. A banner will display at the top of the screen indicating that the codespace has been stopped.
+1. Go to [https://github.com//codespaces](https://github.com//codespaces).
+2. On the right-side, left-click the three dots next to the codespace name.
+3. Select **Stop Codespace**.
+   - A banner will display at the top of the screen indicating that the codespace has been stopped.
 
 <br/>
 
