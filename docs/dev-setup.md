@@ -251,7 +251,7 @@ If the data returned to the terminal has the same fields as mentioned above (the
 
 ### 1. Download Postman files from GitHub
 
-- Go to [postman/Environment Variables.postman_environment.json](https://github.com/mawentowski/api-documentation-course-gitpod/blob/main/postman/Environment%20Variables.postman_environment.json)
+- Go to [postman/Environment Variables.postman_environment.json](https://github.com/Docs-Geek/api-documentation-course/blob/77aac6b81ce9ae68bf5621869f714baad6e814f8/postman/Environment%20Variables.postman_environment.json)
 
 - On the page's right side, click the downward arrow button to download the file.
 
@@ -265,7 +265,7 @@ If the data returned to the terminal has the same fields as mentioned above (the
 
    <br/>
 
-- Go to [postman/Point of Service (POS) API.postman_collection.json](<https://github.com/mawentowski/api-documentation-course-gitpod/blob/main/postman/Point%20of%20Service%20(POS)%20API.postman_collection.json>)
+- Go to [postman/Point of Service (POS) API.postman_collection.json](<https://github.com/Docs-Geek/api-documentation-course/blob/77aac6b81ce9ae68bf5621869f714baad6e814f8/postman/Point%20of%20Service%20(POS)%20API.postman_collection.json>)
 
 - On the page's right side, click the downward arrow button to download the file.
 
