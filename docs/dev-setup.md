@@ -178,7 +178,7 @@ If the text above is displayed, then the API server is currently running.
 
 <br/>
 
-**_To log in tp the React Admin Panel_**:
+**_To log in to the React Admin Panel_**:
 
 1. Log in with the following credentials:
    - Username: `apiuser01`
@@ -305,7 +305,7 @@ Follow the steps shown in the video below.
 
 <br/>
 
-{% img src="assets/images/gitpod/paste-server-url.gif" width="100%" /%}
+{% img src="assets/images/paste-server-url.gif" width="100%" /%}
 
 <br/>
 
