@@ -188,31 +188,6 @@ If the text above is displayed, then the API server is currently running.
 
 <br/>
 
-## Test Swagger UI Interactivity
-
-<br/>
-
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/mVnaJ4sSpPQ?si=6w-QmbBsMCcyH5zF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<br/>
-
-<br/>
-
-**_To test Swagger UI interactivity_**:
-
-1. Return to the GitHub Codespace.
-2. Go to the **Ports** tab (if not already there).
-3. Hover over the API Server (**Port** `80`), right-click, and select **Copy Local Address**.
-4. For **Port** `5500`, click the **Forward Address** link to open Swagger UI in a new browser tab.
-5. Place your cursor in the `gh-codespaces-server-url` form field and paste the local address you copied previously. Remove the slash at the end.
-6. Verify the **Computed URL** only has one slash at the end.
-7. Under **Orders**, expand **GET /orders**.
-8. Click the **Try it out** button.
-9. Scroll down and click the blue **Execute** button.
-   - If a "Code 200" is returned in the **Server response** section, then the request was successful, and Swagger UI is functioning properly.
-
-<br/>
-
 ## Test Curl Commands
 
 <br/>
@@ -240,6 +215,126 @@ If the text above is displayed, then the API server is currently running.
    ```
 
 If the data returned to the terminal has the same fields as mentioned above (the actual data may differ), it confirms that you can send API requests using curl in the terminal.
+
+<br/>
+
+## Test Swagger UI Interactivity
+
+<br/>
+
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/mVnaJ4sSpPQ?si=6w-QmbBsMCcyH5zF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br/>
+
+<br/>
+
+**_To test Swagger UI interactivity_**:
+
+1. Return to the GitHub Codespace.
+2. Go to the **Ports** tab (if not already there).
+3. Hover over the API Server (**Port** `80`), right-click, and select **Copy Local Address**. Paste the local address into a text file, such as one created using NotePad or another text editor.
+4. For **Port** `5500`, click the **Forward Address** link to open Swagger UI in a new browser tab.
+5. Place your cursor in the `gh-codespaces-server-url` form field and paste the local address you copied previously. Remove the slash at the end.
+6. Verify the **Computed URL** only has one slash at the end.
+7. Under **Orders**, expand **GET /orders**.
+8. Click the **Try it out** button.
+9. Scroll down and click the blue **Execute** button.
+   - If a "Code 200" is returned in the **Server response** section, then the request was successful, and Swagger UI is functioning properly.
+
+<br/>
+
+## Import Postman Collections into Postman
+
+### Prerequisites
+
+- In the previous section, you should have pasted the local address of the API server into a text file. You must copy the local address from that file for this section.
+
+### 1. Download Postman files from GitHub
+
+- Go to [postman/Environment Variables.postman_environment.json](https://github.com/mawentowski/api-documentation-course-gitpod/blob/main/postman/Environment%20Variables.postman_environment.json)
+
+- On the page's right side, click the downward arrow button to download the file.
+
+   <br/>
+
+  For example:
+
+   <br/>
+
+  {% img src="assets/images/download-raw-file-gh.gif" width="100%" /%}
+
+   <br/>
+
+- Go to [postman/Point of Service (POS) API.postman_collection.json](<https://github.com/mawentowski/api-documentation-course-gitpod/blob/main/postman/Point%20of%20Service%20(POS)%20API.postman_collection.json>)
+
+- On the page's right side, click the downward arrow button to download the file.
+
+  The two files are now downloaded to your **Downloads** folder.
+
+### 2. Launch Postman
+
+- Download and install [Postman](https://www.postman.com/downloads/).
+- Open the Postman application on your computer.
+
+### 3. Create a Postman account:
+
+If this is your first time using Postman, you’ll be prompted to create an account. You can sign up using an email address or continue with a Google or GitHub account. This account will allow you to save your work and sync it across devices.
+
+Note for Windows Users: If you encounter a dialog saying "Windows Defender Firewall has blocked some features of this app," it's safe to click "Allow Access" to ensure Postman can function properly. This is a standard security prompt and won't harm your system.
+
+### 4. Go to the Import Menu
+
+Click on the **Import** button located in the top-left corner of the Postman app or use the shortcut `Ctrl + O` (Windows/Linux) or `Cmd + O` (Mac).
+
+### 5. Import Files
+
+- In the **Import** dialog, you’ll see options to
+- Where it says, **Drop Anywhere to Import**, drag and drop the 2 Postman files downloaded earlier from your **Downloads** folder, or where you downloaded the Postman files previously.
+- Postman should display two files for import. Click **Import** to import all files.
+
+### 6. Select the Environment
+
+- In the top-right corner of the Postman app, click **No Environment**.
+- Select **Environment Variables**.
+
+---
+
+### 7. Set `baseUrl` in Environment Variables
+
+Follow the steps shown in the video below.
+
+<br/>
+
+{% img src="assets/images/gitpod/paste-server-url.gif" width="100%" /%}
+
+<br/>
+
+For written instructions:
+
+- Click the **Environments** tab.
+- Select **Environment Variables**.
+- Paste the server URL you copied earlier into both the **Initial Value** and **Current Value** fields for the `baseUrl` variable.
+- Save the file.
+
+### 8. Test the `baseUrl` Configuration
+
+Verify the setup by following the steps in the video below.
+
+<br/>
+
+{% img src="assets/images/test-postman.gif" width="100%" /%}
+
+<br/>
+
+For written instructions:
+
+- Click the **Collections** tab.
+- Expand the **Point of Service (POS) API** collection.
+- Expand the **Dishes** folder.
+- Open the **Get a List of Dishes** request.
+- Click the blue **Send** button.
+
+If the response returns successfully, your Postman configuration is correct.
 
 <br/>
 
