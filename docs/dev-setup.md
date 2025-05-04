@@ -276,7 +276,7 @@ If the data returned to the terminal has the same fields as mentioned above (the
 - Download and install [Postman](https://www.postman.com/downloads/).
 - Open the Postman application on your computer.
 
-### 3. Create a Postman account:
+### 3. Create a Postman account
 
 If this is your first time using Postman, you’ll be prompted to create an account. You can sign up using an email address or continue with a Google or GitHub account. This account will allow you to save your work and sync it across devices.
 
@@ -288,9 +288,9 @@ Click on the **Import** button located in the top-left corner of the Postman app
 
 ### 5. Import Files
 
-- In the **Import** dialog, you’ll see options to
-- Where it says, **Drop Anywhere to Import**, drag and drop the 2 Postman files downloaded earlier from your **Downloads** folder, or where you downloaded the Postman files previously.
-- Postman should display two files for import. Click **Import** to import all files.
+- In the **Import** dialog, where it says, **Drop Anywhere to Import**, drag and drop the 2 Postman files downloaded earlier from your **Downloads** folder, or where you downloaded the Postman files previously.
+- Postman should display two files for import.
+- Click **Import** to import all files.
 
 ### 6. Select the Environment
 
@@ -314,6 +314,7 @@ For written instructions:
 - Click the **Environments** tab.
 - Select **Environment Variables**.
 - Paste the server URL you copied earlier into both the **Initial Value** and **Current Value** fields for the `baseUrl` variable.
+- Remove the slash at the end of the URL if there is one.
 - Save the file.
 
 ### 8. Test the `baseUrl` Configuration
@@ -334,7 +335,7 @@ For written instructions:
 - Open the **Get a List of Dishes** request.
 - Click the blue **Send** button.
 
-If the response returns successfully, your Postman configuration is correct.
+In the **Response** section at the bottom, if there is a `200 OK` status code, your Postman configuration is correct.
 
 <br/>
 
@@ -360,7 +361,5 @@ When using GitHub Codespaces with a free account, you are allocated a specific n
 <br/>
 
 ## Wrapping Up
-
-<br/>
 
 Congratulations! You have now set up your development environment to complete your exercises, test, and document the course API.
