@@ -1,6 +1,20 @@
 # Class #2: Offline Exercises
 
+## Course API introduction
+
+The pretend startup you are a part of has created a POS (point-of-service) restaurant platform.
+
+It offeres a versatile REST API tailored for app developers seeking to create customized food ordering applications.
+
+These applications span a range of functionalities, from tableside ordering and self-service kiosks to tablets used by restaurant staff to take orders.
+
+Additionally, the API streamlines inventory management for staff, enabling tasks like tracking stock levels, creating dishes and menus, and generating reports.
+
+During the course, you will help produce source content to support the API. However, today’s goal is solely to understand how the API functions.
+
 In these exercises, we'll explore how to send API requests using various tools: Swagger UI and Postman. You'll follow the instructions to complete the basic API flow, which culminates in placing a food order through the course API.
+
+---
 
 ## Part 1: Creating an Order with Swagger UI
 
@@ -16,15 +30,12 @@ The Italian dish we'll be creating is called "Pappardelle al Cinghiale (Wild Boa
 
 #### Prerequisites
 
-##### Local Setup (Default)
-
-- Ensure Docker Desktop is open and the `api-documentation-course` container is running. If it is not, click the "Play" button on the container.
-- In Docker Desktop, locate the `swagger-ui` container, most likely called `swagger-ui-1`. Click its blue link in the Port(s) column to open it in the browser.
-
-##### GitPod Setup
-
-- Go to your [GitPod Workspaces](https://gitpod.io/workspaces) page and open the workspace you created as part of the GitPod setup.
-- Follow the [Open Swagger UI instructions](https://github.com/mawentowski/api-documentation-course-gitpod/blob/main/docs/gitpod-user-guide.md#open-swagger-ui) to open Swagger UI from the GitPod workspace.
+1. Go to [https://github.com//codespaces](https://github.com//codespaces) (sign in to GitHub if not already signed in).
+2. Click the Codespace you created previously to open it.
+3. Start the server by running `npm run start` in a terminal. If you are stuck, refer to:
+   - [https://api-course-docs.redocly.app/dev-setup#start-the-api-server](https://api-course-docs.redocly.app/dev-setup#start-the-api-server)
+4. Complete the steps shown here: 
+   - [Test Swagger UI Interactivity](https://api-course-docs.redocly.app/dev-setup#test-swagger-ui-interactivity)
 
 #### Steps
 
@@ -127,7 +138,7 @@ _**Request #1: "Juniper Berries" JSON Request Body**_
 
 _**Request #2: "Sage" JSON Request Body**_
 
-Be sure to have the three `id` values you copied for each ingredient on hand for the next step.
+Be sure to have the three `id` values you copied for each ingredient are on hand for the next step.
 
 ##### 4. Send Requests to Create Remaining Ingredients
 
@@ -159,14 +170,16 @@ Now that we have the ingredients to prepare the dish, we can proceed to create "
 ```json
 {
   "name": "Pappardelle al Cinghiale",
-  "description": "Wild Boar Pappardelle.",
+  "description": "Wild Boar Pappardelle."
   "category": "Main Course",
-  "image_name": "pappardelle_al_cinghiale",
+  "image_name" "pappardelle_al_cinghiale",
   "preparation_time": 60,
   "price": 5099,
-  "station": "hot"
+  "station": hot"
 }
 ```
+
+But wait, it appears that there is an issue with the code sample provided by the developer. The JSON is not formatted correctly, and there are **three** errors present. Please take on the challenge to identify and fix these three errors in the JSON. If you're having trouble, paste the JSON code into a validator like [JSON Formatter](https://jsonformatter.curiousconcept.com/) to interpret the error messages and fix any issues.
 
 - Next, add information about the dish's ingredients in an `ingredients` array, substituting the value of each `ingredient_id`:
 
@@ -196,13 +209,13 @@ Now that we have the ingredients to prepare the dish, we can proceed to create "
 }
 ```
 
-- Be sure to insert the actual IDs of the ingredients for each `ingredient_id` field. For example:
+- Be sure to insert the actual IDs of the ingredients for each `ingredient_id` field. For example, you must substitute the {{wildBoarId}} for the actual ID of the "Wild Boar" ingredient you created previously. IDs are formatted like:
 
 ```json
 "ingredient_id": "66294b2a4475a41f3e709bc5"
 ```
 
-- Click **Execute** to send the request.
+- Once you have substituted all placeholders with actual ingredient IDs, click **Execute** to send the request.
 - On success, a `201 Created` status will be returned along with the API response body containing the new dish.
 - In the response, copy the `id` of the newly created dish and save it in a text file. You’ll need it to create the order.
 
@@ -275,7 +288,7 @@ The new Italian dish we’ll be creating is called "Pasta con Sarde (Pasta with 
 
 ##### 2. Open a Postman collection
 
-- From the **Collections** tab (left-side), click the "Point of Service (POS) API - Original" collection to expand it.
+- From the **Collections** tab (left-side), click the "Point of Service (POS) API" collection to expand it.
 
 ---
 
@@ -325,7 +338,7 @@ First, we need to create the ingredients for our "Pasta con Sarde" dish, as the 
 
 ##### 1. Access the "Create an ingredient" request
 
-With the "Point of Service (POS) API - Original" collection expanded, click the "Ingredients" folder to open it.
+With the "Point of Service (POS) API" collection expanded, click the "Ingredients" folder to open it.
 
 ##### 2. Add ingredient details to the request body
 
@@ -397,7 +410,7 @@ Now that we have the ingredients needed to prepare the dish, we can proceed to c
 
 ##### 1. Access the "Create a dish" request
 
-With the "Point of Service (POS) API - Original" collection open, click the "Dishes" folder to open it.
+With the "Point of Service (POS) API" collection open, click the "Dishes" folder to open it.
 
 ##### 2. Add dish details to the request body
 
@@ -407,14 +420,16 @@ With the "Point of Service (POS) API - Original" collection open, click the "Dis
 ```json
 {
   "name": "Pasta con Sarde",
-  "description": "A traditional Sicilian pasta dish made with sardines, fennel, pine nuts, raisins, and breadcrumbs, giving a unique combination of savory and sweet flavors.",
+  "description": "A traditional Sicilian pasta dish made with sardines, fennel, pine nuts, raisins, and breadcrumbs, giving a unique combination of savory and sweet flavors.,
   "category": "Main Course",
   "image_name": "pasta_con_sarde",
-  "preparation_time": 30,
+  preparation_time": 30,
   "price": 1299,
-  "station": "hot"
+  "station": "hot",
 }
 ```
+
+- Oh no! Not again. The developer provided us with poorly formatted JSON. Use your JSON skills to identify and fix the errors!
 
 - Add information about the dish's ingredients to an `ingredients` array, adding the ID of each ingredient. The request body should look like the following (except for the ingredient IDs):
 
@@ -456,7 +471,7 @@ Now that we've created "Pasta con Sarde," we can place an order that includes th
 
 ##### 1. Access the "Create an order" request
 
-With the "Point of Service (POS) API - Original" collection open, click the "Orders" folder to open it.
+With the "Point of Service (POS) API" collection open, click the "Orders" folder to open it.
 
 ##### 2. Add order details to the request body
 
@@ -491,3 +506,9 @@ Be sure to replace `{{dishId}}` with the actual ID of the "Pasta con Sarde" dish
 Congratulations! You've successfully created an order in Postman, reinforcing your knowledge of JSON and effectively utilizing the Postman interface to send API requests.
 
 Additionally, you now understand the most basic flow of the course API using two API clients: Swagger UI and Postman. Great job!
+
+---
+
+### Extra credit
+
+Now that you understand the basic mechanics of the course API, challenge yourself to create one of your favorite dishes following the same steps from these exercises.
