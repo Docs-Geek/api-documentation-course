@@ -4,7 +4,7 @@
 
 The pretend startup you are a part of has created a POS (point-of-service) restaurant platform.
 
-It offeres a versatile REST API tailored for app developers seeking to create customized food ordering applications.
+It offers a versatile REST API tailored for app developers seeking to create customized food ordering applications.
 
 These applications span a range of functionalities, from tableside ordering and self-service kiosks to tablets used by restaurant staff to take orders.
 
