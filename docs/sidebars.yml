@@ -1,10 +1,8 @@
 - page: dev-setup.md
-- group: Course Prerequisites
-  selectFirstItemOnExpand: true
-  items:
-  - page: view-recordings.md
+- page: view-recordings.md
 - group: Exercises
   selectFirstItemOnExpand: true
   items:
-  - page: exercises/class_2.md
+    - page: exercises/class_2.md
+      label: Class 2
 
