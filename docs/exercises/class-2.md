@@ -209,7 +209,7 @@ But wait, it appears that there is an issue with the code sample provided by the
 }
 ```
 
-- Be sure to insert the actual IDs of the ingredients for each `ingredient_id` field. For example, you must substitute the {{wildBoarId}} for the actual ID of the "Wild Boar" ingredient you created previously. IDs are formatted like:
+- Be sure to insert the actual IDs of the ingredients for each `ingredient_id` field. For example, you must substitute the `{{wildBoarId}}` for the actual ID of the "Wild Boar" ingredient you created previously. IDs are formatted like:
 
 ```json
 "ingredient_id": "66294b2a4475a41f3e709bc5"
