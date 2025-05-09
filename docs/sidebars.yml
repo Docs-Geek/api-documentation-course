@@ -1,2 +1,10 @@
 - page: dev-setup.md
-- page: view-recordings.md
+- group: Course Prerequisites
+  selectFirstItemOnExpand: true
+  items:
+  - page: view-recordings.md
+- group: Exercises
+  selectFirstItemOnExpand: true
+  items:
+  - page: exercises/class_2.md
+
