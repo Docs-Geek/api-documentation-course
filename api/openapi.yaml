@@ -1,7 +1,35 @@
 openapi: 3.0.3
 info:
   title: Point of Service (POS) API
-  description: REST API to be used to create tableside food ordering applications.
+  description: |
+    A REST API to be used to create tableside and takeaway food ordering applications.
+
+    ## Auth
+
+    To create orders, you need to first create a user account then authenticate your user account for an access token.
+
+    To get an access token and authenticate your requests.
+
+    1. Create a User with **POST /users**.
+    2. Pass your username and password to **POST /auth/token**.
+    3. Add the access token to the authorization header of API calls to protected resources.
+
+    ## Orders
+
+    Orders are the heart of the API. Create an order with [POST /orders], passing order details in the JSON request body:
+
+    ```json
+    {
+      "name": "Benjamin",
+      "table_number": 18,
+      "dish_ids": [
+        66e6a90a5eb1ced30f93c32a,
+        66e6a90a5eb1ced30f93c31e
+      ],
+      "special_requests": "No peanuts",
+      "scheduled at": null
+    }
+    ```
   contact:
     name: Course Discord server
     url: https://discord.gg/dPsnz5u9
@@ -11,14 +39,16 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: '1.0'
 servers:
+  - url: '{gh-codespaces-server-url}/'
+    description: GitHub Codespaces setup
+    variables:
+      gh-codespaces-server-url:
+        description:
+          Dynamic GitHub Codespaces URL. Replace <workspace-id> with your
+          GitHub Codespaces workspace ID if needed.
+        default: https://<workspace-id>.app.github.dev
   - url: http://localhost:80/
     description: Local setup
-  - url: '{gitpod-server-url}/'
-    description: Gitpod setup
-    variables:
-      gitpod-server-url:
-        default: 'https://8080-<workspace-id>.gitpod.io'
-        description: 'Dynamic Gitpod URL. Replace <workspace-id> with your Gitpod workspace ID if needed.'
 tags:
   - name: Orders
     description:
@@ -117,7 +147,7 @@ paths:
         - name: offset
           in: query
           description: |
-            Offest-based pagination filter for the number of results to skip before displaying resources.
+            Offset-based pagination filter for the number of results to skip before displaying resources.
           required: false
           style: form
           explode: true
@@ -477,7 +507,7 @@ paths:
         - name: offset
           in: query
           description: |
-            Offest-based pagination filter for the number of results to skip before displaying resources.
+            Offset-based pagination filter for the number of results to skip before displaying resources.
           required: false
           style: form
           explode: true
@@ -592,7 +622,7 @@ paths:
         - name: offset
           in: query
           description: |
-            Offest-based pagination filter for the number of results to skip before displaying resources.
+            Offset-based pagination filter for the number of results to skip before displaying resources.
           required: false
           style: form
           explode: true
@@ -960,7 +990,7 @@ paths:
         - name: offset
           in: query
           description: |
-            Offest-based pagination filter for the number of results to skip before displaying resources.
+            Offset-based pagination filter for the number of results to skip before displaying resources.
           required: false
           style: form
           explode: true
@@ -1077,7 +1107,7 @@ paths:
         - name: offset
           in: query
           description: |
-            Offest-based pagination filter for the number of results to skip before displaying resources.
+            Offset-based pagination filter for the number of results to skip before displaying resources.
           required: false
           style: form
           explode: true
@@ -1422,7 +1452,7 @@ paths:
         - name: offset
           in: query
           description: |
-            Offest-based pagination filter for the number of results to skip before displaying resources.
+            Offset-based pagination filter for the number of results to skip before displaying resources.
           required: false
           style: form
           explode: true
@@ -1904,12 +1934,6 @@ components:
               is_essential: true
             - ingredient_id: 66294b2a4475a41f3e709bc7
               is_essential: false
-          - - ingredient_id: 66294b2a4475a41f3e709bc5
-              is_essential: true
-            - ingredient_id: 66294b2a4475a41f3e709bc6
-              is_essential: true
-            - ingredient_id: 66294b2a4475a41f3e709bc7
-              is_essential: false
         preparation_time: 999
         id: 674d0bf5c28b69001f8e03a1
         category: Main Course
@@ -1952,9 +1976,27 @@ components:
       example: burger
     Ingredients:
       type: array
-      description: List of ingredients used during the preparation of the dish.
+      description: List of ingredient groups used during the preparation of the dish.
+      example:
+        - - ingredient_id: 66294b2a4475a41f3e709bc5
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc6
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc7
+            is_essential: false
       items:
-        $ref: '#/components/schemas/Ingredients_inner'
+        type: array
+        items:
+          type: object
+          properties:
+            ingredient_id:
+              type: string
+              description: The unique identifier for the resource.
+              example: 66294b2a4475a41f3e709bc5
+            is_essential:
+              type: boolean
+              description: Whether the ingredient is essential to prepare the dish.
+              example: true
     Ingredient:
       type: object
       properties:
@@ -2262,12 +2304,6 @@ components:
                   is_essential: true
                 - ingredient_id: 66294b2a4475a41f3e709bc7
                   is_essential: false
-              - - ingredient_id: 66294b2a4475a41f3e709bc5
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc6
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc7
-                  is_essential: false
             preparation_time: 999
             id: 674d0bf5c28b69001f8e03a1
             category: Main Course
@@ -2278,12 +2314,6 @@ components:
             created_at: 2024-04-22T10:00:00Z
             description: A description of the resource.
             ingredients:
-              - - ingredient_id: 66294b2a4475a41f3e709bc5
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc6
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc7
-                  is_essential: false
               - - ingredient_id: 66294b2a4475a41f3e709bc5
                   is_essential: true
                 - ingredient_id: 66294b2a4475a41f3e709bc6
@@ -2320,12 +2350,6 @@ components:
                   is_essential: true
                 - ingredient_id: 66294b2a4475a41f3e709bc7
                   is_essential: false
-              - - ingredient_id: 66294b2a4475a41f3e709bc5
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc6
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc7
-                  is_essential: false
             preparation_time: 999
             id: 674d0bf5c28b69001f8e03a1
             category: Main Course
@@ -2336,12 +2360,6 @@ components:
             created_at: 2024-04-22T10:00:00Z
             description: A description of the resource.
             ingredients:
-              - - ingredient_id: 66294b2a4475a41f3e709bc5
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc6
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc7
-                  is_essential: false
               - - ingredient_id: 66294b2a4475a41f3e709bc5
                   is_essential: true
                 - ingredient_id: 66294b2a4475a41f3e709bc6
@@ -2408,25 +2426,6 @@ components:
       properties:
         refresh_token:
           $ref: '#/components/schemas/RefreshToken'
-    Ingredients_inner:
-      type: object
-      properties:
-        ingredient_id:
-          type: string
-          description: The unique identifier for the resource.
-          example: 66294b2a4475a41f3e709bc4
-        is_essential:
-          type: boolean
-          description: |
-            Whether the ingredient is essential to prepare the dish.
-          example: true
-      example:
-        - ingredient_id: 66294b2a4475a41f3e709bc5
-          is_essential: true
-        - ingredient_id: 66294b2a4475a41f3e709bc6
-          is_essential: true
-        - ingredient_id: 66294b2a4475a41f3e709bc7
-          is_essential: false
   requestBodies:
     CreateDishRequest:
       description: Request body containing information used to create the resource.
