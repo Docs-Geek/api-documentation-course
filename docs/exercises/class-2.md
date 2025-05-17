@@ -32,9 +32,11 @@ The Italian dish we'll be creating is called "Pappardelle al Cinghiale (Wild Boa
 
 1. Go to [https://github.com//codespaces](https://github.com//codespaces) (sign in to GitHub if not already signed in).
 2. Click the Codespace you created previously to open it.
-3. Start the server by running `npm run start` in a terminal. If you are stuck, refer to:
+3. Make the API server public. Refer to:
+   - [https://api-course-docs.redocly.app/dev-setup#make-the-api-server-port-public](https://api-course-docs.redocly.app/dev-setup#make-the-api-server-port-public)
+4. Start the server by running `npm run start` in a terminal. Refer to:
    - [https://api-course-docs.redocly.app/dev-setup#start-the-api-server](https://api-course-docs.redocly.app/dev-setup#start-the-api-server)
-4. Complete the steps shown here:
+5. Complete the steps shown here:
    - [Test Swagger UI Interactivity](https://api-course-docs.redocly.app/dev-setup#test-swagger-ui-interactivity)
 
 #### Steps
