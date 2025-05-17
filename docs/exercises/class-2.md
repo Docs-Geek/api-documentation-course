@@ -34,7 +34,7 @@ The Italian dish we'll be creating is called "Pappardelle al Cinghiale (Wild Boa
 2. Click the Codespace you created previously to open it.
 3. Start the server by running `npm run start` in a terminal. If you are stuck, refer to:
    - [https://api-course-docs.redocly.app/dev-setup#start-the-api-server](https://api-course-docs.redocly.app/dev-setup#start-the-api-server)
-4. Complete the steps shown here: 
+4. Complete the steps shown here:
    - [Test Swagger UI Interactivity](https://api-course-docs.redocly.app/dev-setup#test-swagger-ui-interactivity)
 
 #### Steps
@@ -491,9 +491,9 @@ With the "Point of Service (POS) API" collection open, click the "Orders" folder
 
 ```json
 {
-  "name": "Benjamin",
-  "table_number": 18,
-  "special_requests": "No peanuts",
+  "name": "Jonathan",
+  "table_number": 25,
+  "special_requests": "Easy on the sardines",
   "scheduled at": null,
   "dish_ids": ["{{dishId}}"]
 }
