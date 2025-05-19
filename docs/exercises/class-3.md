@@ -35,6 +35,8 @@ In [Swagger Editor](https://editor.swagger.io/):
 | paths      |             | {}                                    |
 | components | schemas     | {}                                    |
 
+View the answer in the "Answers" section at the bottom.
+
 ## 2. Copy the starter `info.description`
 
 1. On **line 5**, delete the existing text following `description:`.
@@ -81,6 +83,8 @@ Review the rendered documentation to make sure the output looks clean, readable,
 | `rating`      | `number`  |
 | `isAvailable` | `boolean` |
 
+View the answer in the "Answers" section at the bottom.
+
 ---
 
 ## 5. Add Basic Constraints
@@ -96,6 +100,8 @@ Add constraints to the schema properties:
 | `isAvailable` | _none_                                         |
 
 ---
+
+View the answer in the "Answers" section at the bottom.
 
 ## 6. Add Markdown Descriptions
 
@@ -155,6 +161,8 @@ In this section, you’ll learn how to define a new API path for retrieving all 
 
     Then, under `items:`, add one more **tab** (nine total) and write:
     `$ref: '#/components/schemas/Movie'`
+
+View the answer in the "Answers" section at the bottom.
 
 ---
 
@@ -267,7 +275,7 @@ properties:
     type: boolean
 ```
 
-### Add an API Path with Example Response
+### 7. Add an API Path with Example Response
 
 ```yaml
 paths:
