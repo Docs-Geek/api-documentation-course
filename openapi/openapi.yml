@@ -1612,25 +1612,23 @@ components:
       type: array
       description: ...
       items:
-        type: array
-        items:
-          type: object
-          properties:
-            ingredient_id:
-              type: string
-              example: '66294b2a4475a41f3e709bc5'
-              description: ...
-            is_essential:
-              type: boolean
-              example: true
-              description: ...
+        type: object
+        properties:
+          ingredient_id:
+            type: string
+            example: '66294b2a4475a41f3e709bc5'
+            description: ...
+          is_essential:
+            type: boolean
+            example: true
+            description: ...
       example:
-        - - ingredient_id: '66294b2a4475a41f3e709bc5'
-            is_essential: true
-          - ingredient_id: '66294b2a4475a41f3e709bc6'
-            is_essential: true
-          - ingredient_id: '66294b2a4475a41f3e709bc7'
-            is_essential: false
+        - ingredient_id: '66294b2a4475a41f3e709bc5'
+          is_essential: true
+        - ingredient_id: '66294b2a4475a41f3e709bc6'
+          is_essential: true
+        - ingredient_id: '66294b2a4475a41f3e709bc7'
+          is_essential: false
     Ingredient:
       type: object
       properties:

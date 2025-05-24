@@ -1768,25 +1768,23 @@ components:
       type: array
       description: List of ingredient groups used during the preparation of the dish.
       items:
-        type: array
-        items:
-          type: object
-          properties:
-            ingredient_id:
-              type: string
-              description: The unique identifier for the resource.
-              example: '66294b2a4475a41f3e709bc5'
-            is_essential:
-              type: boolean
-              description: Whether the ingredient is essential to prepare the dish.
-              example: true
+        type: object
+        properties:
+          ingredient_id:
+            type: string
+            description: The unique identifier for the resource.
+            example: '66294b2a4475a41f3e709bc5'
+          is_essential:
+            type: boolean
+            description: Whether the ingredient is essential to prepare the dish.
+            example: true
       example:
-        - - ingredient_id: '66294b2a4475a41f3e709bc5'
-            is_essential: true
-          - ingredient_id: '66294b2a4475a41f3e709bc6'
-            is_essential: true
-          - ingredient_id: '66294b2a4475a41f3e709bc7'
-            is_essential: false
+        - ingredient_id: '66294b2a4475a41f3e709bc5'
+          is_essential: true
+        - ingredient_id: '66294b2a4475a41f3e709bc6'
+          is_essential: true
+        - ingredient_id: '66294b2a4475a41f3e709bc7'
+          is_essential: false
     Ingredient:
       type: object
       properties:

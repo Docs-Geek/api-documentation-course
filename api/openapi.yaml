@@ -37,162 +37,151 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: '1.0'
+  version: "1.0"
 servers:
-  - url: '{gh-codespaces-server-url}/'
-    description: GitHub Codespaces setup
-    variables:
-      gh-codespaces-server-url:
-        description:
-          Dynamic GitHub Codespaces URL. Replace <workspace-id> with your
-          GitHub Codespaces workspace ID if needed.
-        default: https://<workspace-id>.app.github.dev
-  - url: http://localhost:80/
-    description: Local setup
+- url: "{gh-codespaces-server-url}/"
+  description: GitHub Codespaces setup
+  variables:
+    gh-codespaces-server-url:
+      description: Dynamic GitHub Codespaces URL. Replace <workspace-id> with your
+        GitHub Codespaces workspace ID if needed.
+      default: https://<workspace-id>.app.github.dev
+- url: http://localhost:80/
+  description: Local setup
 tags:
-  - name: Orders
-    description:
-      "Operations related to managing orders, including creation, modification,\
-      \ and status updates"
-  - name: Dishes
-    description:
-      "Operations for managing dishes, including adding, updating, and deleting\
-      \ dishes"
-  - name: Ingredients
-    description:
-      "Operations for managing ingredients used in dishes, including adding,\
-      \ updating, and deleting ingredients"
-  - name: Users
-    description:
-      "Operations for managing user accounts, including registration, profile\
-      \ management, and authentication"
-  - name: Auth
-    description:
-      "Operations for user authentication, including login, token refresh,\
-      \ and logout"
+- name: Orders
+  description: "Operations related to managing orders, including creation, modification,\
+    \ and status updates"
+- name: Dishes
+  description: "Operations for managing dishes, including adding, updating, and deleting\
+    \ dishes"
+- name: Ingredients
+  description: "Operations for managing ingredients used in dishes, including adding,\
+    \ updating, and deleting ingredients"
+- name: Users
+  description: "Operations for managing user accounts, including registration, profile\
+    \ management, and authentication"
+- name: Auth
+  description: "Operations for user authentication, including login, token refresh,\
+    \ and logout"
 paths:
   /orders:
     get:
       tags:
-        - Orders
+      - Orders
       summary: Get a list of orders
-      description:
-        This operation retrieves a list of orders based on specified query
+      description: This operation retrieves a list of orders based on specified query
         parameters. It is commonly used to view the `status` and `priority` of orders
         on the current day or view historical orders for inventory and analytics purposes.
       operationId: getOrderList
       parameters:
-        - name: sort
-          in: query
-          description: |
-            Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. If you include a `sort` value, you must include a `order` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: priority
-        - name: order
-          in: query
-          description: |
-            Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order. If you include an `order` value, you must include a `sort` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: asc
-        - name: fields
-          in: query
-          description: |
-            Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: table_number|status|priority
-        - name: filter
-          in: query
-          description: |
-            Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
+      - name: sort
+        in: query
+        description: |
+          Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. If you include a `sort` value, you must include a `order` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: priority
+      - name: order
+        in: query
+        description: |
+          Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order. If you include an `order` value, you must include a `sort` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: asc
+      - name: fields
+        in: query
+        description: |
+          Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: table_number|status|priority
+      - name: filter
+        in: query
+        description: |
+          Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
 
-            **Basic Equality (eq)**
-            - For exact matches, use `fieldName.eq~value`.
+          **Basic Equality (eq)**
+          - For exact matches, use `fieldName.eq~value`.
 
-            **Comparison Operators:**
-            - **Less Than (lt)** Use `fieldName.lt~value`.
-            - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
-            - **Greater Than (gt):** Use `fieldName.gt~value`.
-            - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
+          **Comparison Operators:**
+          - **Less Than (lt)** Use `fieldName.lt~value`.
+          - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
+          - **Greater Than (gt):** Use `fieldName.gt~value`.
+          - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
 
-            Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-            example: table_number.lt~5|status.eq~On the Way
-        - name: limit
-          in: query
-          description: |
-            Pagination filter for the maximum number of results to return in the response.
-          required: false
-          style: form
-          explode: true
-          schema:
-            maximum: 30
-            type: integer
-          example: 10
-        - name: offset
-          in: query
-          description: |
-            Offset-based pagination filter for the number of results to skip before displaying resources.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: integer
-            example: 0
+          Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: table_number.lt~5|status.eq~On the Way
+      - name: limit
+        in: query
+        description: |
+          Pagination filter for the maximum number of results to return in the response.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 30
+          type: integer
+        example: 10
+      - name: offset
+        in: query
+        description: |
+          Offset-based pagination filter for the number of results to skip before displaying resources.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          example: 0
       responses:
-        '200':
-          description:
-            Successful operation. The response body contains the requested
+        "200":
+          description: Successful operation. The response body contains the requested
             data.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200'
-        '400':
+                $ref: "#/components/schemas/inline_response_200"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       x-swagger-router-controller: Orders
     post:
       tags:
-        - Orders
+      - Orders
       summary: Create an order
       description: |
         This operation can be used to create an order when a patron places an order via a mobile app, tablet app, self-service kiosk, etc., depending on the API consumer's use case.
       operationId: postOrder
       requestBody:
-        $ref: '#/components/requestBodies/CreateOrderRequest'
+        $ref: "#/components/requestBodies/CreateOrderRequest"
       responses:
-        '201':
+        "201":
           description: |
             Resource created successfully. The response body contains the newly created resource.
 
@@ -210,456 +199,430 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Order'
-        '400':
+                $ref: "#/components/schemas/Order"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '409':
-          description:
-            The request could not be completed due to a conflict with the
+                $ref: "#/components/schemas/Problem"
+        "409":
+          description: The request could not be completed due to a conflict with the
             current state of the resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - AccessToken: []
+      - AccessToken: []
       x-swagger-router-controller: Orders
   /orders/{id}:
     get:
       tags:
-        - Orders
+      - Orders
       summary: Get an order's details
       description: |
         This operation retrieves detailed information about a specific order identified by its unique order ID.
       operationId: getOrder
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 66294b2a4475a41f3e709bcc
-        - name: fields
-          in: query
-          description: |
-            Projection filters for including only certain resource properties in the response. The value for the parameter should be a comma-separated list of properties from the schema.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: table_number|status|priority
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 66294b2a4475a41f3e709bcc
+      - name: fields
+        in: query
+        description: |
+          Projection filters for including only certain resource properties in the response. The value for the parameter should be a comma-separated list of properties from the schema.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: table_number|status|priority
       responses:
-        '200':
-          description:
-            Successful operation. The response body contains the requested
+        "200":
+          description: Successful operation. The response body contains the requested
             data.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Order'
-        '400':
+                $ref: "#/components/schemas/Order"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       x-swagger-router-controller: Orders
     put:
       tags:
-        - Orders
+      - Orders
       summary: Update an order
       description: |
         This operation updates an existing order with the provided data. You can modify the order's status, priority, and the list of dishes associated with it.
       operationId: putOrder
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 66294b2a4475a41f3e709bcd
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 66294b2a4475a41f3e709bcd
       requestBody:
-        $ref: '#/components/requestBodies/UpdateOrderRequest'
+        $ref: "#/components/requestBodies/UpdateOrderRequest"
       responses:
-        '200':
-          description:
-            Resource updated successfully. The response body contains the
+        "200":
+          description: Resource updated successfully. The response body contains the
             updated resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_1'
-        '204':
-          description:
-            "No content. The operation was successful, and there is no\
+                $ref: "#/components/schemas/inline_response_200_1"
+        "204":
+          description: "No content. The operation was successful, and there is no\
             \ content to return."
-        '400':
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '409':
-          description:
-            The request could not be completed due to a conflict with the
+                $ref: "#/components/schemas/Problem"
+        "409":
+          description: The request could not be completed due to a conflict with the
             current state of the resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - AccessToken: []
+      - AccessToken: []
       x-swagger-router-controller: Orders
     delete:
       tags:
-        - Orders
+      - Orders
       summary: Delete an order
       description: |
         This operation deletes an existing order identified by its unique order ID.
       operationId: deleteOrder
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 66294b2a4475a41f3e709bca
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 66294b2a4475a41f3e709bca
       responses:
-        '204':
-          description:
-            "No content. The operation was successful, and there is no\
+        "204":
+          description: "No content. The operation was successful, and there is no\
             \ content to return."
-        '400':
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - AccessToken: []
+      - AccessToken: []
       x-swagger-router-controller: Orders
   /orders/{id}/dishes:
     get:
       tags:
-        - Orders
+      - Orders
       summary: Retrieve dishes for an order
       description: |
         This operation retrieves a list of dishes belonging to a specific order. Each dish object returned contains detailed information about the dish and which ingredients are essential to preparing the dish.
       operationId: getOrderDishes
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 66294b2a4475a41f3e709bcb
-        - name: sort
-          in: query
-          description: |
-            Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. If you include a `sort` value, you must include a `order` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: station
-        - name: order
-          in: query
-          description: |
-            Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order.  If you include an `order` value, you must include a `sort` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: asc
-        - name: fields
-          in: query
-          description: |
-            Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: name|station|ingredients
-        - name: filter
-          in: query
-          description: |
-            Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 66294b2a4475a41f3e709bcb
+      - name: sort
+        in: query
+        description: |
+          Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. If you include a `sort` value, you must include a `order` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: station
+      - name: order
+        in: query
+        description: |
+          Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order.  If you include an `order` value, you must include a `sort` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: asc
+      - name: fields
+        in: query
+        description: |
+          Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: name|station|ingredients
+      - name: filter
+        in: query
+        description: |
+          Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
 
-            **Basic Equality (eq)**
-            - For exact matches, use `fieldName.eq~value`.
+          **Basic Equality (eq)**
+          - For exact matches, use `fieldName.eq~value`.
 
-            **Comparison Operators:**
-            - **Less Than (lt)** Use `fieldName.lt~value`.
-            - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
-            - **Greater Than (gt):** Use `fieldName.gt~value`.
-            - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
+          **Comparison Operators:**
+          - **Less Than (lt)** Use `fieldName.lt~value`.
+          - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
+          - **Greater Than (gt):** Use `fieldName.gt~value`.
+          - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
 
-            Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-            example: created_at.gt~2024-05-07|station.eq~hot
-        - name: limit
-          in: query
-          description: |
-            Pagination filter for the maximum number of results to return in the response.
-          required: false
-          style: form
-          explode: true
-          schema:
-            maximum: 30
-            type: integer
-          example: 10
-        - name: offset
-          in: query
-          description: |
-            Offset-based pagination filter for the number of results to skip before displaying resources.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: integer
-            example: 0
+          Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: created_at.gt~2024-05-07|station.eq~hot
+      - name: limit
+        in: query
+        description: |
+          Pagination filter for the maximum number of results to return in the response.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 30
+          type: integer
+        example: 10
+      - name: offset
+        in: query
+        description: |
+          Offset-based pagination filter for the number of results to skip before displaying resources.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          example: 0
       responses:
-        '200':
-          description:
-            Successful operation. The response body contains the requested
+        "200":
+          description: Successful operation. The response body contains the requested
             data.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_2'
-        '400':
+                $ref: "#/components/schemas/inline_response_200_2"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       x-swagger-router-controller: Orders
   /dishes:
     get:
       tags:
-        - Dishes
+      - Dishes
       summary: Get a list of dishes
       description: |
         This operation retrieves a list of dishes based on the specified criteria. You can sort the results, include specific properties, select dishes that match certain criteria, and paginate through the results.
       operationId: getDishList
       parameters:
-        - name: sort
-          in: query
-          description: |
-            Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. For example, if you want to sort the results by priority, you would use `priority` as the value for this parameter. If you include a `sort` value, you must include a `order` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: name
-        - name: order
-          in: query
-          description: |
-            Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order. If you include an `order` value, you must include a `sort` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: asc
-        - name: fields
-          in: query
-          description: |
-            Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: name|ingredients|station
-        - name: filter
-          in: query
-          description: |
-            Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
+      - name: sort
+        in: query
+        description: |
+          Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. For example, if you want to sort the results by priority, you would use `priority` as the value for this parameter. If you include a `sort` value, you must include a `order` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: name
+      - name: order
+        in: query
+        description: |
+          Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order. If you include an `order` value, you must include a `sort` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: asc
+      - name: fields
+        in: query
+        description: |
+          Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: name|ingredients|station
+      - name: filter
+        in: query
+        description: |
+          Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
 
-            **Basic Equality (eq)**
-            - For exact matches, use `fieldName.eq~value`.
+          **Basic Equality (eq)**
+          - For exact matches, use `fieldName.eq~value`.
 
-            **Comparison Operators:**
-            - **Less Than (lt)** Use `fieldName.lt~value`.
-            - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
-            - **Greater Than (gt):** Use `fieldName.gt~value`.
-            - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
+          **Comparison Operators:**
+          - **Less Than (lt)** Use `fieldName.lt~value`.
+          - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
+          - **Greater Than (gt):** Use `fieldName.gt~value`.
+          - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
 
-            Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-            example: created_at.gt~2024-05-07|price.lte~19.99
-        - name: limit
-          in: query
-          description: |
-            Pagination filter for the maximum number of results to return in the response.
-          required: false
-          style: form
-          explode: true
-          schema:
-            maximum: 30
-            type: integer
-          example: 10
-        - name: offset
-          in: query
-          description: |
-            Offset-based pagination filter for the number of results to skip before displaying resources.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: integer
-            example: 0
+          Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: created_at.gt~2024-05-07|price.lte~19.99
+      - name: limit
+        in: query
+        description: |
+          Pagination filter for the maximum number of results to return in the response.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 30
+          type: integer
+        example: 10
+      - name: offset
+        in: query
+        description: |
+          Offset-based pagination filter for the number of results to skip before displaying resources.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          example: 0
       responses:
-        '200':
-          description:
-            Successful operation. The response body contains the requested
+        "200":
+          description: Successful operation. The response body contains the requested
             data.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_3'
-        '400':
+                $ref: "#/components/schemas/inline_response_200_3"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       x-swagger-router-controller: Dishes
     post:
       tags:
-        - Dishes
+      - Dishes
       summary: Create a dish
       description: |
         This operation creates a new dish with the provided information. The `id` returned in the response can be used to associate the dish with an order.
@@ -667,11 +630,10 @@ paths:
         Each `ingredient_id` should refer to an ingredient currently in the system. For each ingredient, set the value of `is_essential` to `true` if the ingredient is required to prepare the dish. It's considered a best practice to ensure that each essential ingredient has a positive quantity. This helps determine if the dish should be selectable in the user interface.
       operationId: postDishes
       requestBody:
-        $ref: '#/components/requestBodies/CreateDishRequest'
+        $ref: "#/components/requestBodies/CreateDishRequest"
       responses:
-        '201':
-          description:
-            Resource created successfully. The response body contains the
+        "201":
+          description: Resource created successfully. The response body contains the
             newly created resource.
           headers:
             Location:
@@ -683,127 +645,118 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dish'
-        '400':
+                $ref: "#/components/schemas/Dish"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '409':
-          description:
-            The request could not be completed due to a conflict with the
+                $ref: "#/components/schemas/Problem"
+        "409":
+          description: The request could not be completed due to a conflict with the
             current state of the resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - AccessToken: []
+      - AccessToken: []
       x-swagger-router-controller: Dishes
   /dishes/{id}:
     get:
       tags:
-        - Dishes
+      - Dishes
       summary: Get a dish's details
       description: |
         Retrieve detailed information about a specific dish identified by its unique dish ID.
       operationId: getDish
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 66294b2a4475a41f3e709bd1
-        - name: fields
-          in: query
-          description: |
-            Projection filters for including only certain resource properties in the response. The value for the parameter should be a comma-separated list of properties from the schema.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: name|price|station|ingredients
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 66294b2a4475a41f3e709bd1
+      - name: fields
+        in: query
+        description: |
+          Projection filters for including only certain resource properties in the response. The value for the parameter should be a comma-separated list of properties from the schema.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: name|price|station|ingredients
       responses:
-        '200':
-          description:
-            Successful operation. The response body contains the requested
+        "200":
+          description: Successful operation. The response body contains the requested
             data.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dish'
-        '400':
+                $ref: "#/components/schemas/Dish"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       x-swagger-router-controller: Dishes
     put:
       tags:
-        - Dishes
+      - Dishes
       summary: Update a dish
       description: |
         This operation updates an existing dish with the provided data.
       operationId: putDish
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 66294b2a4475a41f3e709bce
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 66294b2a4475a41f3e709bce
       requestBody:
-        $ref: '#/components/requestBodies/UpdateDishRequest'
+        $ref: "#/components/requestBodies/UpdateDishRequest"
       responses:
-        '200':
-          description:
-            Resource updated successfully. The response body contains the
+        "200":
+          description: Resource updated successfully. The response body contains the
             updated resource.
           headers:
             Location:
@@ -815,348 +768,327 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dish'
-        '204':
-          description:
-            "No content. The operation was successful, and there is no\
+                $ref: "#/components/schemas/Dish"
+        "204":
+          description: "No content. The operation was successful, and there is no\
             \ content to return."
-        '400':
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '409':
-          description:
-            The request could not be completed due to a conflict with the
+                $ref: "#/components/schemas/Problem"
+        "409":
+          description: The request could not be completed due to a conflict with the
             current state of the resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - AccessToken: []
+      - AccessToken: []
       x-swagger-router-controller: Dishes
     delete:
       tags:
-        - Dishes
+      - Dishes
       summary: Delete a dish
-      description:
-        This operation deletes an existing dish identified by its unique
+      description: This operation deletes an existing dish identified by its unique
         dish ID.
       operationId: deleteDish
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 66294b2a4475a41f3e709bd0
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 66294b2a4475a41f3e709bd0
       responses:
-        '204':
-          description:
-            "No content. The operation was successful, and there is no\
+        "204":
+          description: "No content. The operation was successful, and there is no\
             \ content to return."
-        '400':
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - AccessToken: []
+      - AccessToken: []
       x-swagger-router-controller: Dishes
   /dishes/{id}/ingredients:
     get:
       tags:
-        - Dishes
+      - Dishes
       summary: Get a dish's ingredients
-      description:
-        "This operation retrieves a list of ingredients belonging to a\
+      description: "This operation retrieves a list of ingredients belonging to a\
         \ specific dish. Importantly, the `in_stock_qty` for a dish indicates how\
         \ much of the ingredient is available."
       operationId: getDishIngredients
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 66294b2a4475a41f3e709bd2
-        - name: sort
-          in: query
-          description: |
-            Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. If you include a `sort` value, you must include a `order` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: name
-        - name: order
-          in: query
-          description: |
-            Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order. If you include an `order` value, you must include a `sort` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: asc
-        - name: fields
-          in: query
-          description: |
-            Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: name|in_stock_qty
-        - name: filter
-          in: query
-          description: |
-            Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 66294b2a4475a41f3e709bd2
+      - name: sort
+        in: query
+        description: |
+          Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. If you include a `sort` value, you must include a `order` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: name
+      - name: order
+        in: query
+        description: |
+          Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order. If you include an `order` value, you must include a `sort` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: asc
+      - name: fields
+        in: query
+        description: |
+          Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: name|in_stock_qty
+      - name: filter
+        in: query
+        description: |
+          Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
 
-            **Basic Equality (eq)**
-            - For exact matches, use `fieldName.eq~value`.
+          **Basic Equality (eq)**
+          - For exact matches, use `fieldName.eq~value`.
 
-            **Comparison Operators:**
-            - **Less Than (lt)** Use `fieldName.lt~value`.
-            - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
-            - **Greater Than (gt):** Use `fieldName.gt~value`.
-            - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
+          **Comparison Operators:**
+          - **Less Than (lt)** Use `fieldName.lt~value`.
+          - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
+          - **Greater Than (gt):** Use `fieldName.gt~value`.
+          - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
 
-            Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-            example: created_at.gt~2024-05-07|in_stock_qty.gt~3
-        - name: limit
-          in: query
-          description: |
-            Pagination filter for the maximum number of results to return in the response.
-          required: false
-          style: form
-          explode: true
-          schema:
-            maximum: 30
-            type: integer
-          example: 10
-        - name: offset
-          in: query
-          description: |
-            Offset-based pagination filter for the number of results to skip before displaying resources.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: integer
-            example: 0
+          Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: created_at.gt~2024-05-07|in_stock_qty.gt~3
+      - name: limit
+        in: query
+        description: |
+          Pagination filter for the maximum number of results to return in the response.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 30
+          type: integer
+        example: 10
+      - name: offset
+        in: query
+        description: |
+          Offset-based pagination filter for the number of results to skip before displaying resources.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          example: 0
       responses:
-        '200':
-          description:
-            Successful operation. The response body contains the requested
+        "200":
+          description: Successful operation. The response body contains the requested
             data.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_4'
-        '400':
+                $ref: "#/components/schemas/inline_response_200_4"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       x-swagger-router-controller: Dishes
   /ingredients:
     get:
       tags:
-        - Ingredients
+      - Ingredients
       summary: Get a list of ingredients
-      description:
-        "This operation retrieves a list of ingredients based on the specified\
+      description: "This operation retrieves a list of ingredients based on the specified\
         \ criteria. You can sort the results, include specific properties, select\
         \ ingredients that match certain criteria, and paginate through the results."
       operationId: getIngredientList
       parameters:
-        - name: sort
-          in: query
-          description: |
-            Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. If you include a `sort` value, you must include a `order` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: name
-        - name: order
-          in: query
-          description: |
-            Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order. If you include an `order` value, you must include a `sort` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: asc
-        - name: fields
-          in: query
-          description: |
-            Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: name|in_stock_qty
-        - name: filter
-          in: query
-          description: |
-            Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
+      - name: sort
+        in: query
+        description: |
+          Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. If you include a `sort` value, you must include a `order` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: name
+      - name: order
+        in: query
+        description: |
+          Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order. If you include an `order` value, you must include a `sort` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: asc
+      - name: fields
+        in: query
+        description: |
+          Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: name|in_stock_qty
+      - name: filter
+        in: query
+        description: |
+          Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
 
-            **Basic Equality (eq)**
-            - For exact matches, use `fieldName.eq~value`.
+          **Basic Equality (eq)**
+          - For exact matches, use `fieldName.eq~value`.
 
-            **Comparison Operators:**
-            - **Less Than (lt)** Use `fieldName.lt~value`.
-            - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
-            - **Greater Than (gt):** Use `fieldName.gt~value`.
-            - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
+          **Comparison Operators:**
+          - **Less Than (lt)** Use `fieldName.lt~value`.
+          - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
+          - **Greater Than (gt):** Use `fieldName.gt~value`.
+          - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
 
-            Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-            example: created_at.gt~2024-05-07|in_stock_qty.lt~5
-        - name: limit
-          in: query
-          description: |
-            Pagination filter for the maximum number of results to return in the response.
-          required: false
-          style: form
-          explode: true
-          schema:
-            maximum: 30
-            type: integer
-          example: 10
-        - name: offset
-          in: query
-          description: |
-            Offset-based pagination filter for the number of results to skip before displaying resources.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: integer
-            example: 0
+          Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: created_at.gt~2024-05-07|in_stock_qty.lt~5
+      - name: limit
+        in: query
+        description: |
+          Pagination filter for the maximum number of results to return in the response.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 30
+          type: integer
+        example: 10
+      - name: offset
+        in: query
+        description: |
+          Offset-based pagination filter for the number of results to skip before displaying resources.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          example: 0
       responses:
-        '200':
-          description:
-            Successful operation. The response body contains the requested
+        "200":
+          description: Successful operation. The response body contains the requested
             data.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_4'
-        '400':
+                $ref: "#/components/schemas/inline_response_200_4"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       x-swagger-router-controller: Ingredients
     post:
       tags:
-        - Ingredients
+      - Ingredients
       summary: Create an ingredient
-      description:
-        "This operation creates a new ingredient with the provided information.\
+      description: "This operation creates a new ingredient with the provided information.\
         \ Set an initial quantity of the ingredient using the `in_stock_qty` field.\n\
         \    \nThe `id` returned in the response can be used to associate the ingredient\
         \ with a dish. The `in_stock_qty` can be used to track if the ingredient has\
         \ a positive quantity.\n"
       operationId: postIngredient
       requestBody:
-        $ref: '#/components/requestBodies/CreateIngredientRequest'
+        $ref: "#/components/requestBodies/CreateIngredientRequest"
       responses:
-        '201':
+        "201":
           description: |
             Resource created successfully. The response body contains the newly created resource.
           headers:
@@ -1169,339 +1101,311 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ingredient'
-        '400':
+                $ref: "#/components/schemas/Ingredient"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '409':
-          description:
-            The request could not be completed due to a conflict with the
+        "409":
+          description: The request could not be completed due to a conflict with the
             current state of the resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - AccessToken: []
+      - AccessToken: []
       x-swagger-router-controller: Ingredients
   /ingredients/{id}:
     get:
       tags:
-        - Ingredients
+      - Ingredients
       summary: Get an ingredient's details
-      description:
-        This operation retrieves information about a specific ingredient
+      description: This operation retrieves information about a specific ingredient
         identified by its unique ingredient ID.
       operationId: getIngredient
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 614d706b67c122001f35cc47
-        - name: fields
-          in: query
-          description: |
-            Projection filters for including only certain resource properties in the response. The value for the parameter should be a comma-separated list of properties from the schema.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: in_stock_qty|name
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 614d706b67c122001f35cc47
+      - name: fields
+        in: query
+        description: |
+          Projection filters for including only certain resource properties in the response. The value for the parameter should be a comma-separated list of properties from the schema.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: in_stock_qty|name
       responses:
-        '200':
-          description:
-            Successful operation. The response body contains the requested
+        "200":
+          description: Successful operation. The response body contains the requested
             data.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ingredient'
-        '400':
+                $ref: "#/components/schemas/Ingredient"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       x-swagger-router-controller: Ingredients
     put:
       tags:
-        - Ingredients
+      - Ingredients
       summary: Update an ingredient
-      description:
-        "This operation updates an ingredient using the provided information.\
+      description: "This operation updates an ingredient using the provided information.\
         \ Using this operation, API consumers can update the `in_stock_qty` of ingredients\
         \ when orders are placed."
       operationId: putIngredient
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 617d2e09ec42e0001f41bf84
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 617d2e09ec42e0001f41bf84
       requestBody:
-        $ref: '#/components/requestBodies/UpdateIngredientRequest'
+        $ref: "#/components/requestBodies/UpdateIngredientRequest"
       responses:
-        '200':
-          description:
-            Successful operation. The response body contains the updated
+        "200":
+          description: Successful operation. The response body contains the updated
             resource.
-        '204':
-          description:
-            "No content. The operation was successful, and there is no\
+        "204":
+          description: "No content. The operation was successful, and there is no\
             \ content to return."
-        '400':
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '409':
-          description:
-            The request could not be completed due to a conflict with the
+                $ref: "#/components/schemas/Problem"
+        "409":
+          description: The request could not be completed due to a conflict with the
             current state of the resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - AccessToken: []
+      - AccessToken: []
       x-swagger-router-controller: Ingredients
     delete:
       tags:
-        - Ingredients
+      - Ingredients
       summary: Delete an ingredient
-      description:
-        This operation deletes an existing order identified by its unique
+      description: This operation deletes an existing order identified by its unique
         order ID.
       operationId: deleteIngredient
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 61c8c34bb02368001f8f0812
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 61c8c34bb02368001f8f0812
       responses:
-        '204':
-          description:
-            "No content. The operation was successful, and there is no\
+        "204":
+          description: "No content. The operation was successful, and there is no\
             \ content to return."
-        '400':
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - AccessToken: []
+      - AccessToken: []
       x-swagger-router-controller: Ingredients
   /users:
     get:
       tags:
-        - Users
+      - Users
       summary: Get a list of users
-      description:
-        This operation retrieves a list of users based on the specified
+      description: This operation retrieves a list of users based on the specified
         criteria.
       operationId: getAllUsers
       parameters:
-        - name: sort
-          in: query
-          description: |
-            Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. If you include a `sort` value, you must include a `order` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: user_name
-        - name: order
-          in: query
-          description: |
-            Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order. If you include an `order` value, you must include a `sort` value.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: asc
-        - name: fields
-          in: query
-          description: |
-            Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: user_name|email|role
-        - name: filter
-          in: query
-          description: |
-            Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
+      - name: sort
+        in: query
+        description: |
+          Specifies the field by which the results should be sorted. This parameter allows you to define the sorting order based on a particular field in the dataset. If you include a `sort` value, you must include a `order` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: user_name
+      - name: order
+        in: query
+        description: |
+          Determines the order in which the results should be sorted. This parameter specifies whether the sorting should be in ascending or descending order. Valid values are `asc` for ascending order and `desc` for descending order. If you include an `order` value, you must include a `sort` value.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: asc
+      - name: fields
+        in: query
+        description: |
+          Use this parameter to specify which resource properties should be included in the response. Provide a list of schema property names, separated by the `|` delimiter. This allows for precise control over the data returned.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: user_name|email|role
+      - name: filter
+        in: query
+        description: |
+          Selection filters to display resources matching the provided criteria. Use the format `fieldName.operator~value`.
 
-            **Basic Equality (eq)**
-            - For exact matches, use `fieldName.eq~value`.
+          **Basic Equality (eq)**
+          - For exact matches, use `fieldName.eq~value`.
 
-            **Comparison Operators:**
-            - **Less Than (lt)** Use `fieldName.lt~value`.
-            - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
-            - **Greater Than (gt):** Use `fieldName.gt~value`.
-            - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
+          **Comparison Operators:**
+          - **Less Than (lt)** Use `fieldName.lt~value`.
+          - **Less Than or Equal To (lte)** Use `fieldName.lte~value`.
+          - **Greater Than (gt):** Use `fieldName.gt~value`.
+          - **Greater Than or Equal To (gte):** Use `fieldName.gte~value`.
 
-            Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-            example: created_at.gt~2024-05-07|user_name.eq~apiuser01
-        - name: limit
-          in: query
-          description: |
-            Pagination filter for the maximum number of results to return in the response.
-          required: false
-          style: form
-          explode: true
-          schema:
-            maximum: 30
-            type: integer
-          example: 10
-        - name: offset
-          in: query
-          description: |
-            Offset-based pagination filter for the number of results to skip before displaying resources.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: integer
-            example: 0
+          Separate filters using the `|` delimter. Dates should be in `YYYY-MM-DD` format.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: created_at.gt~2024-05-07|user_name.eq~apiuser01
+      - name: limit
+        in: query
+        description: |
+          Pagination filter for the maximum number of results to return in the response.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 30
+          type: integer
+        example: 10
+      - name: offset
+        in: query
+        description: |
+          Offset-based pagination filter for the number of results to skip before displaying resources.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          example: 0
       responses:
-        '200':
-          description:
-            Successful operation. The response body contains the requested
+        "200":
+          description: Successful operation. The response body contains the requested
             data.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_5'
-        '400':
+                $ref: "#/components/schemas/inline_response_200_5"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       x-swagger-router-controller: Users
     post:
       tags:
-        - Users
+      - Users
       summary: Create a user account
-      description:
-        This operation creates a new user with the provided information.
+      description: This operation creates a new user with the provided information.
         The API server uses `role` to determine the the access rights of the user.
         The `email` field is used for password reset.
       operationId: postUser
       requestBody:
-        $ref: '#/components/requestBodies/CreateUserRequest'
+        $ref: "#/components/requestBodies/CreateUserRequest"
       responses:
-        '201':
-          description:
-            Resource created successfully. The response body contains the
+        "201":
+          description: Resource created successfully. The response body contains the
             newly created resource.
           headers:
             Location:
@@ -1513,112 +1417,104 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-        '400':
+                $ref: "#/components/schemas/User"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '409':
-          description:
-            The request could not be completed due to a conflict with the
+        "409":
+          description: The request could not be completed due to a conflict with the
             current state of the resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security: []
       x-swagger-router-controller: Users
   /users/{id}:
     get:
       tags:
-        - Users
+      - Users
       summary: Get a user's details
-      description:
-        This operation retrieves information about a user identified by
+      description: This operation retrieves information about a user identified by
         its unique user ID.
       operationId: getUser
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 66294b2a4475a41f3e709bc9
-        - name: fields
-          in: query
-          description: |
-            Projection filters for including only certain resource properties in the response. The value for the parameter should be a comma-separated list of properties from the schema.
-          required: false
-          style: form
-          explode: true
-          schema:
-            type: string
-          example: user_name|role
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 66294b2a4475a41f3e709bc9
+      - name: fields
+        in: query
+        description: |
+          Projection filters for including only certain resource properties in the response. The value for the parameter should be a comma-separated list of properties from the schema.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: user_name|role
       responses:
-        '200':
-          description:
-            Successful operation. The response body contains the requested
+        "200":
+          description: Successful operation. The response body contains the requested
             data.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-        '400':
+                $ref: "#/components/schemas/User"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       x-swagger-router-controller: Users
     put:
       tags:
-        - Users
+      - Users
       summary: Update a user
       description: This operation updates an existing user with the provided data.
       operationId: putUser
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 66294b2a4475a41f3e709bc9
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 66294b2a4475a41f3e709bc9
       requestBody:
-        $ref: '#/components/requestBodies/UpdateUserRequest'
+        $ref: "#/components/requestBodies/UpdateUserRequest"
       responses:
-        '200':
-          description:
-            Resource updated successfully. The response body contains the
+        "200":
+          description: Resource updated successfully. The response body contains the
             updated resource.
           headers:
             Location:
@@ -1630,103 +1526,92 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-        '204':
-          description:
-            "No content. The operation was successful, and there is no\
+                $ref: "#/components/schemas/User"
+        "204":
+          description: "No content. The operation was successful, and there is no\
             \ content to return."
-        '400':
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '409':
-          description:
-            The request could not be completed due to a conflict with the
+                $ref: "#/components/schemas/Problem"
+        "409":
+          description: The request could not be completed due to a conflict with the
             current state of the resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - AccessToken: []
+      - AccessToken: []
       x-swagger-router-controller: Users
     delete:
       tags:
-        - Users
+      - Users
       summary: Delete a user
-      description:
-        This operation deletes an existing user identified by its unique
+      description: This operation deletes an existing user identified by its unique
         user ID.
       operationId: deleteUser
       parameters:
-        - name: id
-          in: path
-          description: The unique identifier for the resource.
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: 66294b2a4475a41f3e709bca
+      - name: id
+        in: path
+        description: The unique identifier for the resource.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: 66294b2a4475a41f3e709bca
       responses:
-        '204':
-          description:
-            "No content. The operation was successful, and there is no\
+        "204":
+          description: "No content. The operation was successful, and there is no\
             \ content to return."
-        '400':
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - AccessToken: []
+      - AccessToken: []
       x-swagger-router-controller: Users
   /auth/token:
     post:
       tags:
-        - Auth
+      - Auth
       summary: Authenticate user and obtain a access token
-      description:
-        "This operation exchanges the user's username and password directly\
+      description: "This operation exchanges the user's username and password directly\
         \ for an access token. The client ID and client secret are used for client\
         \ authentication (basic). Certain endpoints require the access token in the\
         \ Authorization header to perform admin functions like creating menus. If\
@@ -1734,11 +1619,10 @@ paths:
         \ before a new one is generated."
       operationId: postAuthLogin
       requestBody:
-        $ref: '#/components/requestBodies/CreateTokenRequest'
+        $ref: "#/components/requestBodies/CreateTokenRequest"
       responses:
-        '201':
-          description:
-            Resource created successfully. The response body contains the
+        "201":
+          description: Resource created successfully. The response body contains the
             newly created resource.
           headers:
             Location:
@@ -1750,35 +1634,32 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Auth'
-        '400':
+                $ref: "#/components/schemas/Auth"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '409':
-          description:
-            The request could not be completed due to a conflict with the
+        "409":
+          description: The request could not be completed due to a conflict with the
             current state of the resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       security:
-        - BasicAuth: []
+      - BasicAuth: []
       x-swagger-router-controller: Auth
   /auth/refresh-token:
     post:
       tags:
-        - Auth
+      - Auth
       summary: Refresh access token
-      description:
-        "This operation refreshes a access token using the refresh token,\
+      description: "This operation refreshes a access token using the refresh token,\
         \ providing a new access token and refresh token to the user without requiring\
         \ reauthentication."
       operationId: postAuthRefreshToken
@@ -1787,10 +1668,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/auth_refreshtoken_body'
+              $ref: "#/components/schemas/auth_refreshtoken_body"
         required: true
       responses:
-        '200':
+        "200":
           description: Access token successfully referenced.
           headers:
             Location:
@@ -1802,45 +1683,40 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Auth'
-        '400':
+                $ref: "#/components/schemas/Auth"
+        "400":
           description: Bad request. The request was malformed or invalid.
-        '401':
-          description:
-            "Unauthorized. Authentication is required, or the provided\
+        "401":
+          description: "Unauthorized. Authentication is required, or the provided\
             \ credentials are invalid."
-        '403':
-          description:
-            "Forbidden. The server understood the request, but it refuses\
+        "403":
+          description: "Forbidden. The server understood the request, but it refuses\
             \ to authorize it. Authentication will not help."
-        '404':
+        "404":
           description: Not found. The requested resource does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '500':
-          description:
-            Internal server error. An unexpected error occurred on the
+                $ref: "#/components/schemas/Problem"
+        "500":
+          description: Internal server error. An unexpected error occurred on the
             server.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
       x-swagger-router-controller: Auth
 components:
   schemas:
     AccessToken:
       type: string
-      description:
-        A UUID to access protected resources on behalf of the resource
+      description: A UUID to access protected resources on behalf of the resource
         owner. Normally has a relatively short lifespan and needs to be refreshed
         periodically.
       example: fa0b97b2-445f-41d2-b50f-fb3b014a301e
     SpecialRequests:
       type: string
-      description:
-        "Any special instructions or additional requests associated with\
+      description: "Any special instructions or additional requests associated with\
         \ the order, such as customization details or specific preferences from the\
         \ customer."
       nullable: true
@@ -1848,23 +1724,22 @@ components:
       type: object
       properties:
         auth_id:
-          $ref: '#/components/schemas/Id'
+          $ref: "#/components/schemas/Id"
         created_at:
-          $ref: '#/components/schemas/CreatedAt'
+          $ref: "#/components/schemas/CreatedAt"
         updated_at:
-          $ref: '#/components/schemas/UpdatedAt'
+          $ref: "#/components/schemas/UpdatedAt"
         access_token:
-          $ref: '#/components/schemas/AccessToken'
+          $ref: "#/components/schemas/AccessToken"
         expires_at:
-          $ref: '#/components/schemas/ExpiresAt'
+          $ref: "#/components/schemas/ExpiresAt"
         refresh_token:
-          $ref: '#/components/schemas/RefreshToken'
+          $ref: "#/components/schemas/RefreshToken"
         token_type:
-          $ref: '#/components/schemas/TokenType'
+          $ref: "#/components/schemas/TokenType"
         user_name:
-          $ref: '#/components/schemas/UserName'
-      description:
-        "Defines a set of properties related to authentication and authorization\
+          $ref: "#/components/schemas/UserName"
+      description: "Defines a set of properties related to authentication and authorization\
         \ tokens, particularly used in OAuth 2.0 flows."
       example:
         access_token: fa0b97b2-445f-41d2-b50f-fb3b014a301e
@@ -1877,15 +1752,14 @@ components:
         token_type: Bearer
     Category:
       type: string
-      description:
-        A category that organizes meal courses for display in food ordering
+      description: A category that organizes meal courses for display in food ordering
         apps.
       example: Main Course
       enum:
-        - Appetizer
-        - Main Course
-        - Dessert
-        - Drinks
+      - Appetizer
+      - Main Course
+      - Dessert
+      - Drinks
     CreatedAt:
       type: string
       description: Timestamp when the resource was created in ISO 8601 format.
@@ -1899,27 +1773,27 @@ components:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/Id'
+          $ref: "#/components/schemas/Id"
         created_at:
-          $ref: '#/components/schemas/CreatedAt'
+          $ref: "#/components/schemas/CreatedAt"
         name:
           type: string
           description: A human-friendly name for the dish.
           example: Risotto alla Milanese
         description:
-          $ref: '#/components/schemas/Description'
+          $ref: "#/components/schemas/Description"
         category:
-          $ref: '#/components/schemas/Category'
+          $ref: "#/components/schemas/Category"
         image_name:
-          $ref: '#/components/schemas/ImageName'
+          $ref: "#/components/schemas/ImageName"
         ingredients:
-          $ref: '#/components/schemas/Ingredients'
+          $ref: "#/components/schemas/Ingredients"
         preparation_time:
-          $ref: '#/components/schemas/Price'
+          $ref: "#/components/schemas/Price"
         price:
-          $ref: '#/components/schemas/Price'
+          $ref: "#/components/schemas/Price"
         station:
-          $ref: '#/components/schemas/Station'
+          $ref: "#/components/schemas/Station"
       example:
         image_name: burger
         price: null
@@ -1928,12 +1802,12 @@ components:
         created_at: 2024-04-22T10:00:00Z
         description: A description of the resource.
         ingredients:
-          - - ingredient_id: 66294b2a4475a41f3e709bc5
-              is_essential: true
-            - ingredient_id: 66294b2a4475a41f3e709bc6
-              is_essential: true
-            - ingredient_id: 66294b2a4475a41f3e709bc7
-              is_essential: false
+        - ingredient_id: 66294b2a4475a41f3e709bc5
+          is_essential: true
+        - ingredient_id: 66294b2a4475a41f3e709bc6
+          is_essential: true
+        - ingredient_id: 66294b2a4475a41f3e709bc7
+          is_essential: false
         preparation_time: 999
         id: 674d0bf5c28b69001f8e03a1
         category: Main Course
@@ -1941,15 +1815,14 @@ components:
       type: array
       description: Contains the unique identifiers of dishes to add to the order.
       example:
-        - 692a4a34a46ecf001f35ac6f
-        - 6a4a857c022eb7001f9b8972
-        - 6b7c2441a0db43001f9bf377
+      - 692a4a34a46ecf001f35ac6f
+      - 6a4a857c022eb7001f9b8972
+      - 6b7c2441a0db43001f9bf377
       items:
         type: string
     Email:
       type: string
-      description:
-        The email address of the user that can be used for password resets.
+      description: The email address of the user that can be used for password resets.
         It cannot be used for querying.
       format: email
       example: johndoe@gmail.com
@@ -1978,42 +1851,31 @@ components:
       type: array
       description: List of ingredient groups used during the preparation of the dish.
       example:
-        - - ingredient_id: 66294b2a4475a41f3e709bc5
-            is_essential: true
-          - ingredient_id: 66294b2a4475a41f3e709bc6
-            is_essential: true
-          - ingredient_id: 66294b2a4475a41f3e709bc7
-            is_essential: false
+      - ingredient_id: 66294b2a4475a41f3e709bc5
+        is_essential: true
+      - ingredient_id: 66294b2a4475a41f3e709bc6
+        is_essential: true
+      - ingredient_id: 66294b2a4475a41f3e709bc7
+        is_essential: false
       items:
-        type: array
-        items:
-          type: object
-          properties:
-            ingredient_id:
-              type: string
-              description: The unique identifier for the resource.
-              example: 66294b2a4475a41f3e709bc5
-            is_essential:
-              type: boolean
-              description: Whether the ingredient is essential to prepare the dish.
-              example: true
+        $ref: "#/components/schemas/Ingredients_inner"
     Ingredient:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/Id'
+          $ref: "#/components/schemas/Id"
         created_at:
-          $ref: '#/components/schemas/CreatedAt'
+          $ref: "#/components/schemas/CreatedAt"
         updated_at:
-          $ref: '#/components/schemas/UpdatedAt'
+          $ref: "#/components/schemas/UpdatedAt"
         name:
           type: string
           description: A human-friendly name for the ingredient.
           example: Carrot
         in_stock_qty:
-          $ref: '#/components/schemas/InStockQty'
+          $ref: "#/components/schemas/InStockQty"
         price:
-          $ref: '#/components/schemas/Price'
+          $ref: "#/components/schemas/Price"
       example:
         updated_at: 2024-04-22T10:00:00Z
         price: 999
@@ -2023,44 +1885,42 @@ components:
         in_stock_qty: 3
     InStockQty:
       type: integer
-      description:
-        The quantity of the ingredient in the restaurant's inventory. The
+      description: The quantity of the ingredient in the restaurant's inventory. The
         quantity of the ingredient should be managed by the API consumer.
       example: 3
     Order:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/Id'
+          $ref: "#/components/schemas/Id"
         created_at:
-          $ref: '#/components/schemas/CreatedAt'
+          $ref: "#/components/schemas/CreatedAt"
         updated_at:
-          $ref: '#/components/schemas/UpdatedAt'
+          $ref: "#/components/schemas/UpdatedAt"
         name:
           pattern: "^[^\\s]*$"
           type: string
-          description:
-            The first name of the patron that placed the order. Cannot
+          description: The first name of the patron that placed the order. Cannot
             contain spaces.
           example: John
         table_number:
-          $ref: '#/components/schemas/TableNumber'
+          $ref: "#/components/schemas/TableNumber"
         dish_ids:
-          $ref: '#/components/schemas/DishIds'
+          $ref: "#/components/schemas/DishIds"
         special_requests:
-          $ref: '#/components/schemas/SpecialRequests'
+          $ref: "#/components/schemas/SpecialRequests"
         priority:
-          $ref: '#/components/schemas/Priority'
+          $ref: "#/components/schemas/Priority"
         scheduled_at:
-          $ref: '#/components/schemas/ScheduledAt'
+          $ref: "#/components/schemas/ScheduledAt"
         status:
-          $ref: '#/components/schemas/Status'
+          $ref: "#/components/schemas/Status"
       example:
         updated_at: 2024-04-22T10:00:00Z
         dish_ids:
-          - 692a4a34a46ecf001f35ac6f
-          - 6a4a857c022eb7001f9b8972
-          - 6b7c2441a0db43001f9bf377
+        - 692a4a34a46ecf001f35ac6f
+        - 6a4a857c022eb7001f9b8972
+        - 6b7c2441a0db43001f9bf377
         name: John
         table_number: 8
         created_at: 2024-04-22T10:00:00Z
@@ -2071,19 +1931,17 @@ components:
         status: Received
     Password:
       type: string
-      description:
-        "A password must be at least 8 characters long and contain at least\
+      description: "A password must be at least 8 characters long and contain at least\
         \ one uppercase letter, one lowercase letter, one digit, and one special character\
         \ (@, $, !, %, *, ?, &)."
       example: P@ssw0rd!
     PreparationTime:
       type: integer
-      description: 'Estimated time required to prepare the dish, in minutes.'
+      description: "Estimated time required to prepare the dish, in minutes."
       example: 45
     Price:
       type: number
-      description:
-        The cost of the dish in cents. For example `999` equals `9.99`
+      description: The cost of the dish in cents. For example `999` equals `9.99`
         and `12999` equals `129.99`.
       format: float
       example: 999
@@ -2091,14 +1949,13 @@ components:
       maximum: 5
       minimum: 0
       type: integer
-      description:
-        "Order priority from `1` to `5` (i.e., greatest to least priority).\
+      description: "Order priority from `1` to `5` (i.e., greatest to least priority).\
         \ Priority is normally adjusted by kitchen staff."
       default: 3
     Problem:
       required:
-        - detail
-        - title
+      - detail
+      - title
       type: object
       properties:
         title:
@@ -2114,10 +1971,10 @@ components:
       description: The role that determines a user's access rights to resources.
       example: manager
       enum:
-        - patron
-        - expeditor
-        - chef
-        - manager
+      - patron
+      - expeditor
+      - chef
+      - manager
     ScheduledAt:
       type: string
       description: The timestamp indicating when the order is scheduled for.
@@ -2132,13 +1989,12 @@ components:
           - beverages: In addition to coffee bars, there may be stations dedicated to preparing other beverages such as cocktails, smoothies, or fresh juices.
       example: hot
       enum:
-        - cold
-        - hot
-        - beverages
+      - cold
+      - hot
+      - beverages
     Status:
       type: string
-      description:
-        "The status of the order as it progresses toward completion:\n\
+      description: "The status of the order as it progresses toward completion:\n\
         - **`Draft`**: The patron has yet to submit their order.\n- **`Received`**:\
         \ The patron has placed an order, displaying details in the expeditor's KDS.\
         \ \n- **`In Progress`**: The expeditor prioritizes the order, displaying relevant\
@@ -2150,12 +2006,12 @@ components:
       nullable: true
       example: Received
       enum:
-        - Draft
-        - Received
-        - In Progress
-        - Ready for Assembly
-        - On the Way
-        - Ready for Pickup
+      - Draft
+      - Received
+      - In Progress
+      - Ready for Assembly
+      - On the Way
+      - Ready for Pickup
     TableNumber:
       type: integer
       description: |
@@ -2176,19 +2032,19 @@ components:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/Id'
+          $ref: "#/components/schemas/Id"
         created_at:
-          $ref: '#/components/schemas/CreatedAt'
+          $ref: "#/components/schemas/CreatedAt"
         updated_at:
-          $ref: '#/components/schemas/UpdatedAt'
+          $ref: "#/components/schemas/UpdatedAt"
         user_name:
-          $ref: '#/components/schemas/UserName'
+          $ref: "#/components/schemas/UserName"
         email:
-          $ref: '#/components/schemas/Email'
+          $ref: "#/components/schemas/Email"
         password:
-          $ref: '#/components/schemas/Password'
+          $ref: "#/components/schemas/Password"
         role:
-          $ref: '#/components/schemas/Role'
+          $ref: "#/components/schemas/Role"
       example:
         password: P@ssw0rd!
         role: manager
@@ -2207,38 +2063,38 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Order'
+            $ref: "#/components/schemas/Order"
         total_results:
           type: integer
           example: 20
       example:
         results:
-          - updated_at: 2024-04-22T10:00:00Z
-            dish_ids:
-              - 692a4a34a46ecf001f35ac6f
-              - 6a4a857c022eb7001f9b8972
-              - 6b7c2441a0db43001f9bf377
-            name: John
-            table_number: 8
-            created_at: 2024-04-22T10:00:00Z
-            scheduled_at: 2000-01-23T04:56:07.000+00:00
-            id: 674d0bf5c28b69001f8e03a1
-            special_requests: special_requests
-            priority: 0
-            status: Received
-          - updated_at: 2024-04-22T10:00:00Z
-            dish_ids:
-              - 692a4a34a46ecf001f35ac6f
-              - 6a4a857c022eb7001f9b8972
-              - 6b7c2441a0db43001f9bf377
-            name: John
-            table_number: 8
-            created_at: 2024-04-22T10:00:00Z
-            scheduled_at: 2000-01-23T04:56:07.000+00:00
-            id: 674d0bf5c28b69001f8e03a1
-            special_requests: special_requests
-            priority: 0
-            status: Received
+        - updated_at: 2024-04-22T10:00:00Z
+          dish_ids:
+          - 692a4a34a46ecf001f35ac6f
+          - 6a4a857c022eb7001f9b8972
+          - 6b7c2441a0db43001f9bf377
+          name: John
+          table_number: 8
+          created_at: 2024-04-22T10:00:00Z
+          scheduled_at: 2000-01-23T04:56:07.000+00:00
+          id: 674d0bf5c28b69001f8e03a1
+          special_requests: special_requests
+          priority: 0
+          status: Received
+        - updated_at: 2024-04-22T10:00:00Z
+          dish_ids:
+          - 692a4a34a46ecf001f35ac6f
+          - 6a4a857c022eb7001f9b8972
+          - 6b7c2441a0db43001f9bf377
+          name: John
+          table_number: 8
+          created_at: 2024-04-22T10:00:00Z
+          scheduled_at: 2000-01-23T04:56:07.000+00:00
+          id: 674d0bf5c28b69001f8e03a1
+          special_requests: special_requests
+          priority: 0
+          status: Received
         total_results: 20
     inline_response_200_1:
       type: object
@@ -2246,38 +2102,38 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Order'
+            $ref: "#/components/schemas/Order"
         total_results:
           type: integer
           example: 1
       example:
         results:
-          - updated_at: 2024-04-22T10:00:00Z
-            dish_ids:
-              - 692a4a34a46ecf001f35ac6f
-              - 6a4a857c022eb7001f9b8972
-              - 6b7c2441a0db43001f9bf377
-            name: John
-            table_number: 8
-            created_at: 2024-04-22T10:00:00Z
-            scheduled_at: 2000-01-23T04:56:07.000+00:00
-            id: 674d0bf5c28b69001f8e03a1
-            special_requests: special_requests
-            priority: 0
-            status: Received
-          - updated_at: 2024-04-22T10:00:00Z
-            dish_ids:
-              - 692a4a34a46ecf001f35ac6f
-              - 6a4a857c022eb7001f9b8972
-              - 6b7c2441a0db43001f9bf377
-            name: John
-            table_number: 8
-            created_at: 2024-04-22T10:00:00Z
-            scheduled_at: 2000-01-23T04:56:07.000+00:00
-            id: 674d0bf5c28b69001f8e03a1
-            special_requests: special_requests
-            priority: 0
-            status: Received
+        - updated_at: 2024-04-22T10:00:00Z
+          dish_ids:
+          - 692a4a34a46ecf001f35ac6f
+          - 6a4a857c022eb7001f9b8972
+          - 6b7c2441a0db43001f9bf377
+          name: John
+          table_number: 8
+          created_at: 2024-04-22T10:00:00Z
+          scheduled_at: 2000-01-23T04:56:07.000+00:00
+          id: 674d0bf5c28b69001f8e03a1
+          special_requests: special_requests
+          priority: 0
+          status: Received
+        - updated_at: 2024-04-22T10:00:00Z
+          dish_ids:
+          - 692a4a34a46ecf001f35ac6f
+          - 6a4a857c022eb7001f9b8972
+          - 6b7c2441a0db43001f9bf377
+          name: John
+          table_number: 8
+          created_at: 2024-04-22T10:00:00Z
+          scheduled_at: 2000-01-23T04:56:07.000+00:00
+          id: 674d0bf5c28b69001f8e03a1
+          special_requests: special_requests
+          priority: 0
+          status: Received
         total_results: 1
     inline_response_200_2:
       type: object
@@ -2285,44 +2141,44 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Dish'
+            $ref: "#/components/schemas/Dish"
         total_results:
           type: integer
           example: 1
       example:
         results:
-          - image_name: burger
-            price: null
-            name: Risotto alla Milanese
-            station: hot
-            created_at: 2024-04-22T10:00:00Z
-            description: A description of the resource.
-            ingredients:
-              - - ingredient_id: 66294b2a4475a41f3e709bc5
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc6
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc7
-                  is_essential: false
-            preparation_time: 999
-            id: 674d0bf5c28b69001f8e03a1
-            category: Main Course
-          - image_name: burger
-            price: null
-            name: Risotto alla Milanese
-            station: hot
-            created_at: 2024-04-22T10:00:00Z
-            description: A description of the resource.
-            ingredients:
-              - - ingredient_id: 66294b2a4475a41f3e709bc5
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc6
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc7
-                  is_essential: false
-            preparation_time: 999
-            id: 674d0bf5c28b69001f8e03a1
-            category: Main Course
+        - image_name: burger
+          price: null
+          name: Risotto alla Milanese
+          station: hot
+          created_at: 2024-04-22T10:00:00Z
+          description: A description of the resource.
+          ingredients:
+          - ingredient_id: 66294b2a4475a41f3e709bc5
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc6
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc7
+            is_essential: false
+          preparation_time: 999
+          id: 674d0bf5c28b69001f8e03a1
+          category: Main Course
+        - image_name: burger
+          price: null
+          name: Risotto alla Milanese
+          station: hot
+          created_at: 2024-04-22T10:00:00Z
+          description: A description of the resource.
+          ingredients:
+          - ingredient_id: 66294b2a4475a41f3e709bc5
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc6
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc7
+            is_essential: false
+          preparation_time: 999
+          id: 674d0bf5c28b69001f8e03a1
+          category: Main Course
         total_results: 1
     inline_response_200_3:
       type: object
@@ -2330,45 +2186,45 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Dish'
+            $ref: "#/components/schemas/Dish"
         total_results:
           type: integer
           description: The number of resources returned in the response.
           example: 20
       example:
         results:
-          - image_name: burger
-            price: null
-            name: Risotto alla Milanese
-            station: hot
-            created_at: 2024-04-22T10:00:00Z
-            description: A description of the resource.
-            ingredients:
-              - - ingredient_id: 66294b2a4475a41f3e709bc5
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc6
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc7
-                  is_essential: false
-            preparation_time: 999
-            id: 674d0bf5c28b69001f8e03a1
-            category: Main Course
-          - image_name: burger
-            price: null
-            name: Risotto alla Milanese
-            station: hot
-            created_at: 2024-04-22T10:00:00Z
-            description: A description of the resource.
-            ingredients:
-              - - ingredient_id: 66294b2a4475a41f3e709bc5
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc6
-                  is_essential: true
-                - ingredient_id: 66294b2a4475a41f3e709bc7
-                  is_essential: false
-            preparation_time: 999
-            id: 674d0bf5c28b69001f8e03a1
-            category: Main Course
+        - image_name: burger
+          price: null
+          name: Risotto alla Milanese
+          station: hot
+          created_at: 2024-04-22T10:00:00Z
+          description: A description of the resource.
+          ingredients:
+          - ingredient_id: 66294b2a4475a41f3e709bc5
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc6
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc7
+            is_essential: false
+          preparation_time: 999
+          id: 674d0bf5c28b69001f8e03a1
+          category: Main Course
+        - image_name: burger
+          price: null
+          name: Risotto alla Milanese
+          station: hot
+          created_at: 2024-04-22T10:00:00Z
+          description: A description of the resource.
+          ingredients:
+          - ingredient_id: 66294b2a4475a41f3e709bc5
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc6
+            is_essential: true
+          - ingredient_id: 66294b2a4475a41f3e709bc7
+            is_essential: false
+          preparation_time: 999
+          id: 674d0bf5c28b69001f8e03a1
+          category: Main Course
         total_results: 20
     inline_response_200_4:
       type: object
@@ -2376,24 +2232,24 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Ingredient'
+            $ref: "#/components/schemas/Ingredient"
         total_results:
           type: integer
           example: 1
       example:
         results:
-          - updated_at: 2024-04-22T10:00:00Z
-            price: 999
-            name: Carrot
-            created_at: 2024-04-22T10:00:00Z
-            id: 674d0bf5c28b69001f8e03a1
-            in_stock_qty: 3
-          - updated_at: 2024-04-22T10:00:00Z
-            price: 999
-            name: Carrot
-            created_at: 2024-04-22T10:00:00Z
-            id: 674d0bf5c28b69001f8e03a1
-            in_stock_qty: 3
+        - updated_at: 2024-04-22T10:00:00Z
+          price: 999
+          name: Carrot
+          created_at: 2024-04-22T10:00:00Z
+          id: 674d0bf5c28b69001f8e03a1
+          in_stock_qty: 3
+        - updated_at: 2024-04-22T10:00:00Z
+          price: 999
+          name: Carrot
+          created_at: 2024-04-22T10:00:00Z
+          id: 674d0bf5c28b69001f8e03a1
+          in_stock_qty: 3
         total_results: 1
     inline_response_200_5:
       type: object
@@ -2401,31 +2257,42 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/User'
+            $ref: "#/components/schemas/User"
         total_results:
           type: integer
           example: 20
       example:
         results:
-          - password: P@ssw0rd!
-            role: manager
-            updated_at: 2024-04-22T10:00:00Z
-            user_name: john_doe
-            created_at: 2024-04-22T10:00:00Z
-            id: 674d0bf5c28b69001f8e03a1
-            email: johndoe@gmail.com
-          - password: P@ssw0rd!
-            role: manager
-            updated_at: 2024-04-22T10:00:00Z
-            user_name: john_doe
-            created_at: 2024-04-22T10:00:00Z
-            id: 674d0bf5c28b69001f8e03a1
-            email: johndoe@gmail.com
+        - password: P@ssw0rd!
+          role: manager
+          updated_at: 2024-04-22T10:00:00Z
+          user_name: john_doe
+          created_at: 2024-04-22T10:00:00Z
+          id: 674d0bf5c28b69001f8e03a1
+          email: johndoe@gmail.com
+        - password: P@ssw0rd!
+          role: manager
+          updated_at: 2024-04-22T10:00:00Z
+          user_name: john_doe
+          created_at: 2024-04-22T10:00:00Z
+          id: 674d0bf5c28b69001f8e03a1
+          email: johndoe@gmail.com
         total_results: 20
     auth_refreshtoken_body:
       properties:
         refresh_token:
-          $ref: '#/components/schemas/RefreshToken'
+          $ref: "#/components/schemas/RefreshToken"
+    Ingredients_inner:
+      type: object
+      properties:
+        ingredient_id:
+          type: string
+          description: The unique identifier for the resource.
+          example: 66294b2a4475a41f3e709bc5
+        is_essential:
+          type: boolean
+          description: Whether the ingredient is essential to prepare the dish.
+          example: true
   requestBodies:
     CreateDishRequest:
       description: Request body containing information used to create the resource.
@@ -2433,14 +2300,14 @@ components:
         application/json:
           schema:
             required:
-              - category
-              - description
-              - image_name
-              - ingredients
-              - name
-              - preparation_time
-              - price
-              - station
+            - category
+            - description
+            - image_name
+            - ingredients
+            - name
+            - preparation_time
+            - price
+            - station
             type: object
             properties:
               name:
@@ -2448,19 +2315,19 @@ components:
                 description: A human-friendly name for the dish.
                 example: Risotto alla Milanese
               description:
-                $ref: '#/components/schemas/Description'
+                $ref: "#/components/schemas/Description"
               category:
-                $ref: '#/components/schemas/Category'
+                $ref: "#/components/schemas/Category"
               image_name:
-                $ref: '#/components/schemas/ImageName'
+                $ref: "#/components/schemas/ImageName"
               ingredients:
-                $ref: '#/components/schemas/Ingredients'
+                $ref: "#/components/schemas/Ingredients"
               preparation_time:
-                $ref: '#/components/schemas/PreparationTime'
+                $ref: "#/components/schemas/PreparationTime"
               price:
-                $ref: '#/components/schemas/Price'
+                $ref: "#/components/schemas/Price"
               station:
-                $ref: '#/components/schemas/Station'
+                $ref: "#/components/schemas/Station"
       required: true
     UpdateDishRequest:
       description: Request body containing information used to update the resource.
@@ -2474,19 +2341,19 @@ components:
                 description: A human-friendly name for the dish.
                 example: Risotto alla Milanese
               description:
-                $ref: '#/components/schemas/Description'
+                $ref: "#/components/schemas/Description"
               category:
-                $ref: '#/components/schemas/Category'
+                $ref: "#/components/schemas/Category"
               image_name:
-                $ref: '#/components/schemas/ImageName'
+                $ref: "#/components/schemas/ImageName"
               ingredients:
-                $ref: '#/components/schemas/Ingredients'
+                $ref: "#/components/schemas/Ingredients"
               preparation_time:
-                $ref: '#/components/schemas/PreparationTime'
+                $ref: "#/components/schemas/PreparationTime"
               price:
-                $ref: '#/components/schemas/Price'
+                $ref: "#/components/schemas/Price"
               station:
-                $ref: '#/components/schemas/Station'
+                $ref: "#/components/schemas/Station"
       required: true
     CreateIngredientRequest:
       description: Request body containing information used to create the resource.
@@ -2494,9 +2361,9 @@ components:
         application/json:
           schema:
             required:
-              - in_stock_qty
-              - name
-              - price
+            - in_stock_qty
+            - name
+            - price
             type: object
             properties:
               name:
@@ -2504,9 +2371,9 @@ components:
                 description: A human-friendly name for the ingredient.
                 example: Carrot
               in_stock_qty:
-                $ref: '#/components/schemas/InStockQty'
+                $ref: "#/components/schemas/InStockQty"
               price:
-                $ref: '#/components/schemas/Price'
+                $ref: "#/components/schemas/Price"
       required: true
     UpdateIngredientRequest:
       description: Request body containing information used to update the resource.
@@ -2520,9 +2387,9 @@ components:
                 description: A human-friendly name for the ingredient.
                 example: Carrot
               in_stock_qty:
-                $ref: '#/components/schemas/InStockQty'
+                $ref: "#/components/schemas/InStockQty"
               price:
-                $ref: '#/components/schemas/Price'
+                $ref: "#/components/schemas/Price"
       required: true
     CreateOrderRequest:
       description: Request body containing information used to create the resource.
@@ -2530,43 +2397,42 @@ components:
         application/json:
           schema:
             required:
-              - dish_ids
-              - name
+            - dish_ids
+            - name
             type: object
             properties:
               name:
                 pattern: "^[^\\s]*$"
                 type: string
-                description:
-                  The first name of the patron that placed the order. Cannot
+                description: The first name of the patron that placed the order. Cannot
                   contain spaces.
                 example: John
               table_number:
-                $ref: '#/components/schemas/TableNumber'
+                $ref: "#/components/schemas/TableNumber"
               dish_ids:
-                $ref: '#/components/schemas/DishIds'
+                $ref: "#/components/schemas/DishIds"
               special_requests:
-                $ref: '#/components/schemas/SpecialRequests'
+                $ref: "#/components/schemas/SpecialRequests"
               scheduled_at:
-                $ref: '#/components/schemas/ScheduledAt'
+                $ref: "#/components/schemas/ScheduledAt"
           examples:
             Order - Unscheduled:
               value:
                 name: Ben
                 table_number: 18
                 dish_ids:
-                  - 692a4a34a46ecf001f35ac6f
-                  - 6a4a857c022eb7001f9b8972
-                  - 6b7c2441a0db43001f9bf377
+                - 692a4a34a46ecf001f35ac6f
+                - 6a4a857c022eb7001f9b8972
+                - 6b7c2441a0db43001f9bf377
                 special_requests: No peanuts.
             Order - Scheduled:
               value:
                 name: Ben
                 table_number: 18
                 dish_ids:
-                  - 692a4a34a46ecf001f35ac6f
-                  - 6a4a857c022eb7001f9b8972
-                  - 6b7c2441a0db43001f9bf377
+                - 692a4a34a46ecf001f35ac6f
+                - 6a4a857c022eb7001f9b8972
+                - 6b7c2441a0db43001f9bf377
                 scheduled_at: 2024-08-26T09:03:18.865Z
       required: true
     UpdateOrderRequest:
@@ -2577,11 +2443,11 @@ components:
             type: object
             properties:
               dish_ids:
-                $ref: '#/components/schemas/DishIds'
+                $ref: "#/components/schemas/DishIds"
               priority:
-                $ref: '#/components/schemas/Priority'
+                $ref: "#/components/schemas/Priority"
               status:
-                $ref: '#/components/schemas/Status'
+                $ref: "#/components/schemas/Status"
       required: true
     CreateTokenRequest:
       description: Request body containing information used to create the resource.
@@ -2589,20 +2455,19 @@ components:
         application/json:
           schema:
             required:
-              - grant_type
-              - password
-              - user_name
+            - grant_type
+            - password
+            - user_name
             properties:
               grant_type:
                 type: string
-                description:
-                  Tells the login endpoint to do perform the resource owner
+                description: Tells the login endpoint to do perform the resource owner
                   password credential flow.
                 example: password
               user_name:
-                $ref: '#/components/schemas/UserName'
+                $ref: "#/components/schemas/UserName"
               password:
-                $ref: '#/components/schemas/Password'
+                $ref: "#/components/schemas/Password"
       required: true
     CreateUserRequest:
       description: |
@@ -2611,20 +2476,20 @@ components:
         application/json:
           schema:
             required:
-              - email
-              - password
-              - role
-              - user_name
+            - email
+            - password
+            - role
+            - user_name
             type: object
             properties:
               email:
-                $ref: '#/components/schemas/Email'
+                $ref: "#/components/schemas/Email"
               password:
-                $ref: '#/components/schemas/Password'
+                $ref: "#/components/schemas/Password"
               role:
-                $ref: '#/components/schemas/Role'
+                $ref: "#/components/schemas/Role"
               user_name:
-                $ref: '#/components/schemas/UserName'
+                $ref: "#/components/schemas/UserName"
       required: true
     UpdateUserRequest:
       description: |
@@ -2635,13 +2500,13 @@ components:
             type: object
             properties:
               email:
-                $ref: '#/components/schemas/Email'
+                $ref: "#/components/schemas/Email"
               password:
-                $ref: '#/components/schemas/Password'
+                $ref: "#/components/schemas/Password"
               role:
-                $ref: '#/components/schemas/Role'
+                $ref: "#/components/schemas/Role"
               user_name:
-                $ref: '#/components/schemas/UserName'
+                $ref: "#/components/schemas/UserName"
       required: true
   securitySchemes:
     AccessToken:
