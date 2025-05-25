@@ -1,4 +1,4 @@
-# 📊 JSON vs YAML Comparison Guide
+# JSON vs YAML Comparison Guide
 
 A quick-reference guide to help you see the differences and similarities between **JSON** and **YAML** for structuring data.
 

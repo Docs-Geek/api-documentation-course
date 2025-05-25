@@ -1,4 +1,4 @@
-# 📒 YAML Reference Guide
+# YAML Reference Guide
 
 **YAML (YAML Ain’t Markup Language)** is a human-friendly data format often used for configuration files, data exchange, and structured data representation. It’s known for being clean, readable, and easy to write by hand.
 

@@ -3,5 +3,9 @@
 - group: Exercises
   selectFirstItemOnExpand: true
   items:
-    - page: exercises/class_2.md
-      label: Class 2
+    - page: exercises/class-2.md
+    - page: exercises/class-3.md
+- group: Recordings
+  selectFirstItemOnExpand: true
+  items:
+    - page: recordings/class-3.md
