@@ -5,6 +5,12 @@
   items:
     - page: exercises/class-2.md
     - page: exercises/class-3.md
+- group: References
+  selectFirstItemOnExpand: true
+  items:
+    - page: references/json.md
+    - page: references/yaml.md
+    - page: references/json-vs-yaml.md
 - group: Recordings
   selectFirstItemOnExpand: true
   items:
