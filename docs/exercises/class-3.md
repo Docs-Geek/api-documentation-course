@@ -17,10 +17,10 @@ You’ve been asked to document a simple Movies API for a film database app. You
 
 While these exercises focus on YAML, it's important to understand the differences between JSON and YAML. Therefore, it is recommended that you review the following guides as a refresher on both formats and their distinctions:
 
-- Read the [JSON Reference Guide](./references/json.md) for an overview of JSON.
+- Read the [JSON Reference Guide](references/json.md) for an overview of JSON.
 - Read about [Type-specific keywords](https://json-schema.org/understanding-json-schema/reference/type) for a refresher on JSON data types and constraints.
-- Read the [YAML Reference Guide](./references/yaml.md) for an overview of YAML.
-- Consult the [JSON vs. YAML Reference Guide](./references/json-vs.yaml.md) to understand the differences between JSON and YAML.
+- Read the [YAML Reference Guide](references/yaml.md) for an overview of YAML.
+- Consult the [JSON vs. YAML Reference Guide](references/json-vs-yaml.md) to understand the differences between JSON and YAML.
 
 Additionally, it would be beneficial to refresh your skills in Markdown:
 
