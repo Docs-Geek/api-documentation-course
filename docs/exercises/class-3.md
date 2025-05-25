@@ -15,16 +15,27 @@ You’ve been asked to document a simple Movies API for a film database app. You
 
 ## ✅ Prerequisites
 
-Complete the [Markdown Tutorial](https://www.markdowntutorial.com/) to refresh your Markdown skills.
+While these exercises focus on YAML, it's important to understand the differences between JSON and YAML. Therefore, it is recommended that you review the following guides as a refresher on both formats and their distinctions:
+
+- Read the [JSON Reference Guide](./references/json.md) for an overview of JSON.
+- Read about [Type-specific keywords](https://json-schema.org/understanding-json-schema/reference/type) for a refresher on JSON data types and constraints.
+- Read the [YAML Reference Guide](./references/yaml.md) for an overview of YAML.
+- Consult the [JSON vs. YAML Reference Guide](./references/json-vs.yaml.md) to understand the differences between JSON and YAML.
+
+Additionally, it would be beneficial to refresh your skills in Markdown:
+
+- Complete the [Markdown Tutorial](https://www.markdowntutorial.com/) to enhance your Markdown proficiency.
 
 ---
 
 ## 1. Set Up the Base API
 
+1. Search for and review the "Info Object" section of the official [OpenAPI documentation](https://swagger.io/specification/).
+
 In [Swagger Editor](https://editor.swagger.io/):
 
-1. Clear the default spec (**File** > **Clear Editor**).
-2. Add this base structure to the left panel, representing the following tabular data as YAML:
+2. Clear the default spec (**File** > **Clear Editor**).
+3. Add this base structure to the left panel, representing the following tabular data as YAML:
 
 | **Key**    | **Subkey**  | **Value**                             |
 | ---------- | ----------- | ------------------------------------- |
@@ -71,8 +82,9 @@ Review the rendered documentation to make sure the output looks clean, readable,
 
 ## 4. Create a Movie Schema
 
-1. Under `components/schemas`, remove the existing `{}` placeholder and define a `Movie` object.
-2. Interpret the following table as the nested properties of the `Movie` object, with each property’s type specified accordingly.
+1. Search for and review the "Components Object" section of the official [OpenAPI documentation](https://swagger.io/specification/).
+2. Under `components/schemas`, remove the existing `{}` placeholder and define a `Movie` object.
+3. Interpret the following table as the nested properties of the `Movie` object, with each property’s type specified accordingly.
    - Each property listed in the table should be added as a key within the `properties` section of the `Movie` schema, using the indicated type.
 
 | Property      | Type      |
@@ -111,17 +123,17 @@ Do your best to infer the purpose of each field and write clear, thoughtful desc
 
 ---
 
-Sure — here’s a clean, rewritten version of your instructions specifically phrased around **tabs** instead of spaces, while keeping it clear and approachable:
-
----
-
 ## 7. Add an API Path with Example Response
 
 In this section, you’ll learn how to define a new API path for retrieving all movies. We’ll focus on the correct YAML structure, using **tabs** for indentation to keep your OpenAPI definition valid and easy to read. You’ll also see how to include an example response that references the `Movie` schema we created earlier.
 
----
+--- Paths Object
 
 **To add a `GET /movies` API Path:**
+
+1. Search for and review the "Paths Object" and "Path Item Object" sections of the official [OpenAPI documentation](https://swagger.io/specification/).
+
+In [Swagger Editor](https://editor.swagger.io/):
 
 1. **Start with `paths`:**
    Remove the `{}` after `paths:` so it’s ready to nest new paths underneath.
