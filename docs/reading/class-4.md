@@ -1,4 +1,4 @@
-# Class #3: Offline Reading
+# Class #4: Offline Reading
 
 ## Creating Resources
 
