@@ -284,8 +284,6 @@ The basic unit of the Semantic Web is a triple, consisting of a subject, predica
 
 These resources are organized into groups with specific characteristics, described by a "vocabulary." A vocabulary can be a collection of terms and definitions that help us describe different types of things, their properties, and their relationships to other things.
 
-%% Not sure I want to add a vocabulary example %%
-
 The goal is to create a network of "things" that connect and reference each other, allowing machines to understand and share information from various sources in a helpful and automated way. This network can be visualized as a knowledge graph, which shows how different resources relate.
 
 ![](imgs/triples-visualized.png)
@@ -444,3 +442,7 @@ In conclusion, OAS specifications provide a valuable dataset that enables LLMs t
 However, LLMs struggle to consume OAS directly because it is structured data. Simply using embeddings discards the explicit relationships defined in OAS, weakening its role as a contract. Converting OAS into a knowledge graph allows LLMs to query it effectively. By layering business concepts and semantics on top of the syntax, we can provide LLMs with a more complete and meaningful dataset for answering natural language queries.
 
 If you're interesting in providing feedback on the first publicly availavble version of the tool, you can sign up here:
+
+## Want to learn more about APIs?
+
+Check out my course, [Mastering API Documentation](https://www.docsgeek.io/mastering-api-documentation-course#) a comprehensive 7-week live virtual course tailored for developers, technical writers, and anyone eager to learn how to create effective API documentation.
