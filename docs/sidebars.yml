@@ -15,3 +15,7 @@
   selectFirstItemOnExpand: true
   items:
     - page: recordings/class-3.md
+- group: Posts
+  selectFirstItemOnExpand: true
+  items:
+    - page: posts/from-semantic-apis.md
