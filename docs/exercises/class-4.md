@@ -4,24 +4,18 @@ In this session, we'll explore how to send API requests using **Curl**. **Curl**
 
 **Note:** Please manually type each URL instead of copying and pasting. The goal is to become proficient in URL construction.
 
-The instructions include questions at various points. You can find the answers to these questions in the accompanying file, `offline-exercises_answers_session3`.
+The instructions include questions at various points. You can find the answers to these questions in the "Answers" section towards the end of the page.
 
 ## Prerequisites
 
-### Local Setup
-
-- Open Docker Desktop and start the `api-documentation-course` container. Click "Play" if it's not running.
-- Open Visual Studio Code and go to the top menu and select **Terminal** > **New Terminal**.
-- Alternatively, use the keyboard shortcut:
-  - Windows: `Ctrl + (backtick)`
-  - macOS: `Command (⌘) + (backtick)`
-
-### GitPod setup
-
-These steps apply only if you completed the GitPod setup. If you’re unfamiliar with "GitPod," you likely set up the project locally. In that case, you can skip these prerequisite steps.
-
-- Go to your [GitPod Workspaces](https://gitpod.io/workspaces) page and open the workspace you created as part of the [GitPod setup](https://github.com/mawentowski/api-documentation-course-gitpod/blob/main/docs/gitpod-setup.md#opening-the-course-repository-in-a-gitpod-workspace) (if you’ve already completed the setup, there’s no need to do it again).
-- Follow the [Running Curl commands](https://github.com/mawentowski/api-documentation-course-gitpod/blob/main/docs/gitpod-user-guide.md#running-curl-commands) instructions to open a new terminal to run Curl commands.
+1. Go to [https://github.com//codespaces](https://github.com//codespaces) (sign in to GitHub if not already signed in).
+2. Click the Codespace you created previously to open it.
+3. Make the API server public. Refer to:
+   - [https://api-course-docs.redocly.app/dev-setup#make-the-api-server-port-public](https://api-course-docs.redocly.app/dev-setup#make-the-api-server-port-public)
+4. Start the server by running `npm run start` in a terminal. Refer to:
+   - [https://api-course-docs.redocly.app/dev-setup#start-the-api-server](https://api-course-docs.redocly.app/dev-setup#start-the-api-server)
+5. Open a new terminal, click the plus (**+**) icon.
+6. Click inside the terminal.
 
 ## Steps
 
