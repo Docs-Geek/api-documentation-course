@@ -51,50 +51,52 @@ Just like when describing response bodies, request bodies are described using JS
 This schema can are found in the `components` > `requestBodies` section.
 
 ```yaml
-CreateOrderRequest:
-  description: Request body containing information used to create the resource.
-  required: true
-  content:
-    application/json:
-      schema:
-        type: object
-        properties:
-          name:
-            type: string
-            pattern: "^[^\\s]*$"
-            example: 'John'
-            description: The first name of the patron that placed the order. Cannot contain spaces.
-          table_number:
-            $ref: '#/components/schemas/TableNumber'
-          dish_ids:
-            $ref: '#/components/schemas/DishIds'
-          special_requests:
-            $ref: '#/components/schemas/SpecialRequests'
-          scheduled_at:
-            $ref: '#/components/schemas/ScheduledAt'
-        required:
-          - dish_ids
-          - name
-      examples:
-        Order - Unscheduled:
-          value:
-            name: 'Ben'
-            table_number: 18
-            dish_ids:
-              - '692a4a34a46ecf001f35ac6f'
-              - '6a4a857c022eb7001f9b8972'
-              - '6b7c2441a0db43001f9bf377'
-            special_requests: 'No peanuts.'
-            scheduled at: null
-        Order - Scheduled:
-          value:
-            name: 'Ben'
-            table_number: 18
-            dish_ids:
-              - '692a4a34a46ecf001f35ac6f'
-              - '6a4a857c022eb7001f9b8972'
-              - '6b7c2441a0db43001f9bf377'
-            scheduled_at: '2024-08-26T09:03:18.865Z'
+components:
+  requestBodies:
+    CreateOrderRequest:
+      description: Request body containing information used to create the resource.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                pattern: "^[^\\s]*$"
+                example: 'John'
+                description: The first name of the patron that placed the order. Cannot contain spaces.
+              table_number:
+                $ref: '#/components/schemas/TableNumber'
+              dish_ids:
+                $ref: '#/components/schemas/DishIds'
+              special_requests:
+                $ref: '#/components/schemas/SpecialRequests'
+              scheduled_at:
+                $ref: '#/components/schemas/ScheduledAt'
+            required:
+              - dish_ids
+              - name
+          examples:
+            Order - Unscheduled:
+              value:
+                name: 'Ben'
+                table_number: 18
+                dish_ids:
+                  - '692a4a34a46ecf001f35ac6f'
+                  - '6a4a857c022eb7001f9b8972'
+                  - '6b7c2441a0db43001f9bf377'
+                special_requests: 'No peanuts.'
+                scheduled at: null
+            Order - Scheduled:
+              value:
+                name: 'Ben'
+                table_number: 18
+                dish_ids:
+                  - '692a4a34a46ecf001f35ac6f'
+                  - '6a4a857c022eb7001f9b8972'
+                  - '6b7c2441a0db43001f9bf377'
+                scheduled_at: '2024-08-26T09:03:18.865Z'
 ```
 
 ### Sending a POST request
@@ -156,32 +158,34 @@ Just like when describing request bodies, response bodies are described using JS
 This schema can are found in the `components` > `schemas` section.
 
 ```yaml
-Order:
-  type: object
-  properties:
-    id:
-      $ref: '#/components/schemas/Id'
-    created_at:
-      $ref: '#/components/schemas/CreatedAt'
-    updated_at:
-      $ref: '#/components/schemas/UpdatedAt'
-    name:
-      type: string
-      pattern: "^[^\\s]*$"
-      example: 'John'
-      description: The first name of the patron that placed the order. Cannot contain spaces.
-    table_number:
-      $ref: '#/components/schemas/TableNumber'
-    dish_ids:
-      $ref: '#/components/schemas/DishIds'
-    special_requests:
-      $ref: '#/components/schemas/SpecialRequests'
-    priority:
-      $ref: '#/components/schemas/Priority'
-    scheduled_at:
-      $ref: '#/components/schemas/ScheduledAt'
-    status:
-      $ref: '#/components/schemas/Status'
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+        name:
+          type: string
+          pattern: "^[^\\s]*$"
+          example: 'John'
+          description: The first name of the patron that placed the order. Cannot contain spaces.
+        table_number:
+          $ref: '#/components/schemas/TableNumber'
+        dish_ids:
+          $ref: '#/components/schemas/DishIds'
+        special_requests:
+          $ref: '#/components/schemas/SpecialRequests'
+        priority:
+          $ref: '#/components/schemas/Priority'
+        scheduled_at:
+          $ref: '#/components/schemas/ScheduledAt'
+        status:
+          $ref: '#/components/schemas/Status'
 ```
 
 The response JSON abides by the schema so a `201 Created` status code is returned indicating the resource was successfully created.
@@ -473,7 +477,7 @@ HTTP/1.1 204 No Content
 - `404 Not Found`: The requested resource was not found.
 - `401 Unauthorized`: Authentication is required, or the provided credentials are invalid.
 
-## Subresources
+## Sub-resources
 
 In RESTful API design, sub-resources represent a way to model
 relationships between primary resources and their related entities.
@@ -488,7 +492,7 @@ In a URL, sub-resources are typically represented by appending their
 path to the primary resource's path, along with the identifier of the
 primary resource.
 
-### Subresources Design
+### Sub-resources Design
 
 Consider an API that allows you to manage projects and their associated
 tasks.
@@ -542,7 +546,7 @@ Content-Type: application/json
 }
 ```
 
-## Sub-resources Definitions
+### Sub-resources Definitions
 
 When designing an API with sub-resources, you typically define endpoints
 that include the primary resource's identifier in the path, followed by

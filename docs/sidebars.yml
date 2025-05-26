@@ -5,6 +5,7 @@
   items:
     - page: exercises/class-2.md
     - page: exercises/class-3.md
+    - page: exercises/class-4.md
 - group: Reading
   selectFirstItemOnExpand: true
   items:
