@@ -81,6 +81,7 @@ curl -i -X GET 'https://animated-system-5vwg76449p6fx5q-80.app.github.dev/dishes
 **Question #2:** What status code is returned and what does it indicate about the request?
 
 10. **Clear the terminal:**
+    - Type the following command and hit Enter.
 
 ```bash
 clear
@@ -126,6 +127,7 @@ curl -i -X GET 'https://animated-system-5vwg76449p6fx5q-80.app.github.dev/dishes
 **Question #3:** How do the values for `preparation_time` differ from your previous request?
 
 5. **Clear the terminal again:**
+   - Type the following command and hit Enter.
 
 ```bash
 clear
@@ -229,11 +231,11 @@ curl -i -X GET \
 
 This question is broken out into multiple parts:
 
-- What is the query parameter being used?
-- Which fields are being filtered?
-- What comparison operators are being utilized, and what is their purpose?
-- What character precedes the value on which a filter is applied?
-- What are the selection criteria described in simple terms?
+1. What is the query parameter being used?
+2. Which fields are being filtered?
+3. What comparison operators are being utilized, and what is their purpose?
+4. What character precedes the value on which a filter is applied?
+5. What are the selection criteria described in simple terms?
 
 ### 6. Exercise Completion
 
