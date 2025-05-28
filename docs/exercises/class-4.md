@@ -75,12 +75,12 @@ curl -i -X GET 'https://animated-system-5vwg76449p6fx5q-80.app.github.dev/dishes
 
 **Question #1:** What type of endpoint is this: a collection endpoint or an endpoint used to retrieve a specific resource?
 
-1. **Run the command.** You should see a lot of output in the terminal.
-2. **Find the status code.** Scroll up to locate the line starting with `HTTP/2`.
+8. **Run the command.** You should see a lot of output in the terminal.
+9. **Find the status code.** Scroll up to locate the line starting with `HTTP/2`.
 
 **Question #2:** What status code is returned and what does it indicate about the request?
 
-3. **Clear the terminal:**
+10. **Clear the terminal:**
 
 ```bash
 clear
@@ -111,11 +111,11 @@ curl -i -X GET 'https://animated-system-5vwg76449p6fx5q-80.app.github.dev/dishes
 
 -->
 
-1. **Run the command:** Copy the command into the terminal, and hit ENTER to run the command.
+3. **Run the command:** Copy the command into the terminal, and hit ENTER to run the command.
 
    - Analyze the JSON response. What is the value of the `preparation_time` field for the **first** and **last** records?
 
-2. Set the `order` parameter to `desc` instead of `asc` and run the command again.
+4. Set the `order` parameter to `desc` instead of `asc` and run the command again.
 
 <!--
 
@@ -125,7 +125,7 @@ curl -i -X GET 'https://animated-system-5vwg76449p6fx5q-80.app.github.dev/dishes
 
 **Question #3:** How do the values for `preparation_time` differ from your previous request?
 
-1. **Clear the terminal again:**
+5. **Clear the terminal again:**
 
 ```bash
 clear
@@ -142,7 +142,7 @@ curl -i -X GET \
 "{GH-CODESPACES-SERVER-URL}orders?sort=priority&order=desc&fields=table_number|status|priority|name"
 ```
 
-Once again, we can use a line break with the backslash (`\`) character. This helps improve readability, especially when commands are too long and might run off the edge of the page in a PDF.
+Once again, we can use a line break with the backslash (`\`) character.
 
 - Format the JSON response using the [JSON formatter](https://jsonformatter.org) to improve readability.
 
@@ -153,7 +153,7 @@ curl -i -X GET \
 
 -->
 
-**Question #4 (multi-part question):**
+**Question #4 (multi-part question)**
 
 This question is broken out into multiple parts:
 
@@ -206,7 +206,7 @@ curl -i -X GET \
 
 -->
 
-1. **Run the request:** Copy the command from the text editor and paste it into the terminal. Hit ENTER to run the command.
+5. **Run the request:** Copy the command from the text editor and paste it into the terminal. Hit ENTER to run the command.
 
 ### 5. Chain Selection Filters
 
@@ -225,7 +225,9 @@ curl -i -X GET \
 "https://animated-system-5vwg76449p6fx5q-80.app.github.dev/dishes?filter=category.eq~Main%20Course|station.eq~hot"
  -->
 
-**Question #5 (multi-part question):**
+**Question #5 (multi-part question)**
+
+This question is broken out into multiple parts:
 
 - What is the query parameter being used?
 - Which fields are being filtered?
