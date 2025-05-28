@@ -1,10 +1,10 @@
 # Class #4: Offline Exercises
 
-In this session, we'll explore how to send API requests using **Curl**. **Curl** is a powerful command-line tool for making API requests. Unlike API clients like Postman that provide a graphical interface, Curl allows you to manually construct endpoint URLs, which is essential for understanding complex query parameters.
+In these exercises, we'll explore how to send API requests using **Curl**. **Curl** is a powerful command-line tool for making API requests. Unlike API clients like Postman that provide a graphical interface, Curl allows you to manually construct endpoint URLs, which is essential for understanding complex query parameters.
 
-**Note:** Please manually type each URL instead of copying and pasting. The goal is to become proficient in URL construction.
+**Note:** Please manually type each URL instead of copying and pasting (except for the server URL). The goal is to become proficient in URL construction.
 
-The instructions contain questions at various points throughout the document. Please collect your answers to each question in a separate file. At the end of the exercises, you will be asked to paste your answers into the Class #4 Channel on the Discord server.
+The instructions contain questions at various points. Please collect your answers to each question in a separate file. At the end of the exercises, you will be asked to paste your answers into the Class #4 Channel on the Discord server.
 
 ## Prerequisites
 
@@ -25,46 +25,46 @@ Whenever you see `{GH-CODESPACES-SERVER-URL}` referenced, replace that placehold
 
 ### 1. Send an HTTP Request to the Collection Endpoint
 
-1. In the terminal, type the following command:
+1. In the terminal, type the following command (do not hit ENTER yet):
 
 ```bash
 curl
 ```
 
-3. Specify the request method as GET:
+2. Specify the request method as GET:
 
 ```bash
 curl -X GET
 ```
 
-4. Add the base URL (in quotes):
+3. Add the base URL (in quotes):
 
 ```bash
 curl -X GET "{GH-CODESPACES-SERVER-URL}"
 ```
 
-5. Add the `/orders` path:
+4. Add the path to the Dishes resource:
 
 ```bash
 curl -X GET "{GH-CODESPACES-SERVER-URL}dishes"
 ```
 
-6. If constructed correctly, your command should look like:
+5. If constructed correctly, your command should look like:
 
 ```bash
 curl -X GET "{GH-CODESPACES-SERVER-URL}dishes"
 ```
 
-7. Add `-i` after `curl` to include HTTP response headers:
+6. Add `-i` after `curl` to include HTTP response headers:
 
 ```bash
 curl -i -X GET "{GH-CODESPACES-SERVER-URL}dishes"
 ```
 
-8. Use the `limit` parameter to only return `5` dishes:
+7. Use the `limit` parameter to only return `5` dishes:
 
 ```bash
-curl -i -X GET "{GH-CODESPACES-SERVER-URL}dishes?limit=1"
+curl -i -X GET "{GH-CODESPACES-SERVER-URL}dishes?limit=5"
 ```
 
 <!--
@@ -80,12 +80,7 @@ curl -i -X GET 'https://animated-system-5vwg76449p6fx5q-80.app.github.dev/dishes
 
 **Question #2:** What status code is returned and what does it indicate about the request?
 
-3. **Analyze the JSON response.**
-
-   - Locate the `preparation_time` field for the **first** record. What is its value?
-   - Locate the `preparation_time` field for the **last** record. What is its value?
-
-4. **Clear the terminal:**
+3. **Clear the terminal:**
 
 ```bash
 clear
@@ -103,7 +98,7 @@ curl -i -X GET "{GH-CODESPACES-SERVER-URL}dishes?limit=5"
 
 2. **Add query parameters to sort results:**
 
-To improve readability, you can break long commands into multiple lines by adding a backslash (`\`) at the end of lines, as shown below.
+To improve readability, you can break long commands into multiple lines by adding a backslash (`\`) at the end of the first line, as shown below.
 
 ```bash
 curl -i -X GET \
@@ -118,7 +113,7 @@ curl -i -X GET 'https://animated-system-5vwg76449p6fx5q-80.app.github.dev/dishes
 
 1. **Run the command:** Copy the command into the terminal, and hit ENTER to run the command.
 
-**Question #3:** Analyze the JSON response. Locate the `preparation_time` field for the **first** and **last** records.
+   - Analyze the JSON response. What is the value of the `preparation_time` field for the **first** and **last** records?
 
 2. Set the `order` parameter to `desc` instead of `asc` and run the command again.
 
@@ -128,7 +123,7 @@ curl -i -X GET 'https://animated-system-5vwg76449p6fx5q-80.app.github.dev/dishes
 
 -->
 
-- How do the values for `preparation_time` differ from your previous request?
+**Question #3:** How do the values for `preparation_time` differ from your previous request?
 
 1. **Clear the terminal again:**
 
@@ -252,8 +247,8 @@ In the Class #4 channel on the Discord server, paste your answers.
 - **Question #2:** What status code is returned? Does it indicate that the API request was successful based on your knowledge of status codes?
   **Answer:** A `200 OK` status code indicating a successful response.
 
-- **Question #3:** Analyze the JSON response. Locate the `preparation_time` field for the **first** and **last** records. How do these values differ from your previous request?
-  **Explanation:** The first request returned results sorted in ascending order, while the second request sorted the results in descending.
+- **Question #3:** How do the values for `preparation_time` differ from your previous request
+  **Answer:** The first request returned results sorted in ascending order, while the second request sorted the results in descending.
 
 **Question #4 (multi-part question):**
 
