@@ -52,7 +52,7 @@ The **Network tab** allows us to see the requests and responses as we interact w
 2. Click the **Sign In** button. Once you log in, you’ll see several entries in the **Network tab**.
 3. Since we're interested only in API calls, click the **Fetch/XHR** filter to focus on those, as shown below:
 
-   {% img src="assets/images/chrome-fetch-xhr.png" alt="Ports 4" width="100%" /%}
+   {% img src="../assets/images/chrome-fetch-xhr.png" alt="Ports 4" width="100%" /%}
 
 ### 3. Token API Call
 
