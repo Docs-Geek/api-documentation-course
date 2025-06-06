@@ -22,9 +22,9 @@ During the exercises, there will be quizzes. Please write down the questions and
    - [https://api-course-docs.redocly.app/dev-setup#login-to-the-admin-panel](https://api-course-docs.redocly.app/dev-setup#login-to-the-admin-panel)
 9. Verify that you see the following screen.
 
-{% img src="assets/images/react-admin-login.png" alt="Ports 4" width="100%" /%}
+   {% img src="../assets/images/react-admin-login.png" alt="Ports 4" width="100%" /%}
 
-- If you do not see this screen, click the button in the top-right corner and select **Logout**.
+   - If you do not see this screen, click the button in the top-right corner and select **Logout**.
 
 ## Logging into the Admin Panel
 
@@ -38,7 +38,7 @@ We’re using **Google Chrome** as the browser, and to inspect the API calls, we
 2. Navigate to the **Network** tab — this tab is essential for monitoring API calls between the frontend and backend.
 3. Click the the Clear Network log button to clear all network entries, as show below:
 
-{% img src="assets/images/chrome-clear-logs.png" alt="Ports 4" width="100%" /%}
+   {% img src="../assets/images/chrome-clear-logs.png" alt="Ports 4" width="100%" /%}
 
 The **Network tab** allows us to see the requests and responses as we interact with the application. For now, we don't see anything since we haven't performed any actions.
 
