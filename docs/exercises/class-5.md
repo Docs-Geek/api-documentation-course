@@ -2,6 +2,8 @@
 
 In these exercises, we’ll use the React Admin Panel to follow the user journeys of the platform’s key users—admin, staff, and patrons. We'll analyze the API calls triggered by different actions within the application, exploring how the UI interacts with the underlying API to deliver functionality. This will help us understand the relationship between user actions and the API operations that power the system.
 
+During the exercises, there will be quizzes. Please write down the questions and answers in a separate text file, as you will need to submit them on the Class 5 Discord channel.
+
 ## Prerequisites
 
 1. Download and install [Google Chrome](https://www.google.com/chrome/) (if not already installed).
@@ -311,6 +313,10 @@ In this section, we’ll explore the staff’s workflow as they manage and track
 9. Locate the entry with the **PUT** method related to updating the order's status.
 10. **Quiz #10**:
     - In the **Payload**, find the **status** field. What is the value?
+
+## Submit the Answers to Quiz Questions
+
+In the "Class 5" channel on Discord, paste the answers to the quiz questions you completed during the exercises.
 
 ## In Summary
 
