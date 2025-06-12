@@ -2,20 +2,20 @@
 
 ## The Patron API Flow
 
-### 1. Check Ingredient Quantities
+### Check Ingredient Quantities
 
 1. Open the request to view the details of a specific ingredient.
 2. In the **Params** tab, remove the `{{ingredientId}}` placeholder and replace it with the ID of the first ingredient you copied previously.
 3. Check if the ingredient's `in_stock_qty` is 1 or greater.
 4. Repeat this process for each ingredient. Copy the quantities for each ingredient into a text file.
 
-### 2. View Dish Details
+### View Dish Details
 
 1. Open the request to view the details of a specific dish.
 2. Replace the `{{dishId}}` path variable in the **Params** tab with the dish ID you copied earlier, then run the request.
 3. Copy the name of the dish into a text editor.
 
-### 3. Placing an Order
+### Placing an Order
 
 1. Open the request to create an order.
 2. In the `dish_ids` array, replace the `{{dishId}}` variable with the ID of the dish you copied earlier.
