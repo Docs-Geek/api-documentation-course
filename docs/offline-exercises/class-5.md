@@ -278,7 +278,7 @@ You should now have the IDs of the three dishes the patron wants to order.
 8. In the **Network** tab, clear the previous entries.
 9. Once all dishes are added, click **Save** to place the order.
 
-## CFollow the Staff User Journey
+## Follow the Staff User Journey
 
 In this section, we’ll explore the staff’s workflow as they manage and track orders from preparation to completion.
 

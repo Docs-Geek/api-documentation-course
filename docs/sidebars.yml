@@ -1,6 +1,10 @@
 - page: dev-setup.md
 - page: view-recordings.md
-- group: Exercises
+- group: In-Class Exercises
+  selectFirstItemOnExpand: true
+  items:
+    - page: exercises/class-6.md
+- group: Offline Exercises
   selectFirstItemOnExpand: true
   items:
     - page: exercises/class-2.md
