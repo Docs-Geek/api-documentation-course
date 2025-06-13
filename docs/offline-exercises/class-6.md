@@ -117,7 +117,7 @@ The Authentication API flow was covered in Class 5 and the remaining API flows w
 5. Placing an Order.
 6. Order Confirmation – No Curl request needed, just describe the process.
 
-## The Staff API Flow
+### The Staff API Flow
 
 1. Order Display
 2. Prioritization
@@ -127,7 +127,7 @@ The Authentication API flow was covered in Class 5 and the remaining API flows w
 6. Ready for Assembly
 7. Order Assembly
 
-## Publish and Post Your Work
+### Publish and Post Your Work
 
 Make sure to edit the sidebar to include the API flows folder and its sub-files. Refer to the Mintlify documentation for how to do this.
 
