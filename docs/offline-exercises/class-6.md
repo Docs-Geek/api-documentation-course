@@ -4,22 +4,22 @@
 
 ### GitHub Codespace
 
-1. Go to https://github.com//codespaces and sign in to GitHub if you are not already logged in.
+1. Go to [https://github.com//codespaces](https://github.com//codespaces) and sign in to GitHub if you are not already logged in.
 2. Click the Codespace you created previously to open it.
-3. Make the API server public. Refer to https://api-course-docs.redocly.app/dev-setup#make-the-api-server-port-public for instructions.
+3. Make the API server public. Refer to [https://api-course-docs.redocly.app/dev-setup#make-the-api-server-port-public](https://api-course-docs.redocly.app/dev-setup#make-the-api-server-port-public) for instructions.
 4. Copy the Server URL:
    - Hover over the API Server (Port 80), right-click, and select **Copy Local Address**. Paste the local address into a text file, such as one created using Notepad or another text editor.
-5. Start the server by running `npm run start` in a terminal. Refer to https://api-course-docs.redocly.app/dev-setup#start-the-api-server for additional guidance.
+5. Start the server by running `npm run start` in a terminal. Refer to [https://api-course-docs.redocly.app/dev-setup#start-the-api-server](https://api-course-docs.redocly.app/dev-setup#start-the-api-server) for additional guidance.
 
 - In a new terminal (click the plus icon on the right), run `npm install` to install the latest version of the API.
 
 ### Swagger UI
 
-- Follow the steps outlined here: https://api-course-docs.redocly.app/dev-setup#test-swagger-ui-interactivity.
+- Follow the steps outlined here: [https://api-course-docs.redocly.app/dev-setup#test-swagger-ui-interactivity](https://api-course-docs.redocly.app/dev-setup#test-swagger-ui-interactivity).
 
 ### Curl
 
-1. Follow Steps 1 and 2 from the following section: https://api-course-docs.redocly.app/dev-setup#test-curl-commands.
+1. Follow Steps 1 and 2 from the following section: [https://api-course-docs.redocly.app/dev-setup#test-curl-commands](https://api-course-docs.redocly.app/dev-setup#test-curl-commands).
 2. Then send the following Curl request to test the connection to the API, replacing `{GH-CODESPACES-SERVER-URL}` with your actual GitHub codespace URL:
 
    ```shell
@@ -31,13 +31,13 @@
 ### Postman
 
 - Open Postman.
-- Follow the steps outlined here: https://api-course-docs.redocly.app/dev-setup#8.-test-the-baseurl-configuration.
-- If the API returns an error, redo your Postman setup, then follow the instructions in https://api-course-docs.redocly.app/dev-setup#6.-select-the-environment.
+- Follow the steps outlined here: [https://api-course-docs.redocly.app/dev-setup#8.-test-the-baseurl-configuration](https://api-course-docs.redocly.app/dev-setup#8.-test-the-baseurl-configuration).
+- If the API returns an error, redo your Postman setup, then follow the instructions in [https://api-course-docs.redocly.app/dev-setup#6.-select-the-environment](https://api-course-docs.redocly.app/dev-setup#6.-select-the-environment).
 
 ### Mintlify
 
 Mintlify is a documentation tool that can be used to write and publish API documentation.
-Go to https://mintlify.com/ to sign up for a free account. From your workspace, click "Editor" in the left sidebar.
+Go to [https://mintlify.com/](https://mintlify.com/) to sign up for a free account. From your workspace, click "Editor" in the left sidebar.
 
 As part of the prerequisites, you need to install the GitHub app. To do this, connect it to your GitHub account and grant necessary permissions.
 
