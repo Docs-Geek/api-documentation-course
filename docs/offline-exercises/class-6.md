@@ -10,8 +10,7 @@
 4. Copy the Server URL:
    - Hover over the API Server (Port 80), right-click, and select **Copy Local Address**. Paste the local address into a text file, such as one created using Notepad or another text editor.
 5. Start the server by running `npm run start` in a terminal. Refer to [https://api-course-docs.redocly.app/dev-setup#start-the-api-server](https://api-course-docs.redocly.app/dev-setup#start-the-api-server) for additional guidance.
-
-- In a new terminal (click the plus icon on the right), run `npm install` to install the latest version of the API.
+6. In a new terminal (click the plus icon on the right), run `npm install` to install the latest version of the API.
 
 ### Swagger UI
 
@@ -45,12 +44,10 @@ In the editor, there are many default files and folders. Expand the "essentials"
 
 Create a new folder called "api-flows." Inside it, create the following four files:
 
-- `auth.mdx`
-- `admin.mdx`
 - `patron.mdx`
 - `staff.mdx`
 
-In these files, you will document the API flows for the course.
+In these files, you will document two of the API flows for the course.
 
 ## Directions
 
@@ -62,9 +59,9 @@ The following tools are useful during this exercise:
 - **Curl**: The code samples you will be adding to the documentation will be written in Curl. You can experiment with sending requests in your GitHub Codespace to test your Curl code samples.
 - **Postman**: Postman is helpful for quickly sending and testing requests to the API without manually constructing requests in Curl.
 
-Additionally, you can review the slides from Class 5 and 6 to see the full API flows, including Curl requests. However, it is recommended to try building the Curl requests from memory based on what you have learned.
+Additionally, you can review the slides from Class #6 to see the full API flows, including Curl requests. However, it is recommended to try building the Curl requests from scratch based on what you have learned.
 
-You can also look at the Class #6: In-Class Exercises, which demonstrate the patron and staff API flows using Postman. You can translate these Postman requests as Curl requests for your documentation.
+You can also look at the Class #6: In-Class Exercises, which demonstrate the Patron and Staff API flows using Postman. Using your knowledge of Curl, you can translate these Postman requests as Curl requests for your documentation.
 
 ### Template for an API Flow
 
@@ -94,28 +91,16 @@ See previous example.
 See previous example.
 ```
 
-The Authentication API flow was covered in Class 5 and the remaining API flows were covered in Class #6. View the presentation PDFs for each class or re-watch the class recordings to refresh your memory.
-
-### The Authentication API Flow
-
-1. Account Creation
-2. Admin Login
-3. Refreshing the Access Token
-
-### Admin API Flow
-
-1. Admin Login
-2. Create Ingredients
-3. Create Dish
+These API flows were covered in Class #6. View the presentation PDFs for each class or re-watch the class recordings to refresh your memory.
 
 ### The Patron API Flow
 
 1. Start Browsing / Click on a food category tab (appetizers, main course, etc.)
 2. Check Ingredient Quantities.
-3. View Dish Details.
-4. Adding Dishes and Viewing the Cart – No Curl request needed, just describe the process as it would occur in the user interface.
-5. Placing an Order.
-6. Order Confirmation – No Curl request needed, just describe the process.
+3. View Dish Details
+4. Adding Dishes and Viewing the Cart – No Curl request needed, just describe the process as it would occur in the user interface
+5. Placing an Order
+6. Order Confirmation – No Curl request needed, just describe the process
 
 ### The Staff API Flow
 
@@ -129,6 +114,6 @@ The Authentication API flow was covered in Class 5 and the remaining API flows w
 
 ### Publish and Post Your Work
 
-Make sure to edit the sidebar to include the API flows folder and its sub-files. Refer to the Mintlify documentation for how to do this.
+Make sure to edit the sidebar to include the API flows folder and the API flow files. Refer to the Mintlify documentation for how to do this.
 
 Additionally, paste a link to your documentation in the Class #6 channel on Discord.
