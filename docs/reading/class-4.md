@@ -450,7 +450,7 @@ DELETE requests, like POST and PUT requests, are sometimes considered sensitive 
 DELETE requests use a path structure that contains a placeholder for the resource ID:
 
 ```shell
-curl -X GET '{GH-CODESPACES-SERVER-URL}dishes/{id}'
+curl -X DELETE '{GH-CODESPACES-SERVER-URL}dishes/{id}'
 ```
 
 Here, `{id}` represents the unique identifier of the resource to delete.

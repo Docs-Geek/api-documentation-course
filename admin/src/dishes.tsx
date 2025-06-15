@@ -106,9 +106,10 @@ export const DishEdit = () => (
       <SelectInput
         source="category"
         choices={[
-          { id: "Appetizers", name: "Appetizers" },
+          { id: "Appetizer", name: "Appetizer" },
           { id: "Main Course", name: "Main Course" },
           { id: "Dessert", name: "Dessert" },
+          { id: "Drinks", name: "Drinks" }
         ]}
       />
 
@@ -173,9 +174,10 @@ export const DishCreate = () => (
       <SelectInput
         source="category"
         choices={[
-          { id: "Appetizers", name: "Appetizers" },
+          { id: "Appetizer", name: "Appetizer" },
           { id: "Main Course", name: "Main Course" },
           { id: "Dessert", name: "Dessert" },
+          { id: "Drinks", name: "Drinks" }
         ]}
       />
       <NumberInput source="price" />
