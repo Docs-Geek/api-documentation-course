@@ -177,13 +177,13 @@ const dishStations = [
 ];
 
 const categoryList = [
-  'Appetizers', // Bruschetta al Pomodoro
-  'Appetizers', // Arancini di Riso
-  'Appetizers', // Caprese Salad
-  'Appetizers', // Prosciutto e Melone
-  'Appetizers', // Calamari Fritti
-  'Appetizers', // Carpaccio di Manzo
-  'Appetizers', // Crostini di Fegato
+  'Appetizer', // Bruschetta al Pomodoro
+  'Appetizer', // Arancini di Riso
+  'Appetizer', // Caprese Salad
+  'Appetizer', // Prosciutto e Melone
+  'Appetizer', // Calamari Fritti
+  'Appetizer', // Carpaccio di Manzo
+  'Appetizer', // Crostini di Fegato
   'Main Course', // Spaghetti Carbonara
   'Main Course', // Lasagna alla Bolognese
   'Main Course', // Margherita Pizza

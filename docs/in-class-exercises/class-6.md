@@ -2,6 +2,20 @@
 
 ## The Patron API Flow
 
+### Start Browsing
+
+1. Open the request to retrieve a list of all dishes.
+2. On the **Params** tab under **Query Parameters**, add the following parameter, interpreting the tabular data as what needs to go in the **Key** and **Value** column.
+
+| Parameter | Field      | Operator | Value        |
+| --------- | ---------- | -------- | ------------ |
+| `filter`  | `category` | `eq~`    | `Appetizers` |
+
+3. Send the API request.
+4. In the response, choose any dish with more than one ingredient. Copy and paste the following into a text file:
+   - The dish ID.
+   - The IDs for each of its ingredients.
+
 ### Check Ingredient Quantities
 
 1. Open the request to view the details of a specific ingredient.
@@ -32,7 +46,7 @@ In the chat, paste the following information that you collected earlier:
 ### Order Display
 
 1. Open the request used to retrieve a list of orders.
-2. In the "Param" section under "Query Parameters," add the following parameter, interpreting the tabular data as what needs to go in the **Key** and **Value** columns:
+2. On the **Params** tab under **Query Parameters**, add the following parameter, interpreting the tabular data as what needs to go in the **Key** and **Value** columns:
 
 | Parameter | Field        | Operator | Value        |
 | --------- | ------------ | -------- | ------------ |
@@ -61,7 +75,7 @@ In the chat, paste the following information that you collected earlier:
 
 1. Open the request to retrieve the dishes associated with an order.
 2. In the **Path Variables** section on the Params tab, add the dish Id you copied earlier.
-3. In the **Param** section under **Query Parameters**, add the following parameters, interpreting the tabular data as what needs to go in the **Key** and **Value** columns for each parameter, respectively.
+3. On the **Params** tab under **Query Parameters**, add the following parameters, interpreting the tabular data as what needs to go in the **Key** and **Value** columns for each parameter, respectively.
 
 | Parameter | Field     | Operator | Value |
 | --------- | --------- | -------- | ----- |
