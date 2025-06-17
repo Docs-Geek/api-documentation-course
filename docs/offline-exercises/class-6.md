@@ -40,9 +40,9 @@ Go to [https://mintlify.com/](https://mintlify.com/) to sign up for a free accou
 
 As part of the prerequisites, you need to install the GitHub app. To do this, connect it to your GitHub account and grant necessary permissions.
 
-In the editor, there are many default files and folders. Expand the "essentials" folder and read all the files as part of your training to use the tool, except for the settings.mdx file, as it is not necessary at this time.
+In the editor, there are many default files and folders. Expand the "essentials" folder and read all the files as part of your training to use the tool, except for the `settings.mdx` file, as it is not necessary at this time.
 
-Create a new folder called "api-flows." Inside it, create the following four files:
+Create a new folder called "api-flows." Inside it, create the following two files:
 
 - `patron.mdx`
 - `staff.mdx`
