@@ -4,6 +4,7 @@
   selectFirstItemOnExpand: true
   items:
     - page: exercises/class-6.md
+    - page: exercises/class-7.md
 - group: Offline Exercises
   selectFirstItemOnExpand: true
   items:
@@ -13,6 +14,7 @@
     - page: exercises/class-5.md
     - page: exercises/class-6.md
     - page: exercises/class-6-extra-credit.md
+    - page: exercises/class-7.md
 - group: Reading
   selectFirstItemOnExpand: true
   items:
@@ -23,6 +25,7 @@
     - page: references/json.md
     - page: references/yaml.md
     - page: references/json-vs-yaml.md
+    - page: references/api-reference-best-practices.md
 - group: Recordings
   selectFirstItemOnExpand: true
   items:
