@@ -25,8 +25,4 @@
     - page: references/json.md
     - page: references/yaml.md
     - page: references/json-vs-yaml.md
-    - page: references/api-reference-best-practices.md
-- group: Recordings
-  selectFirstItemOnExpand: true
-  items:
-    - page: recordings/class-3.md
+    - page: references/api-reference-checklist.md

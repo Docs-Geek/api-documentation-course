@@ -49,7 +49,7 @@ In Swagger Editor, you will see a `...` placeholder for the value of summaries a
    ```
 
 4. Hit ENTER. This should direct you to the `/ingredients` path.
-5. **Create a Summary**: Write a summary for the operation. Refer to the **Summarizing Operations** section in the [API Reference Best Practices](https://api-course-docs.redocly.app/references/api-reference-bps) file and apply the relevant best practices.
+5. **Create a Summary**: Write a summary for the operation. Refer to the **Summarizing Operations** section in the [API Reference Checklist](https://api-course-docs.redocly.app/references/api-reference-best-practices) file and apply the relevant best practices.
    - **Tip**: If you are unsure about the purpose of the operation:
      - Utilize the "Try it out" feature to experiment with sending requests and observe the responses. For a refresher on this feature, please review [Development Environment Setup](https://api-course-docs.redocly.app/dev-setup#test-swagger-ui-interactivity) guide, replacing instances of `Port 5500` with `Port 8800`.
      - Refer back to previous exercises that involved sending requests to this operation for specific goals.
@@ -112,7 +112,7 @@ In Swagger Editor, you will see a `...` placeholder for the value of summaries a
    4. Search for `Ingredient:` schema.
    5. You'll notice several fields reference schemas; search for and document each schema. Since we already documented `InStockQty` and `Price` schemas, they do not need to be documented again
 
-   - **Hint**: Refer to the _Data Type Considerations_ section in the API Reference Best Practices for guidance.
+   - **Hint**: Refer to the _Data Type Considerations_ section in the [API Reference Checklist](https://api-course-docs.redocly.app/references/api-reference-checklist) for guidance.
 
 ## Part 2: Document Remaining Endpoints
 
