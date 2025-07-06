@@ -2,7 +2,8 @@
 
 Prerequisites:
 
-- [Client app](file:////Users/mark/Repos/api-course/admin/client) running
+- Client app:
+  - `api-documentation-course/client`
 - GitHub Codespaces open - Use the Curl terminal tab in GH codespaces for demonstration.
 
 ## Teacher Aid Part #1
@@ -16,8 +17,6 @@ Prerequisites:
 - Schema missing from docs.
 
 ### Curl
-
-Share full screen
 
 #### Retrieve a random chuck joke in JSON format
 
@@ -89,6 +88,8 @@ We are going to practice sending API requests directly in the browser. You will 
 That's the end of this exercise.
 
 ## Teacher Aid Part #2
+
+Share full screen.
 
 1. Open the Javascript web app.
 2. To observe the API calls being made, open Chrome DevTools.
