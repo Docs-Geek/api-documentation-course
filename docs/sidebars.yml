@@ -3,6 +3,7 @@
 - group: In-Class Exercises
   selectFirstItemOnExpand: true
   items:
+    - page: exercises/class-1.md
     - page: exercises/class-6.md
     - page: exercises/class-7.md
 - group: Offline Exercises
