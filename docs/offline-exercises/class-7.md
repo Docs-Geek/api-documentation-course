@@ -13,7 +13,7 @@ In these exercises, you'll use Swagger Editor to document the primary paths of t
    - Hover over the API Server (Port 80), right-click, and select **Copy Local Address**. Paste the local address into a text file, such as one created using Notepad or another text editor.
 5. Start the server by running `npm run start` in a terminal. Refer to [https://api-course-docs.redocly.app/dev-setup#start-the-api-server](https://api-course-docs.redocly.app/dev-setup#start-the-api-server) for additional guidance.
 6. In a new terminal (click the plus icon on the right), run `npm install` to install the latest version of the API.
-7. Go back to the Ports tab. Hover over the row for Port 8800 and click the Globe icon to open Swagger Editor in a new tab in your browser.
+7. Go back to the Ports tab. Hover over the row for Port 8080 and click the Globe icon to open Swagger Editor in a new tab in your browser.
 
 ### Saving Your Work
 
@@ -51,7 +51,7 @@ In Swagger Editor, you will see a `...` placeholder for the value of summaries a
 4. Hit ENTER. This should direct you to the `/ingredients` path.
 5. **Create a Summary**: Write a summary for the operation. Refer to the **Summarizing Operations** section in the [API Reference Checklist](../references/api-reference-checklist.md) file and apply the relevant best practices.
    - **Tip**: If you are unsure about the purpose of the operation:
-     - Utilize the "Try it out" feature to experiment with sending requests and observe the responses. For a refresher on this feature, please review [Development Environment Setup](https://api-course-docs.redocly.app/dev-setup#test-swagger-ui-interactivity) guide, replacing instances of `Port 5500` with `Port 8800`.
+     - Utilize the "Try it out" feature to experiment with sending requests and observe the responses. For a refresher on this feature, please review [Development Environment Setup](https://api-course-docs.redocly.app/dev-setup#test-swagger-ui-interactivity) guide, replacing instances of `Port 5500` with `Port 8080`.
      - Refer back to previous exercises that involved sending requests to this operation for specific goals.
    - **Hint**: The summary is closely related to the HTTP method (POST, in this case), which has a specific purpose.
 

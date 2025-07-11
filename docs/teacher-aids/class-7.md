@@ -11,7 +11,7 @@ In these exercises, you'll use Swagger Editor to document the POST `/auth/token`
    - Hover over the API Server (Port 80), right-click, and select **Copy Local Address**. Paste the local address into a text file, such as one created using Notepad or another text editor.
 5. Start the server by running `npm run start` in a terminal. Refer to [https://api-course-docs.redocly.app/dev-setup#start-the-api-server](https://api-course-docs.redocly.app/dev-setup#start-the-api-server) for additional guidance.
 6. In a new terminal (click the plus icon on the right), run `npm install` to install the latest version of the API.
-7. Go back to the Ports tab. Hover over the row for Port 8800 and click the Globe icon to open Swagger Editor in a new tab in your browser.
+7. Go back to the Ports tab. Hover over the row for Port 8080 and click the Globe icon to open Swagger Editor in a new tab in your browser.
 
 ## Swagger Editor Walkthrough
 
