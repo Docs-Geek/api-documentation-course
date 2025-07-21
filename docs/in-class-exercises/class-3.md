@@ -18,7 +18,7 @@ paths: {}
 
 ## 2. Extending the API `info` object
 
-1. Find the **`paths: {}`** line in your YAML.
+1. Find the line containing the text **`info:`**.
 2. Add a line break below it.
 3. Create a new key called `contact:` — remember, in YAML a key is followed by a colon (`:`).
 4. The `contact` key holds an object. To define this:
@@ -46,7 +46,7 @@ Prerequisites:
 
 1. Download the starter code:
    - Open Discord
-   - Go to the `# class-2` channel.
+   - Go to the `# class-3` channel.
    - Hover over the first message and click the clipboard icon to copy the starter code. Alternatively, you can highlight and copy it manually.
 2. Go to Swagger Editor (if not already there)
    - [https://editor.swagger.io/](https://editor.swagger.io/)
@@ -66,4 +66,4 @@ Perform the following steps:
 8. On **line 32**, do a line break after `}` and on **line 33** add ` ``` ` to close the code block.
 9. Below the code block (on **line 33**), make the text **extended documentation** a link, with the link text `[extended documentation]` followed immediately by the URL `(www.pos.io/api/docs)`
 10. Ensure there are no errors in the Swagger editor.
-11. Copy and paste the number of lines of code in Swagger Editor into the MeritHub chat.
+11. Type the number of lines of code in Swagger Editor into the MeritHub chat (exclude any blank lines at the end of the file).
