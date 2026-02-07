@@ -1,6 +1,12 @@
 # How to Access Your Session Recordings on MeritHub
 
-**1. Check Your Email Invitation**
+**1. Send Mark Your Email Address**
+
+- Send Mark your email address so he can invite you to MeritHub. If you didn't join the first class, send your email via Discord.
+
+---
+
+**2. Check Your Email Invitation**
 Look for an invitation to join MeritHub in your inbox.
 
 - If you don’t see it, check your spam folder.
@@ -8,18 +14,18 @@ Look for an invitation to join MeritHub in your inbox.
 
 ---
 
-**2. Create a MeritHub Account**
+**3. Create a MeritHub Account**
 
-You need to join MeritHub to access session recordings. Please send Mark the email address you will use to create your MeritHub account in Discord.
+You need to join MeritHub to access session recordings using the email address you provided to Mark.
 
 ---
 
-**3. Log In to MeritHub**
+**4. Log In to MeritHub**
 Go to [https://merithub.com/](https://merithub.com/) and log in using the username and password you created when you set up your account.
 
 ---
 
-**4. Access the Recordings**
+**5. Access the Recordings**
 
 1. Once logged in, click **"Docs Geek"**
 2. From the left sidebar, select **"Sessions"**
@@ -35,12 +41,11 @@ Go to [https://merithub.com/](https://merithub.com/) and log in using the userna
 
 ---
 
-**5. Watch the Recording**
+**6. Watch the Recording**
 
 1. Scroll down and click the **"Recordings"** button
 
    {% img src="assets/images/click-recordings.png" alt="click-recordings" width="100%" /%}
-
    - Note: To access the class's slides, click **Files** instead.
 
 2. On the recording you want, click **"View recording"** to watch it in your browser
