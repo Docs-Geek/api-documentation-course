@@ -162,8 +162,10 @@ If the text above is displayed, then the API server is currently running.
 
 <br/>
 
-1. In the terminal where the admin panel was run, click the `http://localhost:5173/` link to open the React admin panel in a new browser tab.
-2. In the browser, **hit the refresh button twice**.
+1. In the terminal where the admin panel was run, click the link to open the React admin panel in a new browser tab:
+   - **For Windows**, hold down the **CTRL** key and left-click the link displayed in the terminal: `(http://localhost:5173/)`. Skip to Step 2.
+   - **For Mac**, hold down the **CMD** key and left-click the link displayed in the terminal: `(http://localhost:5173/)`.
+2. In the new browser tab, wait for the login page to load. If it hangs, **hit the refresh button**.
    - The React admin panel login screen will display.
 
 <br/>
@@ -205,13 +207,17 @@ If the text above is displayed, then the API server is currently running.
 3. Run the following command to make an API request using Curl:
 
    ```bash
-   curl -i -X GET "https://api.chucknorris.io/jokes/random"
+   curl -i -X GET "https://meowfacts.herokuapp.com/"
    ```
 
    The output will look something like this (the joke will vary):
 
    ```json
-   {"categories":[],"created_at":"2020-01-05 13:42:26.194739","icon_url":"https://api.chucknorris.io/img/avatar/chuck-norris.png","id":"ZYuYuFQVSfamBUYfzFADMQ","updated_at":"2020-01-05 13:42:26.194739","url":"https://api.chucknorris.io/jokes/ZYuYuFQVSfamBUYfzFADMQ","value":"Chuck Norris has more subscribers than Pewdiepie."}%
+   {
+     "data": [
+       "Cats sleep 16 to 18 hours per day. When cats are asleep, they are still alert to incoming stimuli. If you poke the tail of a sleeping cat, it will respond accordingly."
+     ]
+   }
    ```
 
 If the data returned to the terminal has the same fields as mentioned above (the actual data may differ), it confirms that you can send API requests using curl in the terminal.
@@ -233,13 +239,13 @@ If the data returned to the terminal has the same fields as mentioned above (the
 1. Return to the GitHub Codespace.
 2. Go to the **Ports** tab (if not already there).
 3. Hover over the API Server (**Port** `80`), right-click, and select **Copy Local Address**. Paste the local address into a text file, such as one created using NotePad or another text editor.
-4. For **Port** `5500`, click the **Forward Address** link to open Swagger UI in a new browser tab.
-5. Place your cursor in the `gh-codespaces-server-url` form field and paste the local address you copied previously. Remove the slash at the end.
+4. For **Port** `5500`, click the **Forward Address** link (CTRL+click for Windows, or CMD+click for Mac) to open Swagger UI in a new browser tab.
+5. Place your cursor in the `gh-codespaces-server-url` form field. Delete the existing text and paste the local address you copied previously. **Remove the slash at the end**.
 6. Verify the **Computed URL** only has one slash at the end.
 7. Under **Orders**, expand **GET /orders**.
-8. Click the **Try it out** button.
+8. Click the **Try it out** button on the right side of the page.
 9. Scroll down and click the blue **Execute** button.
-   - If a "Code 200" is returned in the **Server response** section, then the request was successful, and Swagger UI is functioning properly.
+   - If a "Code 200" is returned in the **Responses** section, then the request was successful, and Swagger UI is functioning properly.
 
 <br/>
 
