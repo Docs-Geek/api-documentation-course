@@ -16,13 +16,12 @@ Students follow along:
 ## Open SwaggerUI
 
 1. Go to the **Ports** tab (if not already there).
-2. Hover over the API Server (**Port** `80`), right-click, and select **Copy Local Address**. Paste the local address into a text file, such as one created using NotePad or another text editor.
-3. For **Port** `5500`, click the **Forward Address** link to open Swagger UI in a new browser tab.
-4. Place your cursor in the `gh-codespaces-server-url` form field and paste the local address you copied previously. Remove the slash at the end.
-5. Verify the **Computed URL** only has one slash at the end.
-6. Under **Orders**, expand **GET /orders**.
-7. Click the **Try it out** button.
-8. Scroll down and click the blue **Execute** button.
+2. For **Port** `5500`, click the **Forward Address** link to open Swagger UI in a new browser tab.
+3. Place your cursor in the `gh-codespaces-server-url` form field and paste the local address you copied previously. Remove the slash at the end.
+4. Verify the **Computed URL** only has one slash at the end.
+5. Under **Orders**, expand **GET /orders**.
+6. Click the **Try it out** button.
+7. Scroll down and click the blue **Execute** button.
    - If a "Code 200" is returned in the **Server response** section, then the request was successful, and Swagger UI is functioning properly.
 
 ## Understanding the Interface

@@ -7,7 +7,7 @@
 
 ## 1. YAML: Describe "Inception"
 
-- Go to the [JSON converter](https://jsonformatter.org/).
+- Go to the [YAML to JSON Converter](https://jsonformatter.org/yaml-to-json).
 - Paste the following code into the left-side editor by hand:
   - To indent, hit the "SPACE" key twice. This editor does not support indentation using "TAB."
 
@@ -88,6 +88,47 @@ license:
 ### Answer: Write `info.description` in Markdown
 
 They are asked to paste the number of lines of code in the chat, which should be `35`.
+
+#### Starter code
+
+```yaml
+openapi: 3.0.3
+info:
+  title: Point of Service (POS) API
+  version: '1.0'
+  description:
+    A REST API to be used to create tableside and takeaway food ordering applications.
+
+    Auth
+
+    To create orders, you need to first create a user account then authenticate your user account for an access token.
+
+    To get an access token and authenticate your requests:
+
+    Create a User with POST /users.
+    Pass your username and password to POST /auth/token.
+    Add the access token to the authorization header of API calls to protected resources.
+
+    Orders
+
+    Orders are the heart of the API. Create an order with POST /orders, passing order details in the JSON request body:
+
+    {
+      "name": "Benjamin",
+      "table_number": 18,
+      "dish_ids": [
+        "66e6a90a5eb1ced30f93c32a",
+        "66e6a90a5eb1ced30f93c31e"
+      ],
+      "special_requests": "No peanuts",
+      "scheduled at": null
+    }
+
+    Refer to the extended documentation for detailed usage instructions.
+paths: {}
+```
+
+#### Final code
 
 ````yaml
 openapi: 3.0.3

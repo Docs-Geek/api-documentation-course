@@ -24,27 +24,23 @@ Walk students through setting up their development environment for the exercises
 ### Steps
 
 1. **Open GitHub Codespaces**
-
    - Navigate to [https://github.com/codespaces](https://github.com/codespaces)
    - Sign in to GitHub if not already signed in
    - Click on the Codespace created in previous classes to open it
 
 2. **Make the API Server Port Public**
-
    - In the Codespace, locate the **Ports** tab (usually at the bottom panel)
    - Find Port 80 (API Server)
    - Right-click on Port 80 and select **Port Visibility > Public**
    - For detailed instructions, refer to: [https://api-course-docs.redocly.app/dev-setup#make-the-api-server-port-public](https://api-course-docs.redocly.app/dev-setup#make-the-api-server-port-public)
 
 3. **Copy the Server URL**
-
    - Hover over the API Server (Port 80) row
    - Right-click and select **Copy Local Address**
    - Paste this URL into a text file (using NotePad or another text editor)
    - **Important:** Students will need this URL to update their Postman environment's `baseUrl` variable
 
 4. **Start the API Server**
-
    - Open a new terminal in the Codespace
    - Run the command: `npm run start`
    - Wait for the message indicating the server is running (typically "Server listening on port 80")
@@ -77,12 +73,10 @@ This section demonstrates the authentication workflow, which is essential for ac
 **Purpose:** Create a new user account that can be used for authentication.
 
 1. **Open the Request**
-
    - In Postman, navigate to the **Users** folder
    - Select the request: **"Create a user account"**
 
 2. **Review the Request**
-
    - **Method:** POST
    - **Endpoint:** `{{baseUrl}}/users`
    - Click on the **Body** tab to show the JSON request body
@@ -102,7 +96,6 @@ This section demonstrates the authentication workflow, which is essential for ac
    - Explain that `role` can be: `patron`, `staff`, or `admin`
 
 4. **Send the Request**
-
    - Click **Send**
    - **Expected Response:** `201 Created`
    - Show the response body containing the created user details
@@ -117,12 +110,10 @@ This section demonstrates the authentication workflow, which is essential for ac
 **Purpose:** Exchange user credentials for an access token required for protected endpoints.
 
 1. **Open the Request**
-
    - Navigate to the **Auth** folder
    - Select: **"Authenticate user and obtain an access token"**
 
 2. **Review the Request**
-
    - **Method:** POST
    - **Endpoint:** `{{baseUrl}}/auth/token`
    - Click on the **Body** tab
@@ -140,7 +131,6 @@ This section demonstrates the authentication workflow, which is essential for ac
    - Explain this is the standard OAuth 2.0 password grant flow
 
 4. **Send the Request**
-
    - Click **Send**
    - **Expected Response:** `201 Created`
 
@@ -168,12 +158,10 @@ This section demonstrates the authentication workflow, which is essential for ac
 **Purpose:** Obtain a new access token using the refresh token when the original expires.
 
 1. **Open the Request**
-
    - In the **Auth** folder
    - Select: **"Refresh access token"**
 
 2. **Review the Request**
-
    - **Method:** POST
    - **Endpoint:** `{{baseUrl}}/auth/refresh`
    - Click on the **Body** tab
@@ -189,7 +177,6 @@ This section demonstrates the authentication workflow, which is essential for ac
    - Point out it uses the refresh token from the environment
 
 4. **Send the Request**
-
    - Click **Send**
    - **Expected Response:** `200 OK`
    - Show that a new `access_token` is returned
@@ -226,19 +213,16 @@ This section demonstrates how administrators manage the menu by creating ingredi
 **Purpose:** Add ingredients to the system that will be used in dishes.
 
 1. **Open the Request**
-
    - Navigate to the **Ingredients** folder
    - Select: **"Create an ingredient"**
 
 2. **Review Authorization**
-
    - Click on the **Authorization** tab
    - Show that **Type** is set to **Bearer Token**
    - The **Token** field uses `{{bearerToken}}`
    - Explain that this endpoint requires admin authentication
 
 3. **Review the Request Body**
-
    - Click on the **Body** tab
 
    ```json
@@ -251,14 +235,12 @@ This section demonstrates how administrators manage the menu by creating ingredi
    ```
 
 4. **Create First Ingredient: Tomato**
-
    - Click **Send**
    - **Expected Response:** `201 Created`
    - Show the response includes an auto-generated `id` and timestamps
    - **Copy the ingredient ID** - you'll need it later
 
 5. **Create Second Ingredient: Mozzarella**
-
    - Modify the request body:
 
    ```json
@@ -274,7 +256,6 @@ This section demonstrates how administrators manage the menu by creating ingredi
    - **Copy this ingredient ID** as well
 
 6. **Create Third Ingredient: Basil**
-
    - Modify the request body:
 
    ```json
@@ -296,17 +277,14 @@ This section demonstrates how administrators manage the menu by creating ingredi
 **Purpose:** Create menu items that use the ingredients we just added.
 
 1. **Open the Request**
-
    - Navigate to the **Dishes** folder
    - Select: **"Create a dish"**
 
 2. **Review Authorization**
-
    - Click on the **Authorization** tab
    - Confirm it's using the Bearer token (same as ingredients)
 
 3. **Review the Request Body**
-
    - Click on the **Body** tab
    - Explain the structure:
 
@@ -327,12 +305,10 @@ This section demonstrates how administrators manage the menu by creating ingredi
    ```
 
 4. **Update Ingredient IDs**
-
    - Replace the placeholder IDs with the actual ingredient IDs copied earlier
    - Show students how to paste each ID into the array
 
 5. **Send the Request**
-
    - Click **Send**
    - **Expected Response:** `201 Created`
    - Show the response includes the dish with all its details
@@ -362,12 +338,10 @@ This demonstration shows students how to use query parameters to filter, sort, a
 ### Understanding Query Parameters
 
 1. **Open the Request**
-
    - Navigate to the **Dishes** folder
    - Select: **"Get a list of dishes"**
 
 2. **Show the URL Structure**
-
    - Point to the URL bar: `{{baseUrl}}/dishes`
    - Explain that query parameters are added after a `?` symbol
    - Multiple parameters are separated by `&`
@@ -380,32 +354,30 @@ This demonstration shows students how to use query parameters to filter, sort, a
 ### Filter Parameters
 
 1. **Add a Category Filter**
-
    - In the **Query Parameters** section, add:
      - **Key:** `filter`
-     - **Value:** `category.eq~Appetizers`
+     - **Value:** `category.eq~Appetizer`
    - Explain the syntax:
      - `category` is the field name
      - `.eq~` means "equals"
-     - `Appetizers` is the value to match
+     - `Appetizer` is the value to match
 
 2. **Send the Request**
-
    - Click **Send**
    - Show that only appetizers are returned
 
 3. **Show the URL**
-   - Point to the URL bar: `{{baseUrl}}/dishes?filter=category.eq~Appetizers`
+   - Point to the URL bar: `{{baseUrl}}/dishes?filter=category.eq~Appetizer`
    - Explain how Postman automatically constructs the URL
 
 ### Multiple Filters
 
 1. **Add a Station Filter**
-
    - Add another parameter:
      - **Key:** `filter`
      - **Value:** `station.eq~cold`
-   - Now you have two filter parameters
+   - Now you have two filter parameters:
+     - `category.eq~Appetizer|station.eq~hot`
 
 2. **Send the Request**
    - Click **Send**
@@ -414,7 +386,6 @@ This demonstration shows students how to use query parameters to filter, sort, a
 ### Projection (Fields) Parameters
 
 1. **Limit Returned Fields**
-
    - Clear the previous filters
    - Add a new parameter:
      - **Key:** `fields`
@@ -431,7 +402,6 @@ This demonstration shows students how to use query parameters to filter, sort, a
 ### Sort Parameters
 
 1. **Sort by Price**
-
    - Clear previous parameters
    - Add:
      - **Key:** `sort`
@@ -441,7 +411,6 @@ This demonstration shows students how to use query parameters to filter, sort, a
      - **Value:** `asc`
 
 2. **Send the Request**
-
    - Click **Send**
    - Show dishes are sorted by price in ascending order
 
@@ -453,7 +422,6 @@ This demonstration shows students how to use query parameters to filter, sort, a
 ### Pagination Parameters
 
 1. **Limit Results**
-
    - Add:
      - **Key:** `limit`
      - **Value:** `5`
@@ -462,7 +430,6 @@ This demonstration shows students how to use query parameters to filter, sort, a
      - **Value:** `0`
 
 2. **Send the Request**
-
    - Click **Send**
    - Show only 5 results are returned
 
@@ -513,7 +480,7 @@ Students should paste the following into the chat:
 
 ### Common Issues & Solutions
 
-- **Filter not working:** Check the syntax - it should be `category.eq~Appetizers`
+- **Filter not working:** Check the syntax - it should be `category.eq~Appetizer`
 - **Ingredient not found:** Ensure they're using the correct ingredient ID
 - **Order creation fails:** Verify they have a valid access token (may need to re-authenticate)
 

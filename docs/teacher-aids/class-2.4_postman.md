@@ -7,31 +7,26 @@
 ## Steps
 
 1. **Open Postman**
-
    - The main tab to focus on is the **Collections** tab.
    - After following the README instructions, you should have imported the Postman collection. Let’s review it.
 
 2. **Understanding the Collection**:
-
    - The collection consists of folders, each corresponding to a different API resource. We’ll go over what resources are later.
    - Inside each folder, you’ll find example API requests, each associated with different actions (methods). These actions include creating, retrieving, updating, and deleting resources, which you’ll see consistently across all resources.
 
 3. **Inspecting a Request**
-
    - Let’s start by opening a "Get a list of" request.
    - At the top, you’ll see a **URL bar** which shows the API endpoint.
    - The method here is **GET**, which retrieves a list of resources.
    - The URL will show `{{baseUrl}}/orders`. But what is `baseUrl`?
 
 4. **Understanding `baseUrl`**
-
    - As part of the README instructions, you downloaded an environment file along with the Postman collection.
    - Click on the **Environments** tab on the left, then select **Environment Variables**.
    - Here, you’ll see the `baseUrl` variable. This stores the base URL (`http://localhost:80`), which is used throughout the requests.
    - For local development, this points to your machine, but in a production environment, this would be a web-accessible API URL.
 
 5. **Query Parameters**
-
    - Moving back to the request, let’s examine the **Params** tab.
    - These are query parameters that modify the results. For example, adding a `sort` parameter sorts the returned data by a specified field.
    - When you add a query parameter, it’s appended to the URL after a `?`, like `?sort=fieldname`.
@@ -44,17 +39,19 @@
 ## POST Request Example
 
 1. **Switching to a POST request**
-
+   - Using POST /ingredients only and not the others.
    - Let’s now switch to the **POST** request for creating an order.
    - In the **Authorization** tab, you’ll notice that authorization is required, as this request modifies a resource. In this case, we need to provide a **Bearer token**.
 
 2. **Bearer Token**:
-
-   - The Bearer token is stored as an environment variable. Check the **Environments** tab to see the token.
+   - The Bearer token is stored as an environment variable.
+   - The value is currently empty, meaning we need to generate one.
+   - Do /users, /auth/token to get the token and save it to the variable.
+   - Check the **Environments** tab to see the token.
+   - Check the Auth tab of the POST /ingredients, now it will show.
    - The token is a UUID (a unique identifier), which acts like a secret password granting access to certain endpoints.
 
 3. **Request Body**:
-
    - Now, go to the **Body** tab.
    - This tab contains the **JSON** object representing the order we’re creating. Here, you’ll define the values for the new order.
 

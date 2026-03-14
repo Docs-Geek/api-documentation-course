@@ -60,7 +60,7 @@ a1732455-42cf-4d24-a956-84adc847c0ca
 {
   "name": "Tomato",
   "in_stock_qty": 100,
-  "price": "55"
+  "price": 55
 }
 ```
 
