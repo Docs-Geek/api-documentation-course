@@ -134,13 +134,7 @@ Ensure that your documentation is correctly rendered in the right panel of the S
 
 ### Step 1: Get the reference document
 
-The Course API reference OpenAPI document is located in the course repository at:
-
-```text
-ai-module/openapi.original.yml
-```
-
-Download or open this file so you can provide it to Claude.
+The Course API reference OpenAPI document was shared by your instructor in the Class #7 Discord channel. Download that file so you can provide it to Claude.
 
 ### Step 2: Prepare your review prompt
 
