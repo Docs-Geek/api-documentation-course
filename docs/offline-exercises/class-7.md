@@ -125,3 +125,73 @@ Using the same methods described for the other exercises, document all API endpo
 - Auth
 
 Ensure that your documentation is correctly rendered in the right panel of the Swagger editor, with no errors displayed there.
+
+---
+
+## Part 3: AI-Assisted OpenAPI Review
+
+> **Complete Parts 1 and 2 first.** This section uses Claude to compare your OpenAPI document against a reference version and identify gaps. The goal is critical review, not copying — you decide what to accept, reject, or revise.
+
+### Step 1: Get the reference document
+
+The Course API reference OpenAPI document is located in the course repository at:
+
+```text
+ai-module/openapi.original.yml
+```
+
+Download or open this file so you can provide it to Claude.
+
+### Step 2: Prepare your review prompt
+
+Open Claude. Paste **both** of the following into your message:
+
+1. A section of **your OpenAPI document** (e.g., one full endpoint from `paths:` including its `parameters`, `requestBody`, and `responses`)
+2. The **same section** from `openapi.original.yml`
+
+Then use this prompt:
+
+```text
+I am an API technical writer reviewing my OpenAPI documentation for the Course API. Below are two versions of the same endpoint: my draft and the reference version.
+
+Compare them and identify:
+1. Descriptions that are missing in my draft but present in the reference
+2. Descriptions in my draft that are vague, inaccurate, or incomplete compared to the reference
+3. Fields present in the reference but missing from my draft
+4. Examples that are missing, unrealistic, or inconsistent
+5. Anything in my draft that looks correct but differs meaningfully from the reference
+
+For each issue found, explain what the problem is and suggest a specific improvement. Do not rewrite my entire document — only flag issues and suggest targeted fixes.
+
+--- MY DRAFT ---
+[paste your draft section here]
+
+--- REFERENCE ---
+[paste the reference section here]
+```
+
+### Step 3: Evaluate Claude's feedback
+
+For each issue Claude raises, do the following before making any change:
+
+1. **Check the reference** — Does the reference actually say what Claude claims? Misquotes and hallucinations happen.
+2. **Check the live API** — Open Swagger UI and test the endpoint. Does the API behavior match what the reference describes, or what Claude suggests?
+3. **Check your Postman results** — If you have requests saved from earlier classes, compare the actual response structure to what Claude is saying about the schema.
+
+Only update your OpenAPI document after you've verified the suggestion is accurate.
+
+### Step 4: Document your review decisions
+
+After completing the review, add a brief summary comment at the top of your OpenAPI file (in the `info.description` field or as a YAML comment):
+
+- How many issues did Claude identify?
+- How many did you accept as-is, revise, or reject?
+- Were there cases where Claude's suggestion looked right but turned out to be wrong?
+
+> **Why this matters:** This exercise practices the same review workflow you'll use professionally. AI tools can surface documentation gaps faster than a manual read-through — but they cannot test the API or understand your users. Your judgment is the final filter.
+
+### ⚠️ Important: What Claude cannot do
+
+- Claude has no access to your live API. It can only compare documents.
+- Claude may misread YAML structure or hallucinate field names that don't exist in either document.
+- Claude's suggestions about API _behavior_ (what the endpoint actually does) must always be verified against Swagger UI and real API responses — not accepted based on the reference document alone.

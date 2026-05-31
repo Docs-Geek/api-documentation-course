@@ -117,3 +117,49 @@ These API flows were covered in Class #6. View the presentation PDFs for each cl
 Make sure to edit the sidebar to include the API flows folder and the API flow files. Refer to the Mintlify documentation for how to do this.
 
 Additionally, paste a link to your documentation in the Class #6 channel on Discord.
+
+---
+
+## AI-Assisted Documentation
+
+> **Do this after completing the manual documentation above.** The purpose of this section is to use Claude to draft a section of your guide, then validate its output against the live API. This is a review skill, not a shortcut.
+
+### Step 1: Draft a section with Claude
+
+Choose one of the API flows you documented manually (Patron or Staff). Pick one step from that flow — for example, "Placing an Order."
+
+Prompt Claude with the following (replace the bracketed content):
+
+```text
+I'm documenting the [Patron/Staff] API flow for a food ordering platform. Here is the step I need to document:
+
+Step: [Step name, e.g. "Placing an Order"]
+Endpoint: [HTTP method + path, e.g. POST /orders]
+What the client sends: [describe the request briefly]
+What the server returns on success: [describe the response briefly]
+
+Write a short documentation section for this step. Include:
+- One sentence describing what the client does and why
+- A Curl request sample
+- A Curl response sample (use realistic example values)
+- One sentence describing how the response is used by the client
+```
+
+### Step 2: Validate Claude's output
+
+Run the Curl request Claude generated against your live GitHub Codespace API. Compare:
+
+- Does the endpoint path and HTTP method match your Swagger UI?
+- Are the request body fields correct? Are any required fields missing?
+- Does the response structure match what the API actually returns?
+- Are the example values realistic and consistent with the API's data?
+
+### Step 3: Revise and document your decisions
+
+Edit the draft to fix any errors you found. In your Mintlify doc, add a brief note below the section (in an HTML comment or a separate "Notes" block) recording:
+
+- What Claude got right
+- What you had to correct or rewrite, and why
+- Any place where Claude's output looked plausible but was actually wrong
+
+> **Why this matters:** Identifying the gap between "plausible" and "accurate" is the core documentation skill this track is practicing. A description that sounds reasonable but doesn't match API behavior is worse than no description at all — it misleads developers.
