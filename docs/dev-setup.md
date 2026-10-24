@@ -26,9 +26,23 @@ Full screen mode for videos is not supported within this article. To view a vide
 
 1. Navigate to:
    - [https://github.com//Docs-Geek/api-documentation-course](https://github.com//Docs-Geek/api-documentation-course).
-2. Click the green **Code** button.
-3. Click the **Codespaces** tab.
-4. Click the plus (**+**) icon to create a new codespace.
+   - This page will not fully load, showing gray placeholder bars instead of file contents:
+
+     {% img src="assets/images/codespace-page-not-loading.png" alt="The api-documentation-course repository page stuck loading, showing gray placeholder bars instead of file contents" width="100%" /%}
+
+2. Click **Docs-Geek** in the top-left corner to go to the organization's home page.
+
+   {% img src="assets/images/codespace-click-docs-geek.png" alt="Clicking the Docs-Geek link in the top-left corner of the repository page" width="100%" /%}
+
+3. On the right side of the page, scroll down a bit to the **Repositories** list and click **api-documentation-course**.
+
+   {% img src="assets/images/codespace-click-repo-name.png" alt="Clicking the api-documentation-course repository link from the Docs-Geek organization home page" width="100%" /%}
+
+   The repository page should now load with no problems.
+
+4. Click the green **Code** button.
+5. Click the **Codespaces** tab.
+6. Click the plus (**+**) icon to create a new codespace.
 
 <br/>
 
@@ -64,6 +78,7 @@ You can dismiss all popups, including:
 
 1. In the bottom panel, click the **Ports** tab.
 2. On the **Port** `80` row, right-click the word **Private** in the **Visibility** column.
+   - **Mac users:** If a right-click opens your browser's context menu instead of the VS Code context menu, use **Option-Right-Click** (or **Option-Control-Click**) instead.
 3. In the popup, hover over **Port Visibility** and select **Public**.
 
 <br/>
@@ -150,7 +165,7 @@ If the text above is displayed, then the API server is currently running.
 
 **_To install the React Admin Panel_**:
 
-1. To open a new terminal, click the downward caret next to the plus (**+**) icon and select **Bash** from the drop-down.
+1. To open a new terminal, in the **Terminal** tab, and click the plus (**+**) icon to open a new terminal separate from the one running the API server.
 2. Click inside the terminal, and type the following command to run the admin panel:
    ```bash
    ./scripts/run-admin.sh
@@ -202,9 +217,8 @@ If the text above is displayed, then the API server is currently running.
 
 **_To test Curl Commands_**:
 
-1. Open a new terminal by clicking the downward caret next to the plus (**+**) icon and select **Bash** from the drop-down.
-2. Right-click the word **bash**, select **Rename**, and type "Curl".
-3. Run the following command to make an API request using Curl:
+1. To open a new terminal, in the **Terminal** tab, and click the plus (**+**) icon to open a new terminal separate from the one running the API server.
+2. Run the following command to make an API request using Curl:
 
    ```bash
    curl -i -X GET "https://meowfacts.herokuapp.com/"
@@ -303,6 +317,8 @@ Click on the **Import** button located in the top-left corner of the Postman app
 - In the top-right corner of the Postman app, click **No Environment**.
 - Select **Environment Variables**.
 
+{% img src="assets/images/postman-environment-variables-columns.png" alt="Selecting the Environment Variables environment from the environment dropdown in the top-right corner of Postman" width="100%" /%}
+
 ---
 
 ### 7. Set `baseUrl` in Environment Variables
@@ -320,6 +336,7 @@ For written instructions:
 - Click the **Environments** tab.
 - Select **Environment Variables**.
 - Paste the server URL you copied earlier into both the **Initial Value** and **Current Value** fields for the `baseUrl` variable.
+  - **Note:** Depending on your version of Postman, these columns may instead be labeled **Value** and **Shared Value** (or you may only see a single **Value** column). If so, paste the server URL into whichever of these fields are available.
 - Remove the slash at the end of the URL if there is one.
 - Save the file.
 
