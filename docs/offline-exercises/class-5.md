@@ -20,7 +20,7 @@ During the exercises, there will be quizzes. Please write down the questions and
    - [https://api-course-docs.redocly.app/dev-setup#open-the-react-admin-panel](https://api-course-docs.redocly.app/dev-setup#open-the-react-admin-panel)
    - Refer to the [#troubleshooting](#troubleshooting) section if you see the following error screen:
 
-   {% img src="../assets/images/admin-panel-issue.png" alt="" width="100%" /%}
+   {% img src="../assets/images/admin-panel-issue.jpg" alt="" width="100%" /%}
 
 8. Login to the Admin Panel. Refer to:
    - [https://api-course-docs.redocly.app/dev-setup#login-to-the-admin-panel](https://api-course-docs.redocly.app/dev-setup#login-to-the-admin-panel)
@@ -332,7 +332,7 @@ Additionally, we explored API dashboards that allow us to test user journeys and
 
 If opening the React Admin Panel results in the following image, then perform the steps below.
 
-{% img src="../assets/images/admin-panel-issue.png" alt="" width="100%" /%}
+{% img src="../assets/images/admin-panel-issue.jpg" alt="" width="100%" /%}
 
 1. In your GitHub codespace, stop the React admin panel from running (CTRL + C) if it is already running.
 2. From the same terminal where you ran `./scripts/run-admin.sh`, run the following commands in order:
