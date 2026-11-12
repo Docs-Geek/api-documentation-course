@@ -18,12 +18,15 @@ During the exercises, there will be quizzes. Please write down the questions and
    - [https://api-course-docs.redocly.app/dev-setup#install-the-react-admin-panel](https://api-course-docs.redocly.app/dev-setup#install-the-react-admin-panel)
 7. Open the React Admin Panel. Refer to:
    - [https://api-course-docs.redocly.app/dev-setup#open-the-react-admin-panel](https://api-course-docs.redocly.app/dev-setup#open-the-react-admin-panel)
+   - Refer to the [#troubleshooting](#troubleshooting) section if you see the following error screen:
+
+   {% img src="../assets/images/admin-panel-issue.png" alt="" width="100%" /%}
+
 8. Login to the Admin Panel. Refer to:
    - [https://api-course-docs.redocly.app/dev-setup#login-to-the-admin-panel](https://api-course-docs.redocly.app/dev-setup#login-to-the-admin-panel)
 9. Verify that you see the following screen.
 
    {% img src="../assets/images/react-admin-login.png" alt="Ports 4" width="100%" /%}
-
    - If you do not see this screen, click the button in the top-right corner and select **Logout**.
 
 ## Logging into the Admin Panel
@@ -139,7 +142,6 @@ Take note of which ingredients exist vs. which ones do not. If any of these ingr
 4. Click **Save**.
 5. In Chrome developer tools, in the **Network** tab, click the entry labeled `ingredients`.
 6. **Quiz #2**: See if you can locate the following details:
-
    - Request URL
    - Request Method
    - Status Code
@@ -325,3 +327,22 @@ In these exercises, we learned how user interfaces depend on APIs for data valid
 We also discovered that we can observe API calls triggered by user actions, like button clicks, in the network tab. This insight helps us understand how to utilize APIs effectively and improve our documentation.
 
 Additionally, we explored API dashboards that allow us to test user journeys and API flows via the user interface. This knowledge helps us create user-centric documentation tailored to the needs of restaurant administrators, staff, and customers.
+
+## Troubleshooting
+
+If opening the React Admin Panel results in the following image, then perform the steps below.
+
+{% img src="../assets/images/admin-panel-issue.png" alt="" width="100%" /%}
+
+1. In your GitHub codespace, stop the React admin panel from running (CTRL + C) if it is already running.
+2. From the same terminal where you ran `./scripts/run-admin.sh`, run the following commands in order:
+
+```shell
+git pull
+cd admin
+npm install
+cd ..
+./scripts/run-admin.sh
+```
+
+5. Try to [open the React Admin panel](https://api-course-docs.redocly.app/dev-setup#open-the-react-admin-panel) again and see if the error is resolved.
